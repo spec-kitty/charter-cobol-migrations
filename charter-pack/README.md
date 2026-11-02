@@ -28,6 +28,23 @@ COBOL/CICS/Fortran/Pascal → Rust migration where feature-parity matters and id
 - `idiom-fossil-audit` — For each ported construct, record the COBOL idiom, its behavioral content, the Rust idiom chosen. The audit trail is how we prove nothing was silently dropped.
 - `strangler-fig-boundary` — COBOL and Rust halves share files/IPC until a slice is fully strangled; parity harness tests across the boundary.
 - `88-level-decision-tree` — COBOL `88`-level condition-names become explicit Rust enums or validated newtypes, never raw ints.
+- `late-fail-detection` *(learned from ACAS sl055)* — Legacy code often detects
+  the failure condition *after* doing half the work, then warns and pauses.
+  The suspicion rule L2R-006 applies doubly: don't port the half-done state.
+  Pre-flight the validation, return a typed error. Behavior at ledger-level
+  preserved; at temp-file-level deliberately not.
+- `file-status-slot-table` *(learned from ACAS)* — `File-Status(N)` array slots
+  checked by number become an `enum FileStatusSlot` with stable discriminants.
+  The `88` condition-names on those slots become enum variants, not mappings.
+
+## Worked-example catalog (grows as slices port)
+
+| Date | How found | Copybook/source | Directive exercised |
+|---|---|---|---|
+| 2026-11-02 | GnuCOBOL boot build | `copybooks/wsfnctn.cob` | L2R-003 — signed RELATIVE KEY that was never actually negative |
+| 2026-11-02 | sl055 reading | `fdinv2.cob` invoice-date | L2R-005 — 17/05/13 5-byte filler accretion in file layout |
+| 2026-11-02 | sl055 reading | da010-Read-Loop flow | L2R-006 — SL122 late-fail skipped *after* the extract work |
+
 
 ## Styleguides (both ends)
 
