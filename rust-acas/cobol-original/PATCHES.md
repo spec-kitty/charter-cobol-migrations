@@ -25,3 +25,11 @@ retired, the *behavior* preserved.
   of L2R-003. When ported to Rust, `rrn` becomes `u32` in a storage-backend
   newtype, NOT `i32`.
 - **Level**: 1 (per-token). Confirmed by reading all `rrn` usages.
+
+## NOTE — vendored sources stay byte-exact
+
+2026-11-02: I briefly tempted fate by trying to annotate dispositions INSIDE
+`cobol-original/sales/fdinv2.cob`. Reverted immediately. Rule reaffirmed:
+the vendored tree in `cobol-original/` is a *byte-for-byte mirror of
+SourceForge v3.01.07* (plus its own `PATCHES.md` ledger). Commentary goes in
+`rust-acas/docs/`, never in the vendored files.
