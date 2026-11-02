@@ -1,0 +1,20 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/acas-common",
+    "crates/acas-gl",
+    "crates/acas-sales",
+    "crates/acas-purchase",
+    "crates/acas-stock",
+    "crates/acas-irs",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "GPL-2.0-only"
+repository = "https://github.com/spec-kitty/charter-cobol-to-rust"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
