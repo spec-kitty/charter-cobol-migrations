@@ -105,3 +105,4 @@ mod tests {
         assert_eq!(e.os_delimiter(), '/');
     }
 }
+pub mod isam;
