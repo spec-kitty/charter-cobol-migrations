@@ -105,7 +105,10 @@ mod tests {
         assert_eq!(e.os_delimiter(), '/');
     }
 }
+pub mod cobol_date;
 pub mod isam;
+
+pub use cobol_date::CobolDate;
 
 #[cfg(test)]
 #[path = "tests/fixtures.rs"]
