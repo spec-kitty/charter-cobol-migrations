@@ -63,3 +63,5 @@ COBOL/CICS/Fortran/Pascal → Rust migration where feature-parity matters and id
 - `references/acas-autopsy.md` — Domain model, module map, goto-count, copybook oddities (2009–2013 file-layout folklore).
 - `references/charter-interview-answers.yaml` — The interview responses that seeded this pack.
 - `references/parity-harness-howto.md` — Building the characterization harness step-by-step.
+
+- `references/fd-evidence/` — Field-evidence notes pinning observed bytes to Rust type decisions (e.g., F-B001 date-epoch 1600-12-31).
