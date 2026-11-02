@@ -27,11 +27,84 @@ import shutil
 import subprocess
 import sys
 import time
+from collections.abc import Callable
 from pathlib import Path
 
 HARNESS_ROOT = Path(__file__).resolve().parent
 RUNS_DIR = HARNESS_ROOT / "runs"
 SRC_BUILD = Path("/tmp/acas-build")
+
+# ---------------------------------------------------------------------------
+# Keystroke schedules
+# ---------------------------------------------------------------------------
+# Offsets are seconds after spawn on the pty.  Screen ACCEPTs in ACAS are
+# `with update` (fields pre-filled from the system record), so a bare CR
+# keeps the current/initial value.  We only type where the default would
+# fail validation:
+#   * p-start / p-end      – must be valid UK dates (Date-Form defaults to 1)
+#   * Page-Lines 048       – 000 would auto-correct anyway, set explicitly
+#   * Current Cycle 12     – nonzero so ACAS.cbl (scycle) believes setup ran
+#   * Cycle Period 03      – 3 = Monthly (12-cycle year)
+# Every other SYS002 field takes ENTER to keep the zero/space default, which
+# the validation blocks then normalise (dates checked, ranges forced etc.).
+SETUP_KEYSTROKES: list[tuple[float, bytes]] = [
+    # --- SY009 first-run setup gate -------------------------------------
+    (1.5, b"Harness Test Co\r"),  # company name
+    (2.5, b"\r"),                 # verify name (prefilled Y)
+    (3.2, b"\r"),                 # Using General Ledger  (Y)
+    (3.6, b"\r"),                 # Using Purchase Ledger (Y)
+    (4.0, b"\r"),                 # Using Sales Ledger    (Y)
+    (4.4, b"\r"),                 # Using Invoicing       (Y)
+    (4.8, b"\r"),                 # Using Stock Control   (Y)
+    (5.2, b"\r"),                 # Using Order Entry     (Y)
+    (5.8, b"Y\r"),                # confirm setup
+    # --- SYS002 Screen 1 : User Data ------------------------------------
+    # 6 address-ish fields first (addr1..4, postcode, country) -> skip
+    (8.0,  b"\r" * 6),
+    (8.3,  b"\r"),                # Date Format      keep 1 (UK)
+    (8.6,  b"01/04/2026\r"),      # Period start
+    (8.9,  b"31/03/2027\r"),      # Period end
+    (9.2,  b"048\r"),             # System Print Lines
+    (9.5,  b"\r" * 5),            # VAT rates 1,4,2,5,3 -> 00.00
+    (9.8,  b"12\r"),              # Current Cycle (scycle != 0 -> setup done)
+    (10.1, b"\r"),                # VAT Reg no   blank
+    (10.4, b"\r"),                # VAT Printed  -> forced "N"
+    (10.7, b"\r"),                # Current Quarter 00
+    (11.0, b"\r"),                # Pass-Word    blank
+    (11.3, b"03\r"),              # Cycle Period 03 = Monthly
+    (11.6, b"\r"),                # Data File Handling 0 (Cobol files)
+    (11.9, b"\r"),                # Dual file type flag  0
+    (12.6, b"\r"),                # "User Data Complete" OK to file (prefilled Y)
+    # --- SYS002 Screen 2 : OPS Data 1 -----------------------------------
+    (15.0, b"\r"),                # host            0 = single user
+    (15.3, b"\r"),                # op-system       0 -> forced 6 (Linux)
+    (15.6, b"\r"),                # data capture    0 = std
+    # op-system resolves to Linux -> ops-data-2 (cups spooler names) accepts
+    (16.2, b"\r" * 3),            # spool names 1..3 (blank -> warning only)
+    (16.8, b"\r"),                # "OPS Data 1 Complete" verify Y
+    # --- SYS002 Screen 4 : G-L Data -------------------------------------
+    (19.5, b"\r" * 14),           # all 14 gl-data fields -> defaults
+    (20.3, b"\r"),                # "G-L Data Complete" verify Y
+    # --- SYS002 Screen 5 : S-L Data 1 -----------------------------------
+    (23.0, b"\r" * 15),           # sl-data fields -> defaults
+    (23.8, b"\r"),                # "S-L Data Complete" verify Y
+    # --- SYS002 Screen 6 : S-L Data 2 -----------------------------------
+    (26.0, b"\r" * 4),            # company heading flags -> forced "N"
+    (26.6, b"\r"),                # "S-L Data 2 Complete" verify Y
+    # --- SYS002 Screen 7 : P-L Data --------------------------------------
+    (29.0, b"\r" * 6),            # pl-data fields -> defaults
+    (29.6, b"\r"),                # "P-L Data Complete" verify Y
+    # --- SYS002 Screen 8 : Stock Data ------------------------------------
+    (32.0, b"\r" * 12),           # stock-data fields -> defaults
+    (32.8, b"\r"),                # "Stock Data Complete" verify Y
+    # --- SYS002 print-params ---------------------------------------------
+    (35.5, b"N\r"),               # "Do you want printed copy (Y/N)" -> N
+    # --- ACAS main menu ---------------------------------------------------
+    # record written, SYS002 exits, ACAS repaints "ACAS System Menu".
+    (39.0, b"X\r"),               # exit ACAS cleanly
+]
+
+MAINMENU_TIMEOUT = 48.0
 
 
 def sha256_of(p: Path) -> str:
@@ -97,41 +170,43 @@ def drive_pty(cmd: list[str], cwd: Path, keystrokes: list[tuple[float, bytes]],
     return bytes(transcript)
 
 
+# Scenario registry: name -> callable(run_dir) -> manifest dict.
+# Add new scenarios (sl010, sl910, ...) here and to the argparse choices in
+# main(); each entry owns its timeout and keystroke schedule.
+SCENARIOS: dict[str, "Callable[[Path], dict]"] = {}
+
+
+def scenario(name):
+    """Decorator registering a scenario under `name`."""
+    def wrap(fn):
+        SCENARIOS[name] = fn
+        return fn
+    return wrap
+
+
+@scenario("boot")
 def scenario_boot(run_dir: Path) -> dict:
     """Slice 0: boot ACAS bare; the SY009 env-gate abort is EXPECTED."""
-    return _run_and_record(run_dir, "boot", timeout=6.0)
+    return _run_and_record(run_dir, "boot", timeout=6.0, keystrokes=[(1.0, b"\r")])
 
 
+@scenario("mainmenu")
 def scenario_mainmenu(run_dir: Path) -> dict:
-    """Drive ACAS through first-run setup and reach the main menu.
+    """Drive ACAS through first-run setup, all of SYS002, to the main menu.
 
-    Deterministic keystroke schedule derived from reading setup code:
-      1. company name (ACAS Harness Ltd.)
-      2. verify Y (single-char field, ENTER)
-      3. six ledger Y/N toggles — all Y (single-char update accepts at fields)
-      4. confirm Y
-      5. wait for main menu to paint
-      6. nothing more: capture the painted menu as golden master.
+    Deterministic keystroke schedule (`SETUP_KEYSTROKES` above) passes:
+      1. SY009 company/ledger gate
+      2. SYS002 Screen 1 "User Data"  (dates, print lines, cycle=12)
+      3. SYS002 Screen 2 "OPS Data 1" (+ cups spooler screen forced by Linux)
+      4. SYS002 Screens 4-8 "G-L / S-L 1 / S-L 2 / P-L / Stock" data
+      5. SYS002 print-params (declined)
+      6. ACAS System Menu — entered and exited via "X".
+    Deepest state achievable is the ACAS System Menu; after SYS002 writes
+    the system record (scycle=12), ACAS.cbl repaints the menu instead of
+    re-entering setup.  Golden master should show menu text in the tail.
     """
-    ks = [
-        (1.5, b"Harness Test Co\r"),
-        (2.5, b"\r"),        # confirm company name (prefilled Y)
-        (3.2, b"\r"),        # using GL
-        (3.6, b"\r"),        # using Purchase
-        (4.0, b"\r"),        # using Sales
-        (4.4, b"\r"),        # using Invoicing
-        (4.8, b"\r"),        # using Stock
-        (5.2, b"\r"),        # using Order Entry
-        (5.8, b"Y\r"),       # confirm setup
-    ]
-    return _run_and_record(run_dir, "mainmenu", timeout=15.0, keystrokes=ks)
-
-
-def drive_cfg(scenario: str) -> tuple[list[tuple[float, bytes]], float]:
-    return {
-        "boot": ([(1.0, b"\r")], 6.0),
-        "mainmenu": ([(3.0, b"X\r")], 10.0),
-    }[scenario]
+    return _run_and_record(run_dir, "mainmenu", timeout=MAINMENU_TIMEOUT,
+                           keystrokes=SETUP_KEYSTROKES)
 
 
 def _run_and_record(run_dir: Path, label: str, timeout: float,
@@ -165,10 +240,9 @@ def _run_and_record(run_dir: Path, label: str, timeout: float,
         for k in ("ACAS_LEDGERS", "ACAS_IRS", "ACAS_BIN"):
             env.pop(k, None)
     cmdline = ["./ACAS"]
-    if label != "boot" and False:
-        cmdline = ["./ACAS"]  # override via env first
-    result = _drive_pty_env(cmdline, SRC_BUILD, keystrokes or drive_cfg(label)[0],
-                            timeout, env)
+    if keystrokes is None:
+        raise ValueError(f"scenario '{label}' supplied no keystroke schedule")
+    result = _drive_pty_env(cmdline, SRC_BUILD, keystrokes, timeout, env)
     (run_dir / "screen.transcript.bin").write_bytes(result)
     files_after = snapshot_tree(SRC_BUILD)
     manifest = {
@@ -227,7 +301,7 @@ def main() -> None:
     p = argparse.ArgumentParser()
     sub = p.add_subparsers(dest="cmd", required=True)
     r = sub.add_parser("run")
-    r.add_argument("--scenario", default="boot", choices=["boot", "mainmenu"])
+    r.add_argument("--scenario", default="boot", choices=sorted(SCENARIOS))
     r.add_argument("--label", default=None)
     d = sub.add_parser("diff")
     d.add_argument("a")
@@ -237,12 +311,7 @@ def main() -> None:
     if args.cmd == "run":
         label = args.label or args.scenario
         run_dir = new_run_dir(label)
-        if args.scenario == "boot":
-            m = scenario_boot(run_dir)
-        elif args.scenario == "mainmenu":
-            m = scenario_mainmenu(run_dir)
-        else:
-            raise SystemExit(f"unknown scenario {args.scenario}")
+        m = SCENARIOS[args.scenario](run_dir)
         print(json.dumps({k: v for k, v in m.items() if k != "file_hashes"}, indent=2))
         print(f"\nrun dir: {run_dir}")
     elif args.cmd == "diff":

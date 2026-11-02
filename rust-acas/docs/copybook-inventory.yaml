@@ -1,0 +1,2847 @@
+copybooks:
+  envdiv.cob:
+    records: []
+  fdanal.cob:
+    records:
+    - byte_length: 36
+      class: group
+      fields:
+      - bytes: null
+        class: group
+        name: pa-code
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: pa-system
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: pa-group
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: pa-first
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: pa-second
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 6
+        class: zoned-decimal
+        name: pa-gl
+        notes: null
+        pic: 9(6)
+        redefines: null
+        usage: null
+      - bytes: 24
+        class: alphanumeric
+        name: pa-desc
+        notes: null
+        pic: x(24)
+        redefines: null
+        usage: null
+      - bytes: 3
+        class: alphanumeric
+        name: pa-print
+        notes: null
+        pic: xxx
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: analysis-record
+      occurs_count: 0
+      redefines_in_record: false
+  fdaudit.cob:
+    records:
+    - byte_length: 72
+      class: group
+      fields:
+      - bytes: 1
+        class: zoned-decimal
+        name: audit-type
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 8
+        class: zoned-decimal
+        name: audit-invoice-po
+        notes: null
+        pic: 9(8)
+        redefines: null
+        usage: null
+      - bytes: 8
+        class: zoned-decimal
+        name: audit-cr-for-invoice
+        notes: null
+        pic: 9(8)
+        redefines: null
+        usage: null
+      - bytes: 13
+        class: alphanumeric
+        name: audit-stock-key
+        notes: null
+        pic: x(13)
+        redefines: null
+        usage: null
+      - bytes: 32
+        class: alphanumeric
+        name: audit-desc
+        notes: null
+        pic: x(32)
+        redefines: null
+        usage: null
+      - bytes: 10
+        class: alphanumeric
+        name: audit-process-date
+        notes: null
+        pic: x(10)
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: stock-audit-record
+      occurs_count: 0
+      redefines_in_record: false
+  fdbatch.cob:
+    records:
+    - byte_length: 92
+      class: group
+      fields:
+      - bytes: null
+        class: group
+        name: batch-key
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: ledger
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 5
+        class: zoned-decimal
+        name: batch-nos
+        notes: null
+        pic: 9(5)
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: items
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: batch-status
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: cleared-status
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: bcycle
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: dates
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 9
+        class: zoned-decimal
+        name: input-gross
+        notes: null
+        pic: 9(9)v99
+        redefines: null
+        usage: null
+      - bytes: 9
+        class: zoned-decimal
+        name: input-vat
+        notes: null
+        pic: 9(9)v99
+        redefines: null
+        usage: null
+      - bytes: 9
+        class: zoned-decimal
+        name: actual-gross
+        notes: null
+        pic: 9(9)v99
+        redefines: null
+        usage: null
+      - bytes: 9
+        class: zoned-decimal
+        name: actual-vat
+        notes: null
+        pic: 9(9)v99
+        redefines: null
+        usage: null
+      - bytes: 24
+        class: alphanumeric
+        name: description
+        notes: null
+        pic: x(24)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: posting-data
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: bdefault
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: alphanumeric
+        name: convention
+        notes: null
+        pic: xx
+        redefines: null
+        usage: null
+      - bytes: 6
+        class: zoned-decimal
+        name: batch-def-ac
+        notes: null
+        pic: 9(6)
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: batch-def-pc
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: alphanumeric
+        name: batch-def-code
+        notes: null
+        pic: xx
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: batch-def-vat
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 5
+        class: zoned-decimal
+        name: batch-start
+        notes: null
+        pic: 9(5)
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: batch-record
+      occurs_count: 0
+      redefines_in_record: false
+  fddel.cob:
+    records:
+    - byte_length: 134
+      class: group
+      fields:
+      - bytes: null
+        class: group
+        name: deliv-key
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: deliv-key-type
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: deliv-sales-key
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 7
+        class: alphanumeric
+        name: deliv-purchase-key
+        notes: null
+        pic: x(7)
+        redefines: null
+        usage: null
+      - bytes: 30
+        class: alphanumeric
+        name: deliv-name
+        notes: null
+        pic: x(30)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: deliv-address
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 48
+        class: alphanumeric
+        name: deliv-addr1
+        notes: null
+        pic: x(48)
+        redefines: null
+        usage: null
+      - bytes: 48
+        class: alphanumeric
+        name: deliv-addr2
+        notes: null
+        pic: x(48)
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: delivery-record
+      occurs_count: 0
+      redefines_in_record: false
+  fdpl.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields:
+      - bytes: 7
+        class: alphanumeric
+        name: purch-key
+        notes: null
+        pic: x(7)
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: purch-status
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: purch-notes-tag
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 30
+        class: alphanumeric
+        name: purch-name
+        notes: null
+        pic: x(30)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: purch-address
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 48
+        class: alphanumeric
+        name: purch-addr1
+        notes: null
+        pic: x(48)
+        redefines: null
+        usage: null
+      - bytes: 48
+        class: alphanumeric
+        name: purch-addr2
+        notes: null
+        pic: x(48)
+        redefines: null
+        usage: null
+      - bytes: 13
+        class: alphanumeric
+        name: purch-phone
+        notes: null
+        pic: x(13)
+        redefines: null
+        usage: null
+      - bytes: 4
+        class: alphanumeric
+        name: purch-ext
+        notes: null
+        pic: x(4)
+        redefines: null
+        usage: null
+      - bytes: 13
+        class: alphanumeric
+        name: purch-fax
+        notes: null
+        pic: x(13)
+        redefines: null
+        usage: null
+      - bytes: 30
+        class: alphanumeric
+        name: purch-email
+        notes: null
+        pic: x(30)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: binary
+        name: purch-discount
+        notes: null
+        pic: 99v99
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: packed-decimal
+        name: purch-current
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: packed-decimal
+        name: purch-last
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: group
+        name: quarters
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: null
+        class: packed-decimal
+        name: turnover-q1
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: packed-decimal
+        name: turnover-q2
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: packed-decimal
+        name: turnover-q3
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: packed-decimal
+        name: turnover-q4
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: group
+        name: filler
+        notes: null
+        pic: null
+        redefines: quarters
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: pturnover-q
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: occurs  4
+      - bytes: null
+        class: packed-decimal
+        name: purch-unapplied
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: 16
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x(16)
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: purch-record
+      occurs_count: 1
+      redefines_in_record: true
+  fdpost-irs.cob:
+    records:
+    - byte_length: 66
+      class: group
+      fields:
+      - bytes: null
+        class: group
+        name: irs-post-key
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 5
+        class: zoned-decimal
+        name: irs-batch
+        notes: null
+        pic: 9(5)
+        redefines: null
+        usage: null
+      - bytes: 5
+        class: zoned-decimal
+        name: irs-post-number
+        notes: null
+        pic: 9(5)
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: alphanumeric
+        name: irs-post-code
+        notes: null
+        pic: xx
+        redefines: null
+        usage: null
+      - bytes: 8
+        class: alphanumeric
+        name: irs-post-date
+        notes: null
+        pic: x(8)
+        redefines: null
+        usage: null
+      - bytes: 5
+        class: zoned-decimal
+        name: irs-post-dr
+        notes: null
+        pic: 9(5)
+        redefines: null
+        usage: null
+      - bytes: 5
+        class: zoned-decimal
+        name: irs-post-cr
+        notes: null
+        pic: 9(5)
+        redefines: null
+        usage: null
+      - bytes: 32
+        class: alphanumeric
+        name: irs-post-legend
+        notes: null
+        pic: x(32)
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: irs-vat-ac-def
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: alphanumeric
+        name: irs-post-vat-side
+        notes: null
+        pic: xx
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: irs-posting-record
+      occurs_count: 0
+      redefines_in_record: false
+  fdpost.cob:
+    records:
+    - byte_length: 14
+      class: group
+      fields:
+      - bytes: null
+        class: group
+        name: post-key
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 5
+        class: zoned-decimal
+        name: batch
+        notes: null
+        pic: 9(5)
+        redefines: null
+        usage: null
+      - bytes: 5
+        class: zoned-decimal
+        name: post-number
+        notes: null
+        pic: 9(5)
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: dr-pc
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: vat-pc
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: posting-record
+      occurs_count: 0
+      redefines_in_record: false
+  fdprint.cob:
+    records:
+    - byte_length: null
+      class: alphanumeric
+      fields: []
+      has_88_conditions: false
+      name: print-record
+      occurs_count: 0
+      redefines_in_record: false
+  fdsl.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields:
+      - bytes: 7
+        class: alphanumeric
+        name: sales-key
+        notes: null
+        pic: x(7)
+        redefines: null
+        usage: null
+      - bytes: 30
+        class: alphanumeric
+        name: sales-name
+        notes: null
+        pic: x(30)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: sales-address
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 48
+        class: alphanumeric
+        name: sales-addr1
+        notes: null
+        pic: x(48)
+        redefines: null
+        usage: null
+      - bytes: 48
+        class: alphanumeric
+        name: sales-addr2
+        notes: null
+        pic: x(48)
+        redefines: null
+        usage: null
+      - bytes: 13
+        class: alphanumeric
+        name: sales-phone
+        notes: null
+        pic: x(13)
+        redefines: null
+        usage: null
+      - bytes: 4
+        class: alphanumeric
+        name: sales-ext
+        notes: null
+        pic: x(4)
+        redefines: null
+        usage: null
+      - bytes: 30
+        class: alphanumeric
+        name: sales-email
+        notes: null
+        pic: x(30)
+        redefines: null
+        usage: null
+      - bytes: 13
+        class: alphanumeric
+        name: sales-fax
+        notes: null
+        pic: x(13)
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: sales-status
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: sales-late
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: email-invoice
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: email-statement
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: email-letters
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: delivery-tag
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: notes-tag
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 3
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: xxx
+        redefines: null
+        usage: null
+      - bytes: null
+        class: binary
+        name: sales-discount
+        notes: null
+        pic: 99v99
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: packed-decimal
+        name: sales-current
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: packed-decimal
+        name: sales-last
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: group
+        name: quarters
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: null
+        class: packed-decimal
+        name: turnover-q1
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: packed-decimal
+        name: turnover-q2
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: packed-decimal
+        name: turnover-q3
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: packed-decimal
+        name: turnover-q4
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: group
+        name: filler
+        notes: null
+        pic: null
+        redefines: quarters
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sturnover-q
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: occurs  4
+      - bytes: null
+        class: packed-decimal
+        name: sales-unapplied
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: 10
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x(10)
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: sales-record
+      occurs_count: 1
+      redefines_in_record: true
+  fdstock.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields:
+      - bytes: 13
+        class: alphanumeric
+        name: stock-key
+        notes: null
+        pic: x(13)
+        redefines: null
+        usage: null
+      - bytes: 7
+        class: alphanumeric
+        name: stock-abrev-key
+        notes: null
+        pic: x(7)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: stock-suppliers-group
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: filler
+        notes: null
+        pic: null
+        redefines: stock-suppliers-group
+        usage: null
+      - bytes: 10
+        class: alphanumeric
+        name: stock-location
+        notes: null
+        pic: x(10)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: stock-pa-code
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-pa-system
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: stock-pa-group
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-pa-first
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-pa-second
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: stock-sa-code
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-sa-system
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: stock-sa-group
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-sa-first
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-sa-second
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: binary
+        name: stock-construct-bundle
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-under-construction
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-work-in-progress
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-reorder-pnt
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-std-reorder
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-back-ordered
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-on-order
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-held
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: group
+        name: stock-history
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: stock-record
+      occurs_count: 0
+      redefines_in_record: true
+  fdsys.cob:
+    records: []
+  fdval.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields:
+      - bytes: null
+        class: group
+        name: va-code
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: va-system
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: va-group
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: va-first
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: va-second
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 6
+        class: zoned-decimal
+        name: va-gl
+        notes: null
+        pic: 9(6)
+        redefines: null
+        usage: null
+      - bytes: 24
+        class: alphanumeric
+        name: va-desc
+        notes: null
+        pic: x(24)
+        redefines: null
+        usage: null
+      - bytes: 3
+        class: alphanumeric
+        name: va-print
+        notes: null
+        pic: xxx
+        redefines: null
+        usage: null
+      - bytes: 3
+        class: binary
+        name: va-t-this
+        notes: null
+        pic: 9(5)
+        redefines: null
+        usage: comp
+      - bytes: 3
+        class: binary
+        name: va-t-last
+        notes: null
+        pic: 9(5)
+        redefines: null
+        usage: comp
+      - bytes: 3
+        class: binary
+        name: va-t-year
+        notes: null
+        pic: 9(5)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: packed-decimal
+        name: va-v-this
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: packed-decimal
+        name: va-v-last
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      - bytes: null
+        class: packed-decimal
+        name: va-v-year
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: comp-3
+      has_88_conditions: false
+      name: value-record
+      occurs_count: 0
+      redefines_in_record: false
+  file00.cob:
+    records: []
+  file02.cob:
+    records: []
+  file03.cob:
+    records: []
+  file05.cob:
+    records: []
+  file06.cob:
+    records: []
+  file07.cob:
+    records: []
+  file08.cob:
+    records: []
+  file09.cob:
+    records: []
+  file10.cob:
+    records: []
+  file11.cob:
+    records: []
+  file12.cob:
+    records: []
+  file13.cob:
+    records: []
+  file14.cob:
+    records: []
+  file15.cob:
+    records: []
+  file16.cob:
+    records: []
+  file17.cob:
+    records: []
+  file18.cob:
+    records: []
+  file19.cob:
+    records: []
+  file20.cob:
+    records: []
+  file21.cob:
+    records: []
+  file22.cob:
+    records: []
+  file23.cob:
+    records: []
+  file24.cob:
+    records: []
+  file26.cob:
+    records: []
+  file27.cob:
+    records: []
+  file28.cob:
+    records: []
+  file29.cob:
+    records: []
+  file32.cob:
+    records: []
+  file33.cob:
+    records: []
+  print-spool-command-p-dispatch.cob:
+    records: []
+  print-spool-command-p.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields: []
+      has_88_conditions: false
+      name: print-report
+      occurs_count: 0
+      redefines_in_record: false
+  print-spool-command-p2dispatch.cob:
+    records: []
+  print-spool-command.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields: []
+      has_88_conditions: false
+      name: print-report
+      occurs_count: 0
+      redefines_in_record: false
+  selanal.cob:
+    records: []
+  selaud.cob:
+    records: []
+  selbatch.cob:
+    records: []
+  seldel.cob:
+    records: []
+  seloi5.cob:
+    records: []
+  selpl.cob:
+    records: []
+  selpost-irs.cob:
+    records: []
+  selpost.cob:
+    records: []
+  selprint.cob:
+    records: []
+  selsl.cob:
+    records: []
+  selstock.cob:
+    records: []
+  selsys.cob:
+    records: []
+  selsys2.cob:
+    records: []
+  selval.cob:
+    records: []
+  wscall.cob:
+    records:
+    - byte_length: 28
+      class: group
+      fields:
+      - bytes: 8
+        class: alphanumeric
+        name: ws-called
+        notes: null
+        pic: x(8)
+        redefines: null
+        usage: null
+      - bytes: 8
+        class: alphanumeric
+        name: ws-caller
+        notes: null
+        pic: x(8)
+        redefines: null
+        usage: null
+      - bytes: 8
+        class: alphanumeric
+        name: ws-del-link
+        notes: null
+        pic: x(8)
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: ws-term-code
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: ws-process-func
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: ws-sub-function
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: ws-calling-data
+      occurs_count: 0
+      redefines_in_record: false
+  wsdflt.cob:
+    records:
+    - byte_length: 7
+      class: group
+      fields:
+      - bytes: 4
+        class: zoned-decimal
+        name: def-acs
+        notes: null
+        pic: 9(4)v99
+        redefines: null
+        usage: occurs  33
+      - bytes: 2
+        class: alphanumeric
+        name: def-codes
+        notes: null
+        pic: xx
+        redefines: null
+        usage: occurs  33
+      - bytes: 1
+        class: alphanumeric
+        name: def-vat
+        notes: null
+        pic: x
+        redefines: null
+        usage: occurs  33
+      has_88_conditions: false
+      name: default-record
+      occurs_count: 3
+      redefines_in_record: false
+  wsfinal.cob:
+    records:
+    - byte_length: 16
+      class: group
+      fields:
+      - bytes: 16
+        class: alphanumeric
+        name: ar1
+        notes: null
+        pic: x(16)
+        redefines: null
+        usage: occurs  26
+      has_88_conditions: false
+      name: final-record
+      occurs_count: 1
+      redefines_in_record: false
+  wsfnctn.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields:
+      - bytes: 2
+        class: zoned-decimal
+        name: fs-reply
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 4
+        class: zoned-decimal
+        name: curs
+        notes: null
+        pic: 9(4)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: filler
+        notes: null
+        pic: null
+        redefines: curs
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: lin
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: cole
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 4
+        class: zoned-decimal
+        name: curs2
+        notes: null
+        pic: 9(4)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: filler
+        notes: null
+        pic: null
+        redefines: curs2
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: lin2
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: col2
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: file-key-no
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: file-function
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: file-access
+      occurs_count: 0
+      redefines_in_record: true
+  wsmaps01.cob:
+    records:
+    - byte_length: 37
+      class: group
+      fields:
+      - bytes: 1
+        class: alphanumeric
+        name: encode
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 4
+        class: alphanumeric
+        name: pass-word
+        notes: null
+        pic: x(4)
+        redefines: null
+        usage: null
+      - bytes: 32
+        class: alphanumeric
+        name: pass-name
+        notes: null
+        pic: x(32)
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: maps01-ws
+      occurs_count: 0
+      redefines_in_record: false
+  wsmaps03.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields:
+      - bytes: 10
+        class: alphanumeric
+        name: u-date
+        notes: null
+        pic: x(10)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: u-uk
+        notes: null
+        pic: null
+        redefines: u-date
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: u-days
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: u-month
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: u-year
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: u-cc
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: u-yy
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: u-usa
+        notes: null
+        pic: null
+        redefines: u-date
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: u-usa-month
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: u-usa-days
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 4
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x(4)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: u-intl
+        notes: null
+        pic: null
+        redefines: u-date
+        usage: null
+      - bytes: null
+        class: group
+        name: u-intl-year
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: u-intl-cc
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: u-intl-yy
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: u-intl-month
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: u-intl-days
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: maps03-ws
+      occurs_count: 0
+      redefines_in_record: true
+  wsmaps09.cob:
+    records:
+    - byte_length: 8
+      class: group
+      fields:
+      - bytes: null
+        class: group
+        name: customer-code
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 6
+        class: alphanumeric
+        name: customer-nos
+        notes: null
+        pic: x(6)
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: check-digit
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: maps09-reply
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: maps09-ws
+      occurs_count: 0
+      redefines_in_record: false
+  wsnames.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields:
+      - bytes: null
+        class: group
+        name: file-defs-a
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: filler
+        notes: null
+        pic: null
+        redefines: file-defs-a
+        usage: null
+      - bytes: 532
+        class: alphanumeric
+        name: system-file-names
+        notes: null
+        pic: x(532)
+        redefines: null
+        usage: occurs 31
+      - bytes: 1
+        class: alphanumeric
+        name: file-defs-os-delimiter
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: file-defs
+      occurs_count: 1
+      redefines_in_record: true
+  wsstock.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields:
+      - bytes: 13
+        class: alphanumeric
+        name: ws-stock-key
+        notes: null
+        pic: x(13)
+        redefines: null
+        usage: null
+      - bytes: 7
+        class: alphanumeric
+        name: ws-stock-abrev-key
+        notes: null
+        pic: x(7)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: stock-suppliers-group
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: filler
+        notes: null
+        pic: null
+        redefines: stock-suppliers-group
+        usage: null
+      - bytes: 10
+        class: alphanumeric
+        name: stock-location
+        notes: null
+        pic: x(10)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: stock-pa-code
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-pa-system
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: stock-pa-group
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-pa-first
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-pa-second
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: stock-sa-code
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-sa-system
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: stock-sa-group
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-sa-first
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-sa-second
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: binary
+        name: stock-construct-bundle
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-under-construction
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-work-in-progress
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-reorder-pnt
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-std-reorder
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-back-ordered
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-on-order
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: stock-held
+        notes: null
+        pic: s9(6)
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: group
+        name: stock-history
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: ws-stock-record
+      occurs_count: 0
+      redefines_in_record: true
+  wssys4.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields:
+      - bytes: null
+        class: zoned-decimal
+        name: sl-os-bal-last-month
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sl-os-bal-this-month
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sl-invoices-this-month
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sl-credit-notes-this-month
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sl-variance
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sl-credit-deductions
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sl-cn-unappl-this-month
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sl-payments
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sl4-spare1
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sl4-spare2
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: pl-os-bal-last-month
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: pl-os-bal-this-month
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: pl-invoices-this-month
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: pl-credit-notes-this-month
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: pl-variance
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: pl-credit-deductions
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: pl-cn-unappl-this-month
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: pl-payments
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sl4-spare3
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: sl4-spare4
+        notes: null
+        pic: s9(8)v99
+        redefines: null
+        usage: null
+      - bytes: 904
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x(904)
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: system-record-4
+      occurs_count: 0
+      redefines_in_record: false
+  wssystem.cob:
+    records:
+    - byte_length: null
+      class: group
+      fields:
+      - bytes: null
+        class: zoned-decimal
+        name: vat-rate-1
+        notes: null
+        pic: 99v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: vat-rate-2
+        notes: null
+        pic: 99v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: vat-rate-3
+        notes: null
+        pic: 99v99
+        redefines: null
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: vat-rate
+        notes: null
+        pic: 99v99
+        redefines: vat-rates
+        usage: occurs 5
+      - bytes: 32
+        class: alphanumeric
+        name: usera
+        notes: null
+        pic: x(32)
+        redefines: null
+        usage: null
+      - bytes: 32
+        class: alphanumeric
+        name: user-code
+        notes: null
+        pic: x(32)
+        redefines: null
+        usage: null
+      - bytes: 24
+        class: alphanumeric
+        name: address-1
+        notes: null
+        pic: x(24)
+        redefines: null
+        usage: null
+      - bytes: 24
+        class: alphanumeric
+        name: address-2
+        notes: null
+        pic: x(24)
+        redefines: null
+        usage: null
+      - bytes: 24
+        class: alphanumeric
+        name: address-3
+        notes: null
+        pic: x(24)
+        redefines: null
+        usage: null
+      - bytes: 24
+        class: alphanumeric
+        name: address-4
+        notes: null
+        pic: x(24)
+        redefines: null
+        usage: null
+      - bytes: 24
+        class: alphanumeric
+        name: country
+        notes: null
+        pic: x(24)
+        redefines: null
+        usage: null
+      - bytes: 48
+        class: alphanumeric
+        name: print-spool-name
+        notes: null
+        pic: x(48)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: file-statuses
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: file-status
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: occurs 32
+      - bytes: 1
+        class: zoned-decimal
+        name: pass-value
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: level
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: level-1
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: level-2
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: level-3
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: level-4
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: level-5
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: level-6
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: host
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: op-system
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: current-quarter
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: rdbms-flat-statuses
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: file-system-used
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: file-duplicates-in-use
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: date-form
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: data-capture-used
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: p-c
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: p-c-grouped
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: p-c-level
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: comps
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: comps-active
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: m-v
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: arch
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: trans-print
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: trans-printed
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: header-level
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: sales-range
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: purchase-range
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: vat
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: batch-id
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: irs-instead
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 48
+        class: alphanumeric
+        name: print-spool-name2
+        notes: null
+        pic: x(48)
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: purchase-ledger
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: pl-delim
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: entry-level
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: p-flag-a
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: p-flag-i
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: p-flag-p
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: pl-stock-link
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 48
+        class: alphanumeric
+        name: print-spool-name3
+        notes: null
+        pic: x(48)
+        redefines: null
+        usage: null
+      - bytes: 10
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x(10)
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: sales-ledger
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: sl-delim
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: cust-flag
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: oi-5-flag
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: full-invoicing
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: s-flag-p
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: sl-dunning
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: sl-charges
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: sl-own-nos
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: sl-stats-run
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: sl-day-book
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: zoned-decimal
+        name: invoicer
+        notes: null
+        pic: '9'
+        redefines: null
+        usage: null
+      - bytes: 14
+        class: alphanumeric
+        name: extra-desc
+        notes: null
+        pic: x(14)
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: extra-type
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: extra-print
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: sl-stock-link
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: sl-stock-audit
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: null
+        class: binary
+        name: sl-late-per
+        notes: null
+        pic: 99v99
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: sl-disc
+        notes: null
+        pic: 99v99
+        redefines: null
+        usage: comp
+      - bytes: null
+        class: binary
+        name: extra-rate
+        notes: null
+        pic: 99v99
+        redefines: null
+        usage: comp
+      - bytes: 1
+        class: alphanumeric
+        name: sl-comp-head-pick
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: sl-comp-head-inv
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: sl-comp-head-stat
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: sl-comp-head-lets
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: sl-vat-printed
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 6
+        class: alphanumeric
+        name: stk-abrev-ref
+        notes: null
+        pic: x(6)
+        redefines: null
+        usage: null
+      - bytes: 1
+        class: alphanumeric
+        name: stock-control
+        notes: null
+        pic: x
+        redefines: null
+        usage: null
+      - bytes: 128
+        class: alphanumeric
+        name: filler-dummy
+        notes: null
+        pic: x(128)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: irs-data-block
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 128
+        class: alphanumeric
+        name: filler-dummy4
+        notes: null
+        pic: x(128)
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: system-files
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: vat-rates2
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: vat-group
+        notes: null
+        pic: null
+        redefines: vat-rates2
+        usage: null
+      - bytes: null
+        class: zoned-decimal
+        name: vat-psent
+        notes: null
+        pic: 99v99
+        redefines: null
+        usage: occurs 3
+      has_88_conditions: false
+      name: system-record
+      occurs_count: 3
+      redefines_in_record: true
+  wstime.cob:
+    records:
+    - byte_length: 20
+      class: group
+      fields:
+      - bytes: null
+        class: group
+        name: wsa-date
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wsa-yy
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wsa-mm
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wsa-dd
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: wsb-time
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wsb-hh
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wsb-mm
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wsb-ss
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: xx
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: wsd-time
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wsd-hh
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wsd-mm
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wsd-ss
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: ws-time
+      occurs_count: 0
+      redefines_in_record: false
+    - byte_length: 21
+      class: group
+      fields:
+      - bytes: null
+        class: group
+        name: wse-date
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 4
+        class: zoned-decimal
+        name: wse-year
+        notes: null
+        pic: 9(4)
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wse-month
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wse-days
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: null
+        class: group
+        name: wse-time
+        notes: null
+        pic: null
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wse-hh
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wse-mm
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 2
+        class: zoned-decimal
+        name: wse-ss
+        notes: null
+        pic: '99'
+        redefines: null
+        usage: null
+      - bytes: 7
+        class: alphanumeric
+        name: filler
+        notes: null
+        pic: x(7)
+        redefines: null
+        usage: null
+      has_88_conditions: false
+      name: wse-date-block
+      occurs_count: 0
+      redefines_in_record: false
