@@ -1,0 +1,15 @@
+2009-03-02  Vince Coen <vbcoen@btconnect.com>
+        v3.00.14:
+
+1. Make a decision on Trial Balance reports if when display/print
+   zero balance NL a/cs if a/cs with no-zero values to print as
+   against cr = dr.
+
+2. Test irs against very small number of postings say 2 - 3
+   and do post reserval on a posting with VAT, to find where 
+   error is that causes need to run Fix up.
+
+   Can not find a problem but at least 1 user is still having an issue.
+   Corrupted data may be??
+
+   THIS fault cannot (as yet) be found.

@@ -1,0 +1,33 @@
+001TL00**Unauthorised Usage Aborting**
+002TA24**Sales Ledger Not Yet Set-Up**
+003WW23!!Customer Record Not Found!!
+004WR23!!Delivery Data Missing!!
+005WW23!!Customer Record Already Exists!!
+006WW23!!P.A. Code Already Exists!!
+007WW23!!P.A. Group Code Does Not Exist!!
+008WW23!!P.A. Group Code Used As Analysis Code!!
+009WW23!!P.A. Code Does Not Exist!!
+010TA23**No Proofed Sales Transactions**
+011TA23**Payments Not Proofed**
+012TA24**Purchase Ledger Not Yet Set-Up**
+013TA23** No Transactions Have Been Posted **
+014WA23** No Invoices To Proof/Post **
+015SS24Press Return To Continue
+016WW23!!Unidentified Error!!
+017TA23**Invoice File Does Not Exist**
+018WW24** Response Must Be (Y or N) **
+019TA23**Sales Transactions Not Posted**
+020WW23!!Unidentified Error!!
+021WW23!!Supplier Record Not Found!!
+022WW23!!Supplier Record Already Exists!!
+023TA23**No Proofed Purchase Transactions**
+024WW23**Payments Proofed Not Posted**
+025TA23**Purchase Transactions Not Posted**
+026TA23**Value.Dat Missing;Advise Dealer**
+027TW23**Unprinted Invoices Exist..Correct & Run Again**
+028TW05Invoices Not Posted; Payment Entry Not Allowed
+029TW23**P.A. File Does Not Exist**
+030TW05**No Payments To Correct/Proof/Post**
+031TW05**No Archive File, Aborted**
+032WR23!!Notes data missing on Delivery File!!
+099TA23??Operator Selected Abort??

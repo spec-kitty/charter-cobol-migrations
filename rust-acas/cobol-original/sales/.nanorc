@@ -1,0 +1,64 @@
+## Here is an example for COBOL
+## use icolor rather than color to be case insensitive.
+syntax "cobol" "\.(cob|cbl|cpy|cobol|add1|add1tocobol)$"
+## Valid colors are "green", "red", "blue", "white", "yellow", "cyan", "magenta" and "black".
+## Also the optional prefix "bright" for foreground colors.
+
+## Cobol Keywords
+icolor cyan "\s+(ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALPHABET|ALPHABETIC)\s+"
+icolor cyan "\s+(ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALS|ALTERNATE|AND|ANY)\s+"
+icolor cyan "\s+(ARE|AREA|AREAS|ASCENDING|ASSIGN|AT|AUTHOR|BEFORE)\s+"
+icolor cyan "\s+(BINARY|BLANK|BLOCK|BOTTOM|BY|CANCEL|CBLL|CD)\s+"
+icolor cyan "\s+(CF|CH|CHARACTER|CHARACTERS|CLASS|CLOCK-UNITS|CLOSE|COBOL)\s+"
+icolor cyan "\s+(CODE|CODE-SET|COLLATING|COLUMN|COMMA|COMMON|COMMUNICATIONS|COMPUTATIONAL)\s+"
+icolor cyan "\s+(COMPUTE|CONFIGURATION|CONTENT|CONTINUE|CONTROL|CONVERTING|CORR|CORRESPONDING)\s+"
+icolor cyan "\s+(COUNT|CURRENCY|DATA|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK)\s+"
+icolor cyan "\s+(DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3)\s+"
+icolor cyan "\s+(DEBUGGING|DECIMAL-POINT|DELARATIVES|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING)\s+"
+icolor cyan "\s+(DESTINATION|DETAIL|DISABLE|DISPLAY|DIVIDE|DIVISION|DOWN|DUPLICATES)\s+"
+icolor cyan "\s+(DYNAMIC|EGI|ELSE|EMI|ENABLE|END-ADD|END-COMPUTE|END-DELETE)\s+"
+icolor cyan "\s+(END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE)\s+"
+icolor cyan "\s+(END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE)\s+"
+icolor cyan "\s+(ENVIRONMENT|EQUAL|ERROR|ESI|EVALUATE|EVERY|EXCEPTION|EXTEND)\s+"
+icolor cyan "\s+(EXTERNAL|FALSE|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST)\s+"
+icolor cyan "\s+(FOOTING|FOR|FROM|GENERATE|GIVING|GLOBAL|GREATER|GROUP)\s+"
+icolor cyan "\s+(HEADING|HIGH-VALUE|HIGH-VALUES|I-O|IN|INDEX)\s+"
+icolor cyan "\s+(INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT)\s+"
+icolor cyan "\s+(INSTALLATION|INTO|IS|JUST|JUSTIFIED|KEY|LABEL|LAST)\s+"
+icolor cyan "\s+(LEADING|LEFT|LENGTH|LOCK|MEMORY|MERGE|MESSAGE|MODE)\s+"
+icolor cyan "\s+(MODULES|MOVE|MULTIPLE|MULTIPLY|NATIVE|NEGATIVE|NEXT|NO)\s+"
+icolor cyan "\s+(NOT|NUMBER|NUMERIC|NUMERIC-EDITED|OBJECT-COMPUTER|OCCURS|OF|OFF)\s+"
+icolor cyan "\s+(OMITTED|ON|OPEN|OPTIONAL|OR|ORDER|ORGANIZATION|OTHER)\s+"
+icolor cyan "\s+(OUTPUT|OVERFLOW|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PERFORM|PF)\s+"
+icolor cyan "\s+(PH|PIC|PICTURE|PLUS|POSITION|POSITIVE|PRINTING)\s+"
+icolor cyan "\s+(PROCEDURES|PROCEDD|PROGRAM|PURGE|QUEUE|QUOTES|RANDOM)\s+"
+icolor cyan "\s+(RD|READ|RECEIVE|RECORD|RECORDS|REDEFINES|REEL|REFERENCE)\s+"
+icolor cyan "\s+(REFERENCES|RELATIVE|RELEASE|REMAINDER|REMOVAL|REPLACE|REPLACING|REPORT)\s+"
+icolor cyan "\s+(REPORTING|REPORTS|RERUN|RESERVE|RESET|RETURN|RETURNING|REVERSED)\s+"
+icolor cyan "\s+(REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|SAME|SD)\s+"
+icolor cyan "\s+(SEARCH|SECTION|SECURITY|SEGMENT|SEGMENT-LIMITED|SELECT|SEND|SENTENCE)\s+"
+icolor cyan "\s+(SEPARATE|SEQUENCE|SEQUENTIAL|SET|SIGN|SIZE|SORT|SORT-MERGE)\s+"
+icolor cyan "\s+(SOURCE|SOURCE-COMPUTER|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS)\s+"
+icolor cyan "\s+(STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOLIC)\s+"
+icolor cyan "\s+(SYNC|SYNCHRONIZED|TABLE|TALLYING|TAPE|TERMINAL|TERMINATE|TEST)\s+"
+icolor cyan "\s+(TEXT|THAN|THEN|THROUGH|THRU|TIME|TIMES|TO)\s+"
+icolor cyan "\s+(TOP|TRAILING|TRUE|TYPE|UNIT|UNSTRING|UNTIL|UP)\s+"
+icolor cyan "\s+(UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|WHEN)\s+"
+icolor cyan "\s+(WITH|WORDS|WRITE|AS)\s+"
+icolor cyan "\s+(ENTRY|END-ACCEPT|END-DISPLAY|GO|TO)\s+"
+
+## User Defined Paragraphs and Name of the program
+icolor brightyellow "^[0-9 ]{6}\s+([a-z]+[a-z0-9_-]*[a-z0-9]+|[a-z0-9]+)\s*\.$"
+icolor brightyellow "\s+program\-id\s*\..+\."
+## Divisions and Sections and Cobol Paragraphs
+icolor yellow "\s+(identification|environment|data|procedure)\s+division\s*\."
+icolor yellow "\s+(configuration|input-output|file|working-storage|local-storage|linkage|report|screen)\s+section\s*\."
+icolor yellow "\s+(source-computer|object-computer|repository|special-names|i-o-control|file-control)\s*\."
+icolor yellow "\s+program\-id\s*\."
+## First six columns if there are numbers.
+icolor brightwhite "^[0-9 ]{6}"
+## Strings
+icolor brightred "(\".*\"|'.*')"
+## Comments
+icolor brightblue "\*.*"
+

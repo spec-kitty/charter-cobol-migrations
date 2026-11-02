@@ -1,0 +1,79 @@
+04/04/2017 vbc - 3.1.06 Fix for install scripts and remove install-Cobol
+			as redundant.
+
+31/03/2017 vbc - 3.1.06 Minor fixes for scripts and sl960.cbl, xl150.cbl.
+                        Moved all manuals to one place (ACAS-manuals).  
+                        Re-position these notes so latest is top.
+                        Do not forget to read all of the other notes!
+
+05/07/2013 vbc - 3.1.05 Interim update includes WIP (work in progress).
+			See README.SVN. This archive matches that stored in
+			SF svn tree r3 in branch. Manuals have been improved
+    			but more work needs to be done during testing as well
+			as screen shots etc.
+			Removed the source for OC compiler as out of date
+			and in any case its now named GN?U Cobol.
+			All development uses v2.0 get it from SourceForge under
+			the name of Open Cobol at 
+			https://sourceforge.net/projects/open-cobol or for the
+			latest code 
+			at https://sourceforge.net/p/open-cobol/code/HEAD/tree/branches/gnu-cobol-2.0/
+			and select 'Download snapshot'
+
+			For ACAS - THIS IS A WORK IN PROGRESS and has better 
+			stock, sales integration, work has started including
+			rdbms code which will be v3.02.
+
+31/12/2011 vbc - 3.1.03 Includes OC v1.1 open release as available at
+			www.opencobol.org along with all source code
+			for ACAS v3.01 however there are limited manuals
+			supplied:
+			General (but needs more work),
+			Incomplete records system (useable but may be needs
+						   more added).
+			Stock (fairly complete but needs some more editing).
+			Sales and Purchase has no manuals because I need to
+			retype them from the originals that was created on
+			another platform (m/f) (mainframe) using a word
+                        processer that is no longer on the m/f and cannot
+			find a local copy.
+
+			I promise to deal with Sales over the next few months
+			subject to the health of my eyes. For Purchase, users
+			can use sales as it uses a subset of sales but I will
+			deal with that as well. Note that sales includes
+ 			invoicing which is not in purchase ledger.
+
+			Migration Testing:
+			All programs compile with no errors so if you are
+			getting any, check the install of Open Cobol and run
+			all of the tests including cobol85. See the readme
+			in the OC archive.
+
+			Tested is Sales, Purchase, Stock, Incomplete Records both
+			in regression  and independently at unit, function,
+			system and UAT. The ledgers were all tested against
+			IRS and not general.
+
+			However General has not yet been tested other than very
+			basic system testing and this needs to go through
+			correctly as there is no regression test packs avail.
+			There is bound to be problems after the migration.
+
+			IRS has some sample data included with a chart of
+			accounts for a small UK based small limited company.
+
+			Please read all documents e.g., readmes, changelogs and
+			manuals stored within each source directory. For some
+			you will need libreoffice or open office word processors.
+
+			Please let me know if you are having problems by email
+			at the address listed on the inside front cover of the
+			manuals or via sourceforge.
+
+30/10/2011 vbc - 3.0.02 First release onto sourceforge as Open source
+			and migrated to Open Cobol v1.1 and later.
+
+Vincent B Coen.
+
+

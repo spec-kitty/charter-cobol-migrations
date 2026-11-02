@@ -1,0 +1,46 @@
+2017-04-04   *  Vincent B Coen
+		Small updates in install scripts that will cause problems
+		when running as missed cp of install scripts etc, 
+		and removing dead directories and files.
+		Updated source tree.
+
+2017-03-31   *  Vincent B Coen
+		This section updated 31-03/2017.
+		This code base includes not only the code for ACAS but
+		also extras to support mysql and other rdbms systems.
+		These directories / sub directories are not required for
+		compiling the system but to support new code for rdbms
+		modules/routines that are still in development.
+		These directories include rdbms, rdbms-win 
+		and experimental-stuff. << This may not be present >>
+
+		To compile the system go into the ACAS Source directory,
+		and run comp-all.sh having ensured that you have built the
+                GNU Cobol compiler and run all tests (make all).
+
+		This does 'assume' that you have the GNUCobol compiler
+		v1.1 or later installed and tested. It is RECOMMENDED that
+                you use v2.0.
+
+
+		Manuals for all systems & sub systems are still in a state
+		of rebuild/rewriting and should olny be taken as a general
+		guide. Hopefully you can spot where the original manuals are
+ 		still present in each document. As coding AND testing
+		continues these are being updated but I only have one pair 
+		of hands :)
+
+                All manuals including the source of very old one's are in
+		ACAS-Manuals directory. 
+		See the stock and irs ones for information on building the
+		various systems and running them.
+
+		Note that other than creating the system file via the menu
+		option on all/most systems as option Z ACAS will create each
+		when required. IRS is slightly different - Read the manual.
+
+		Additional programming support is always welcome so get in
+		touch at vbcoen at gmail.com or via the forum and let me know
+ 		how you can help.
+
+

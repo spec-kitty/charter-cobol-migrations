@@ -1,0 +1,37 @@
+2013-12-16  Vince Coen <vbcoen@btconnect.com>
+	v3.01.16  + Added in support for Gnu Cobol v2.1 with
+		    Report Writer (rwcs) functions for reports.
+		    The original versions without RWCS have same name+
+		    -original added, e.g., irs020-original.cbl.
+
+2013-05-07  Vince Coen <vbcoen@btconnect.com>
+	v3.01.15  * Bugs in irs050/055 that produced odd reports caused
+		    by postsort file incorrectly set as sequentual instead of
+		    line seq. Cleanup in code for various programs for a
+		    precursor to more changes when time permits.
+		    Updated the manual with figures and text but still need
+		    to work out how to switch some pages to landscape as
+		    totally forgotten! after which will add report samples.
+		    Added in support for import/export of Chart of Accounts
+		    from a text file in irs020.
+
+2010-03-14  Vince Coen <vbcoen@btconnect.com>
+	v3.01.14  * Cleanup multi field displays to comply with standards.
+
+2009-02-27  Vince Coen <vbcoen@btconnect.com>
+        v3.01.13  * Added in summary reporting to Trial Balance.
+                  * Examine code to add extra facilities 
+                    for postings to allow for change of default a/c.
+                    Other minor fixes as well as data backup support.
+                    Also setup for final accounts heads
+
+2009-02-21  Vince Coen <vbcoen@btconnect.com>
+        v3.01.11  * Increased size of screen layouts if LINES defined as a
+                    environment variable and tested in screen of 43 lines.
+                    (check with 'set | grep LINES' in Linux).
+
+2009-02-20  Vince Coen <vbcoen@btconnect.com>
+        v3.00.10  * Fixed various bugs many caused due conversion to free
+                    format, layouts in printing and displays.
+                    Very provisional support for large screen sizing but more
+                    to do & increment version to 3.01 from 3.00.

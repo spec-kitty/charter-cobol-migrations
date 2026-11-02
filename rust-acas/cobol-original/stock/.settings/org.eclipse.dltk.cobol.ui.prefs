@@ -1,0 +1,6 @@
+#Tue Feb 28 16:42:04 GMT 2012
+CobolCompilerBuildType=CobolCompilerBuildTypeEXE
+CobolExtentionList=-I\\\\VBOXSVR\\vince\\cobolsrc\\ACAS\\copybooks
+CobolIncludeFolders=\\\\VBOXSVR\\vince\\cobolsrc\\ACAS\\copybooks;
+CobolProjectSettings=true
+eclipse.preferences.version=1

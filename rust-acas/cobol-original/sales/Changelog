@@ -1,0 +1,12 @@
+Sales Ledger - Changelog
+18/05/13 Vincent Coen	* Remapped all invoice & open item files to support link to
+			  SC (Stock Control) when using Invoicing so that product
+			  codes has 13 chars, descriptions has 32 chars.
+			  Data entry will use SC if linked using stock code or abbrev
+			  code or description. Search available on Stock code, Abrev
+			  & description using function keys to instigate a search.
+			  F3 = search on Abrev code display 1st with F2 for next record
+			  F6 = search on description display 1st with F5 for next record.
+			  Currently Invoice entry sl910 still allows manual item entry even
+			  when stock is linked, must decide if this must be removed.!!!
+

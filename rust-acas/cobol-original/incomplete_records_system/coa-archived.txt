@@ -1,0 +1,160 @@
+T0010100000OCash Sales              A
+T0010100201OBooks                   A
+T0010100301OHardware                A
+T0010100401OSoftware                A
+T0010100501OManuals                 A
+T0010100601OPostage and Packing     A
+T0010100701OMiscellaneous & OverpaidA
+T0010100801OCash Refunds Control    A
+T0010200000OCredit Sales            A
+T0010200202OComputer Consultancy    A
+T0010200302OComputer Rentals (SW,HW)A
+T0010200402OAgency Fee's (Intro's)  A
+T0010200502OAviation                A
+T0010200602ODispersements (Exps)    A
+T0010200702OACAS Yearly Licence     A
+T0010200802OACAS Yearly Maintenance A
+T0010200902OIRS Yearly Licence      A
+T0010201002OIRS Yearly Maintenance  A
+T0010201102OPayroll Licence         A
+T0010201202OPayroll Maintenance     A
+T0010201302OOrder Entry Licence     A
+T0010201402OOrder Entry Maintenance A
+T0010201502OEShop Licence           A
+T0010201602OEShop Maintenance       A
+T0010201702OAdhoc Licence           A
+T0010201802OAdhoc Maintenance       A
+T0010300000OOpening Stock           E
+T0010400000OPurchases               E
+T0010400204OSoftware and Manuals    E
+T0010400304OBooks                   E
+T0010400404OHardware                E
+T0010500000OFreight (Input)         E
+T0011000000OClosing Stock           E
+T0011100000OBank Deposit Interest   I
+T0011400000OConsultancy Fee's       K
+T0011500000OWages & N.I.C.          K
+T0011500215OAgency Fee's & Staff    K
+T0011500315OSalaries                K
+T0011500415OInland Revenue & N.I.C. K
+T0011600000OOffice use of Home      K
+T0011700000ORent and Rates          K
+T0011700217ORent                    K
+T0011700317ORates                   K
+T0011700417OWater Rates             K
+T0011700517OCouncil Tax (Property)  K
+T0011700617OBldg service charges    K
+T0012100000OTelephone, Fax, InternetK
+T0012100221OTelephone (Landlines)   K
+T0012100321OTelephones (Mobiles)    K
+T0012100421OInternet (ISP) Charges  K
+T0012300000OPrinting, Post & Statry K
+T0012300223OStationery              K
+T0012300323OPrinting                K
+T0012300423OBook,Manuals,Magazines  K
+T0012300523OPostage/Courier         K
+T0012400000OAdverising & ExhibitionsK
+T0012500000OTravel & Subsistance    K
+T0012500225OMotor Expenses          K
+T0012500325OHotel & Subsistence     K
+T0012500425OSundry Travel-Train,Cab K
+T0012500525OForeign Business Trips  K
+T0012600000OEntertainment           K
+T0012700000OSundry Expenses         K
+T0012700227OStaff Welfare           K
+T0012700327OTraining                K
+T0012700427OLight, Heat & Power     K
+T0012700527OSubscriptions           K
+T0012700627OConference Fee's        K
+T0012700727OComputer Maint'c Costs  K
+T0012700827OInsurance               K
+T0012700927OAviation                K
+T0012800000OHire of Equipment       K
+T0013100000OFinance Charges         K
+T0013100231OBank Charges & Interest K
+T0013100331ODebt Collection Fees    K
+T0013100431OCredit card Charges     K
+T0013300000OBad Debts               K
+T0013400000OLegal Fees              K
+T0013500000OBook-keeping Fees       K
+T0013700000OAudit and Accountancy   K
+T0013800000OHire Purchase Interest  K
+T0013900000ODepn. Plant & Machinery K
+T0014000000ODepn.Fixtures & FittingsL
+T0014100000ODepn. Motor Vehicles    L
+T0014200000ODepn. Office Equipment  L
+T0014300000ODepn. Computer EquipmentL
+T0014400000OComputer Consumables    K
+T0014400244OSoftware                K
+T0014400344OComputer Consumables    K
+T0014500000ODirectors renumeration  K
+T0014500245OA - Dividends           K
+T0014500345OB - Dividends           K
+T0014500445OC - Dividends           K
+T0014500545OD - Dividents           K
+T0014800000OPension Scheme          K
+T0015400000OPlant & Machinery       O
+T0015500000ODepn. Plant & Machinery O
+T0015600000OFixtures & Fittings     O
+T0015700000ODepn.Fixtures & FittingsO
+T0015800000OMotor Vehicles          O
+T0015900000ODepn. Motor Vehicles    O
+T0016000000OOffice Equipment        O
+T0016100000ODepn. Office Equipment  O
+T0016200000OComputer Equipment      O
+T0016300000ODepn. Computer EquipmentO
+T0016900000OLoans made by Company   R
+T0017000000OStock on hand           R
+T0017100000OTrade Debtors           R
+T0017200000OSDY. DRS & Prepayments  R
+T0017400000OCash at bank and in handR
+T0017400274OCash at bank            R
+T0017400374OCash in hand            R
+T0017600000OHire Purchase           U
+T0017700000OV.A.T. Control Account  U
+T0017700277OV.A.T. Input Tax        U
+T0017700377OV.A.T. Output Tax       K
+T0017700477OV.A.T. Payments to HMRC K
+T0017700577OV.A.T. Paid to suppliersU
+T0017800000OInland Revenue-Corp Tax U
+T0017900000OCredit Cards            U
+T0017900279OBarclaycard - A         U
+T0017900379OBarclaycard - B         U
+T0017900479OAmex - A                U
+T0017900579OAmex - B                U
+T0018000000OTrade Creditors         U
+T0018000280OPurchase Ledger Control U
+T0018100000OSundry Creditors        U
+T0018200000OBank Loans              U
+T0018200282OBank Loan - #1          U
+T0018200382OBank Loan - #2          U
+T0018600000OShare Capital           W
+T0018600286ODir - A                 W
+T0018600386ODir - B                 W
+T0018600486ODir - C                 W
+T0018600586ODir - D                 W
+T0018600686OOther Shareholders      W
+T0018900000OProfit and Loss Account X
+T0019200000ODirectors Loan Account  W
+T0019200292OA                       W
+T0019200392OB                       W
+T0019300000OLoans by Directors      W
+T0019300293OLoans by A              W
+T0019300393OLoans by B              W
+T0019300493OLoans by C              W
+T0019300593OLoans by D              W
+T0019500000OCapital Account         W
+T0019500295OCapital a/c - B/Fwd     W
+T0019500395OCapital a/c - Cap Intro W
+T0019500495OCapital a/c - Profit    W
+T0019500595OCapital a/c - Drawings  W
+T0019900000OSuspense                Z
+T0019900299OCash Sales Control      Z
+T0019900399OJournal Control Account Z
+T0019900499OP/Cash - A              Z
+T0019900599OP/Cash - B              Z
+T0019900699OGeneral Suspense        Z
+T0019900799OP/Cash - Staff & Others Z
+T0019900899OP/Cash - C              Z
+T0019900999OP/Cash - D              Z
+T0019999999OO.T.B. Control Account  Z

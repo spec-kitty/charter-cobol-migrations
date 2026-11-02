@@ -1,0 +1,69 @@
+schema_version: "1.0.0"
+mission: legacy-to-rust-migration
+profile: comprehensive
+answers:
+  project_intent: >-
+    Fully port ACAS (open-source GPLv2 COBOL accounting system — sales ledger/AR,
+    purchase ledger/AP, nominal ledger/GL, stock control, incomplete-records IRS)
+    to idiomatic Rust. Every feature must be preserved; obsolete COBOL idioms
+    fall-through paragraphs, 88-level condition soup, ISAM-as-design-accident) are
+    explicitly out of scope and will be replaced with native Rust types and
+    patterns. The broader deliverable is a reusable Spec Kitty charter pack for
+    legacy-language → Rust migrations.
+  languages_frameworks: >-
+    COBOL (source subject), GnuCOBOL (reference compiler), Rust (target language),
+    cargo, crossterm/ratatui (screen parity), rust_decimal (pre-decimal arithmetic
+    post-decision — disposition deferred until copybook audit completes)
+  testing_requirements: >-
+    Golden-master characterization tests on COBOL are mandatory BEFORE porting
+    each slice; byte-exact fixture output comparison; parity harness runs COBOL
+    and Rust against same input and diffs reports/files. Cargo test + fixture
+    compliance = merge gate.
+  quality_gates: >-
+    Clippy deny-warnings; every record-layout field has logged disposition;
+    no flow-restructure combined with rename in a single commit; no silent feature
+    omission; clean-architecture layers — domain knowledge does NOT depend on ISAM.
+  review_policy: >-
+    Rust changes reviewed against the behavior inventory, not against the COBOL
+    source directly (the COBOL-as-spec is a fossil record; behaviors are the spec).
+  performance_targets: >-
+    Posting runs at least as fast as COBOL baseline; TUI redraw < 16ms per
+    screen; binary size keeps full statically-linked install < 50MB.
+  deployment_constraints: >-
+    Linux/macOS/Windows x86_64 + aarch64; terminal as primary interface (behavior-parity
+    with TEXTMODE ACAS); no mainframe-era assumptions retained unless exercised
+    by a feature (e.g., printer spool formats ported as plain-text outputs).
+  documentation_policy: >-
+    Every ported module carries a rustdoc port-note listing (a) behaviors ported,
+    (b) idioms deliberately replaced and by what, (c) copybook dispositions
+    used. Doctrine pack evolves IN PARALLEL — discoveries while porting ACAS
+    feed the charter pack directives/tactics.
+  risk_boundaries: >-
+    Idiom-selectivity is the risk: the tension between "don't port the fossil"
+    and "did we just lose rounding?" requires explicit dispositions and parity
+    harness backstop. Never trust a cleaner Rust result without confirming
+    it reproduces the COBOL edge cases.
+  amendment_process: >-
+    Charter amendments happen when a discovered idiom class forces a new
+    directive. Amendments are dated, committed with the code that motivated them,
+    and appended to charter-pack/CHANGELOG.md.
+  exception_policy: >-
+    Temporary exception risk: FFI to live COBOL may be used during strangler-fig
+    phases; exceptional merge allowed without fixture parity ONLY if tagged
+    'interim-shadow' and abacklogged ticket exists.
+selected_paradigms:
+  - "strangler-fig-migration"
+  - "behavioral-parity-first"
+selected_directives:
+  - "L2R-001"
+  - "L2R-002"
+  - "L2R-003"
+  - "L2R-004"
+  - "L2R-005"
+  - "L2R-006"
+available_tools:
+  - "spec-kitty"
+  - "git"
+  - "cargo"
+  - "cobc (GnuCOBOL)"
+  - "python3 (fixture tooling)"
