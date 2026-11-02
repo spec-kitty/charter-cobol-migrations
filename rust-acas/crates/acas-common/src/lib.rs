@@ -106,3 +106,7 @@ mod tests {
     }
 }
 pub mod isam;
+
+#[cfg(test)]
+#[path = "tests/fixtures.rs"]
+mod fixtures;
