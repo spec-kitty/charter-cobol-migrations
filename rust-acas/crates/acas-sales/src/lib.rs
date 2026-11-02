@@ -1,2 +1,4 @@
-//! acas-sales — Rust port skeleton for ACAS.
-//! Behaviors ported per charter-pack directives; see docs/disposition.yaml.
+//! acas-sales: sales-ledger (AR) + invoicing port of ACAS sales/.
+
+pub mod invoice;
+pub use invoice::*;
