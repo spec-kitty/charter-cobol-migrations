@@ -44,6 +44,17 @@ COBOL/CICS/Fortran/Pascal → Rust migration where feature-parity matters and id
 | 2026-11-02 | GnuCOBOL boot build | `copybooks/wsfnctn.cob` | L2R-003 — signed RELATIVE KEY that was never actually negative |
 | 2026-11-02 | sl055 reading | `fdinv2.cob` invoice-date | L2R-005 — 17/05/13 5-byte filler accretion in file layout |
 | 2026-11-02 | sl055 reading | da010-Read-Loop flow | L2R-006 — SL122 late-fail skipped *after* the extract work |
+| 2026-11-02 | harness drive of SYS002 | `common/sys002.cbl:455` | L2R-001 — Current Cycle `cyclea` is PIC 99 on screen 1; subagent found valid-path only after inspecting validation code |
+| 2026-11-02 | integer-of-date decode | `maps04.cbl` comment | L2R-005 → F-B001 evidence kind; datasheet-level claim pinned via bytes before type layer trusts it |
+
+## Evidence as doctrine
+
+`F-B001`-style entries (worked bytes → epoch mapping) are pinned in
+`rust-acas/docs/fd-evidence/`. Each is a tiny self-contained proof ("this
+offset in this fixture decodes as this calendar date via this formula"). The
+pack's expectation: when a behavior is encountered that's load-bearing (dates,
+money, ISAM framing), the bytes get observed BEFORE the type gets authored.
+
 
 
 ## Styleguides (both ends)
