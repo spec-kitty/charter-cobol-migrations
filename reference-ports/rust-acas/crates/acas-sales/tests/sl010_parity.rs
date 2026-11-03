@@ -142,11 +142,13 @@ fn a_delivery_block_without_a_record_repeats_the_previous_address() {
 }
 
 #[test]
-fn the_report_is_spooled_even_when_nothing_matches() {
+fn a_run_that_matches_nothing_writes_the_report_but_never_spools_it() {
+    // `print-out` is set by `listing` alone; page 1 is still written.
     let (selection, _) = case("no-match");
     let report = run(&sales_rows(), &delivery_rows(), &selection, &context());
     assert_eq!(report.listed, 0);
-    assert!(report.print_out);
+    assert!(!report.print_out);
+    assert!(!report.into_bytes().is_empty());
 }
 
 #[test]

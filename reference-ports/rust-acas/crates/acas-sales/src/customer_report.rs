@@ -124,8 +124,8 @@ pub struct Selection {
     pub enter_date: [u8; 10],
     /// `enter-date-op`.
     pub enter_date_op: u8,
-    /// `ws-enter-date` — the validated day number; `None` when the date screen
-    /// was left blank, which suppresses the whole report.
+    /// `ws-enter-date` — the validated day number. `None` when the date screen
+    /// was left blank, which skips the validation and leaves the field at zero.
     pub enter_date_day: Option<i32>,
 }
 
@@ -181,7 +181,8 @@ pub struct CustomerReport {
     pub print: PrintFile,
     /// Customers listed.
     pub listed: usize,
-    /// `print-out` — whether `main-end` calls the spool.
+    /// `print-out` — set only by `listing`, so a selection that matches nothing
+    /// closes the spool file without ever handing it to the printer.
     pub print_out: bool,
 }
 
@@ -283,10 +284,16 @@ fn report_heading(text: &str, context: &ReportContext) -> Record {
     let mut record = Record::spaces();
     record.put(1, context.user.as_bytes());
     record.put(41, b"Report On : ");
-    record.put(53, text.as_bytes());
+    // `l3-report` is `pic x(70)`: a longer STRING is cut at 70 and does not
+    // reach into the date that follows.
+    let clipped = &text.as_bytes()[..text.len().min(REPORT_TEXT)];
+    record.put(53, clipped);
     record.put(123, context.report_date.as_bytes());
     record
 }
+
+/// Width of `l3-report`.
+const REPORT_TEXT: usize = 70;
 
 /// `line-4` — the column banner, byte for byte.
 const COLUMN_BANNER: &str = concat!(
@@ -611,8 +618,8 @@ pub fn run(
 
     CustomerReport {
         print: sheet.print,
+        print_out: sheet.listed != 0,
         listed: sheet.listed,
-        print_out: true,
     }
 }
 
@@ -630,10 +637,14 @@ fn entry_accepts(selection: &Selection, row: &SalesRow) -> bool {
     if selection.enter_date_op == b' ' {
         return true;
     }
-    let Some(day) = selection.enter_date_day else {
-        return false;
-    };
-    compare(selection.enter_date_op, i64::from(row.create_date), i64::from(day))
+    // A blank entry date never reaches `zz050-Validate-Date`, so
+    // `ws-enter-date` keeps the zero it was moved at `report-selection`.
+    let day = selection.enter_date_day.unwrap_or(0);
+    compare(
+        selection.enter_date_op,
+        i64::from(row.create_date),
+        i64::from(day),
+    )
 }
 
 /// `test-num`'s one comparison, with the operands in COBOL's order
@@ -721,6 +732,16 @@ mod tests {
         assert!(text.contains("CUSTS20"));
         assert!(!text.contains("CUSTS10"));
         assert!(!text.contains("CUSTS30"));
+    }
+
+    #[test]
+    fn a_long_heading_is_cut_at_the_report_column() {
+        let long: String = std::iter::repeat_n('x', 120).collect();
+        let record = report_heading(&long, &context());
+        assert_eq!(record.as_bytes()[52], b'x');
+        assert_eq!(record.as_bytes()[121], b'x');
+        // The date starts at 122 and is not overwritten by the overflow.
+        assert_eq!(&record.as_bytes()[122..132], b"03/11/2026");
     }
 
     #[test]
