@@ -11,9 +11,9 @@ planning_base_branch: feature/port-completion
 merge_target_branch: feature/port-completion
 branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
-- T001
-- T002
-- T003
+- WP04-T001
+- WP04-T002
+- WP04-T003
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-sales/src/posting.rs
@@ -42,19 +42,19 @@ Rules and skip conditions are documented in docs/slice1-reading-notes.md. The pe
 
 ## Subtasks
 
-### T001: Line analysis path
+### WP04-T001: Line analysis path
 
 - **Purpose**: Implement the S+il_pa analysis update including the Emergency Name creation fallback.
 - **Files**: `posting.rs`
 - **Validation**: Line fixture produces identical value.dat on both sides.
 
-### T002: Header extract + specials
+### WP04-T002: Header extract + specials
 
 - **Purpose**: Stage headers and accumulate the four specials with credit-note sign handling.
 - **Files**: `posting.rs`
 - **Validation**: openitm2 + specials hashes match COBOL.
 
-### T003: Pending preflight + departure note
+### WP04-T003: Pending preflight + departure note
 
 - **Purpose**: Preflight pending invoices; document the departure in the disposition ledger and STATUS.log.
 - **Files**: `posting.rs, docs/`

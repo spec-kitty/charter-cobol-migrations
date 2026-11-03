@@ -9,9 +9,9 @@ planning_base_branch: feature/port-completion
 merge_target_branch: feature/port-completion
 branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
-- T001
-- T002
-- T003
+- WP03-T001
+- WP03-T002
+- WP03-T003
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-sales/src/invoice.rs
@@ -39,19 +39,19 @@ Dispositions for the money and status fields exist in the ledger but several lan
 
 ## Subtasks
 
-### T001: Money fields
+### WP03-T001: Money fields
 
 - **Purpose**: Represent the eight comp-3 fields with byte-exact packed encode/decode and tests.
 - **Files**: `invoice.rs`
 - **Validation**: Round-trip tests at min/max/negative values.
 
-### T002: Status bytes + flags
+### WP03-T002: Status bytes + flags
 
 - **Purpose**: Type the status columns and analysed flags, preserving unknown characters.
 - **Files**: `invoice.rs`
 - **Validation**: Unknown-byte round-trip test.
 
-### T003: Full-record round-trip
+### WP03-T003: Full-record round-trip
 
 - **Purpose**: Extend the round-trip test to a fully populated record from a real captured row.
 - **Files**: `invoice.rs tests`

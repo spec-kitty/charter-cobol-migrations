@@ -9,8 +9,8 @@ planning_base_branch: feature/port-completion
 merge_target_branch: feature/port-completion
 branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
-- T001
-- T002
+- WP09-T001
+- WP09-T002
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-purchase/src/**
@@ -39,13 +39,13 @@ Purchase is a subset of sales behavior per the ACAS readme; reuse the sales patt
 
 ## Subtasks
 
-### T001: Port pl* programs
+### WP09-T001: Port pl* programs
 
 - **Purpose**: Parity-gated port.
 - **Files**: `acas-purchase/src/`
 - **Validation**: Scenarios green.
 
-### T002: Purchase suite
+### WP09-T002: Purchase suite
 
 - **Purpose**: Full parity suite.
 - **Files**: `harness/`

@@ -36,7 +36,7 @@ fn gregorian_to_jdn(y: i32, m: u32, d: u32) -> i64 {
         - 32075
 }
 
-fn jdn_to_gregorian(mut jdn: i64) -> (i32, u32, u32) {
+fn jdn_to_gregorian(jdn: i64) -> (i32, u32, u32) {
     // Fliegel-Van Flandern
     let mut l = jdn + 68569;
     let n = (4 * l) / 146097;

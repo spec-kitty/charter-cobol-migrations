@@ -9,8 +9,8 @@ planning_base_branch: feature/port-completion
 merge_target_branch: feature/port-completion
 branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
-- T001
-- T002
+- WP11-T001
+- WP11-T002
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-irs/src/**
@@ -39,13 +39,13 @@ IRS ships sample data and its own manual; use it for fixtures.
 
 ## Subtasks
 
-### T001: Port irs* programs
+### WP11-T001: Port irs* programs
 
 - **Purpose**: Parity-gated port using shipped sample data.
 - **Files**: `acas-irs/src/`
 - **Validation**: Scenarios green.
 
-### T002: IRS suite
+### WP11-T002: IRS suite
 
 - **Purpose**: Full parity suite.
 - **Files**: `harness/`

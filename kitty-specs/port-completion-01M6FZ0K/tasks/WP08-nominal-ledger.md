@@ -10,9 +10,9 @@ planning_base_branch: feature/port-completion
 merge_target_branch: feature/port-completion
 branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
-- T001
-- T002
-- T003
+- WP08-T001
+- WP08-T002
+- WP08-T003
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-gl/src/**
@@ -41,19 +41,19 @@ GL is the posting target for every other ledger; it must accept sl060 writes ear
 
 ## Subtasks
 
-### T001: Accept posted entries
+### WP08-T001: Accept posted entries
 
 - **Purpose**: Ensure GL records round-trip writes from WP05.
 - **Files**: `acas-gl/src/`
 - **Validation**: sl060 output applied without diff.
 
-### T002: Port GL programs
+### WP08-T002: Port GL programs
 
 - **Purpose**: Port remaining gl* programs parity-gated.
 - **Files**: `acas-gl/src/`
 - **Validation**: Scenarios green.
 
-### T003: GL suite
+### WP08-T003: GL suite
 
 - **Purpose**: Run the GL parity suite.
 - **Files**: `harness/`

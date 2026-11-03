@@ -49,8 +49,6 @@
 //!   saturation checks at write time)
 //! - `va-code`, `va-system` — string keys "S" + two-char product-analysis
 
-use thiserror::Error;
-
 /// i64 of pennies.
 pub type Money = i64;
 
@@ -175,9 +173,9 @@ impl<'t> ExtractRun<'t> {
 /// Mirrors da020's skip-test, applied upfront rather than mid-loop.
 ///
 /// Note: caller passes rows already sorted by (invoice-nos, let, item-nos=0).
-pub fn preflight<'a>(
-    rows: &'a [crate::invoice::InvoiceRow],
-) -> Result<Vec<&'a crate::invoice::InvoiceHeader>, ExtractError> {
+pub fn preflight(
+    rows: &[crate::invoice::InvoiceRow],
+) -> Result<Vec<&crate::invoice::InvoiceHeader>, ExtractError> {
     let mut headers = vec![];
     let pending = 0u32;
     for row in rows {
