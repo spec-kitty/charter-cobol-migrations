@@ -1,0 +1,85 @@
+
+SL050 (3.01.10)                                  Unapplied Sales Transaction Report                                         Page   1
+Harness Test Co                                                                                                           03/11/2026
+
+  Number ---Date--- <------------Customer------------>  --Type--           Goods                 <---Net-->  <---Vat-->  <--Gross-> 
+                                                                                                                                    
+
+     101 02/11/2026 CUST011 Alpha Analytical Ltd          Receipt            10.00                    10.00        0.00       10.00 
+
+     102 01/11/2026 CUST011 Alpha Analytical Ltd          Receipt            20.00                    20.00        0.00       20.00 
+
+     103 31/10/2026 CUST011 Alpha Analytical Ltd          Receipt            30.00                    30.00        0.00       30.00 
+
+     104 30/10/2026 CUST011 Alpha Analytical Ltd          Receipt            40.00                    40.00        0.00       40.00 
+
+     105 29/10/2026 CUST011 Alpha Analytical Ltd          Receipt            50.00                    50.00        0.00       50.00 
+
+     106 28/10/2026 CUST011 Alpha Analytical Ltd          Receipt            60.00                    60.00        0.00       60.00 
+
+     107 27/10/2026 CUST011 Alpha Analytical Ltd          Receipt            70.00                    70.00        0.00       70.00 
+
+     108 26/10/2026 CUST011 Alpha Analytical Ltd          Receipt            80.00                    80.00        0.00       80.00 
+
+     109 25/10/2026 CUST011 Alpha Analytical Ltd          Receipt            90.00                    90.00        0.00       90.00 
+
+     110 24/10/2026 CUST011 Alpha Analytical Ltd          Receipt           100.00                   100.00        0.00      100.00 
+
+     111 23/10/2026 CUST011 Alpha Analytical Ltd          Receipt           110.00                   110.00        0.00      110.00 
+
+     112 22/10/2026 CUST011 Alpha Analytical Ltd          Receipt           120.00                   120.00        0.00      120.00 
+
+     113 21/10/2026 CUST011 Alpha Analytical Ltd          Receipt           130.00                   130.00        0.00      130.00 
+
+     114 20/10/2026 CUST011 Alpha Analytical Ltd          Receipt           140.00                   140.00        0.00      140.00 
+
+     115 19/10/2026 CUST011 Alpha Analytical Ltd          Receipt           150.00                   150.00        0.00      150.00 
+
+     116 18/10/2026 CUST011 Alpha Analytical Ltd          Receipt           160.00                   160.00        0.00      160.00 
+
+     117 17/10/2026 CUST011 Alpha Analytical Ltd          Receipt           170.00                   170.00        0.00      170.00 
+
+     118 16/10/2026 CUST011 Alpha Analytical Ltd          Receipt           180.00                   180.00        0.00      180.00 
+
+     119 15/10/2026 CUST011 Alpha Analytical Ltd          Receipt           190.00                   190.00        0.00      190.00 
+
+     120 14/10/2026 CUST011 Alpha Analytical Ltd          Receipt           200.00                   200.00        0.00      200.00 SL050 (3.01.10)                                  Unapplied Sales Transaction Report                                         Page   2
+Harness Test Co                                                                                                           03/11/2026
+
+  Number ---Date--- <------------Customer------------>  --Type--           Goods                 <---Net-->  <---Vat-->  <--Gross-> 
+                                                                                                                                    
+
+     121 13/10/2026 CUST011 Alpha Analytical Ltd          Receipt           210.00                   210.00        0.00      210.00 
+
+     122 12/10/2026 CUST011 Alpha Analytical Ltd          Receipt           220.00                   220.00        0.00      220.00 
+
+     123 11/10/2026 CUST011 Alpha Analytical Ltd          Receipt           230.00                   230.00        0.00      230.00 
+
+     124 10/10/2026 CUST011 Alpha Analytical Ltd          Receipt           240.00                   240.00        0.00      240.00 
+
+     125 09/10/2026 CUST011 Alpha Analytical Ltd          Receipt           250.00                   250.00        0.00      250.00 
+
+     126 08/10/2026 CUST011 Alpha Analytical Ltd          Receipt           260.00                   260.00        0.00      260.00 
+
+     127 07/10/2026 CUST011 Alpha Analytical Ltd          Receipt           270.00                   270.00        0.00      270.00 
+
+     128 06/10/2026 CUST011 Alpha Analytical Ltd          Receipt           280.00                   280.00        0.00      280.00 
+
+     129 05/10/2026 CUST011 Alpha Analytical Ltd          Receipt           290.00                   290.00        0.00      290.00 
+
+     130 04/10/2026 CUST011 Alpha Analytical Ltd          Receipt           300.00                   300.00        0.00      300.00 
+
+
+                                                                                                                                    
+
+                                    Goods    Discount  Prompt Pay    Carriage         Net         Vat       Gross                   
+                                                                                                                                    
+       Total Receipts             4650.00        0.00        0.00        0.00     4650.00        0.00     4650.00                   
+       Total Invoices                0.00        0.00        0.00        0.00        0.00        0.00        0.00                   
+       Total Credit Notes            0.00        0.00        0.00        0.00        0.00        0.00        0.00                   
+
+V.A.T. Reconciliation       Receipts       Invoices   Credit Notes                                                                  
+                                                                                                                                    
+Vat Code 1    0.00%           0.00           0.00           0.00                                                                    
+Vat Code 2    0.00%           0.00           0.00           0.00                                                                    
+Vat Code 3    0.00%           0.00           0.00           0.00                                                                    

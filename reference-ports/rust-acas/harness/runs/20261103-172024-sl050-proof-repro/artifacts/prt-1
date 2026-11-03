@@ -1,0 +1,42 @@
+
+SL050 (3.01.10)                                  Unapplied Sales Transaction Report                                         Page   1
+Harness Test Co                                                                                                           03/11/2026
+
+  Number ---Date--- <------------Customer------------>  --Type--           Goods                 <---Net-->  <---Vat-->  <--Gross-> 
+                                                                                                                                    
+
+       1 01/11/2026 CUST011 Alpha Analytical Ltd          Receipt           500.00                   500.00        0.00      500.00 
+
+       2 30/10/2026 CUST022 Beta Bolts                    Invoice           120.00                   120.00       21.00      141.00 
+                                              Analysis    V1    Value       120.00    Vat Code 1                                    
+
+       3 28/10/2026 CUST011 Alpha Analytical Ltd          Cr. Note           40.00CR                  51.00CR      8.15CR     59.15C
+                                              Analysis    V2    Value        40.00CR  Vat Code 2                                    
+                                              Late Charge                     3.00CR                                                
+                                              Discount                        5.00CR           0                                    
+                                              Carriage                        2.00CR           1                                    
+
+       6 24/10/2026 CUST033 Gamma Gaskets                 Invoice            30.00                    47.00        0.00       47.00 
+                                              Discount                       10.00             0                                    
+                                              Carriage                        5.00             0                                    
+
+       7 22/10/2026 ZZZZZZ  !! Customer Unknown           Invoice            99.99                    99.99        0.00       99.99 
+                                              Analysis    V3    Value        10.00    Vat Code 3                                    
+                                                          DE            2020202.02             0                                    
+
+
+                                                                                                                                    
+
+                                    Goods    Discount  Prompt Pay    Carriage         Net         Vat       Gross                   
+                                                                                                                                    
+       Total Receipts              500.00        0.00        0.00        0.00      500.00        0.00      500.00                   
+       Total Invoices              249.99       12.00        0.00        5.00      266.99       21.00      287.99                   
+       Total Credit Notes           40.00CR      6.00CR      3.00CR      2.00CR     51.00CR      8.15CR     59.15CR                 
+
+Warning Record/s Missing In Sales File                                                                                              
+
+V.A.T. Reconciliation       Receipts       Invoices   Credit Notes                                                                  
+                                                                                                                                    
+Vat Code 1    0.00%           0.00          21.00           0.65CR                                                                  
+Vat Code 2    0.00%           0.00           0.00           7.00CR                                                                  
+Vat Code 3    0.00%           0.00           1.75           0.00                                                                    
