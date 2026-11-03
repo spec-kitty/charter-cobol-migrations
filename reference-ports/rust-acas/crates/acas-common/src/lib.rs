@@ -79,10 +79,16 @@ impl AcasEnv {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::sync::Mutex;
+
+    /// `from_env` reads process globals, and cargo runs these tests on
+    /// separate threads: without a gate the "missing" case deletes the keys
+    /// out from under the "unix delimiter" case.
+    static ENV_LOCK: Mutex<()> = Mutex::new(());
 
     #[test]
     fn env_missing_all_gives_sy009() {
-        // SAFETY: single-test threads only; key names unique to this test.
+        let _guard = ENV_LOCK.lock().unwrap_or_else(|e| e.into_inner());
         for k in ["ACAS_LEDGERS", "ACAS_IRS", "ACAS_BIN"] {
             std::env::remove_var(k);
         }
@@ -98,6 +104,7 @@ mod tests {
 
     #[test]
     fn env_unix_delim() {
+        let _guard = ENV_LOCK.lock().unwrap_or_else(|e| e.into_inner());
         std::env::set_var("ACAS_LEDGERS", "/tmp/acas-test/ACAS");
         std::env::set_var("ACAS_IRS", "/tmp/acas-test/IRS");
         std::env::set_var("ACAS_BIN", "/tmp/acas-test/bin");
