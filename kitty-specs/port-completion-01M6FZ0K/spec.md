@@ -106,36 +106,56 @@ them, and both new reference ports pass the same fixture parity.
 
 ---
 
-## Functional Requirements
+## Requirements
 
-- **FR-1** The harness must never require manual keystrokes; every scenario is fully
-  scripted and idempotent.
-- **FR-2** Storage layers are external to domain code; domain functions take in-memory
-  rows and are testable without I/O.
-- **FR-3** The Rust ISAM layer must read files produced by GnuCOBOL (relative and
-  indexed) without loss; writes must be byte-identical for the records it emits.
-- **FR-4** Money is fixed-point at every layer; `f64` never touches a stored amount.
-- **FR-5** Every byte layout encoded in a struct cites an `F-Bnnn` evidence note; a struct
-  without evidence is a defect.
-- **FR-6** Vendored COBOL and golden masters are read-only except through `PATCHES.md`.
-- **FR-7** A blocked WP must be journaled and skipped after 45 minutes; the mission never
-  idles on one gate.
+### Functional Requirements
 
-## Non-Functional Requirements
+| ID | Title | User Story | Priority | Status |
+|----|-------|------------|----------|--------|
+| FR-001 | Scripted setup exit | As a builder, I want a fully scripted ACAS setup run that lands on the system menu with a persisted system record, so every later slice is unblocked. | High | Open |
+| FR-002 | GnuCOBOL file reading | As the port, I want to read relative and indexed ISAM files GnuCOBOL writes without loss, so fixtures and golden masters round-trip. | High | Open |
+| FR-003 | Invoice extract parity | As an operator, I want posting to stage open items and analysis updates byte-identically to COBOL, so ledgers stay consistent across the switchover. | High | Open |
+| FR-004 | GL posting parity | As an accountant, I want `sl060`-equivalent posting to write ledger and GL entries identically, so balances carry over. | High | Open |
+| FR-005 | Pending-invoice preflight | As an operator, I want pending invoices refused before work begins, with the same downstream artifacts as COBOL's post-hoc warning. | Medium | Open |
+| FR-006 | Full invoice type surface | As the port, I want every `fdinv2` field dispositioned and serialized, so no byte of the record is lost. | High | Open |
+| FR-007 | System file type | As the port, I want a typed, byte-exact `SystemFile`, so config reads/writes are safe. | High | Open |
+| FR-008 | Per-ledger program coverage | As a user, I want every batch program ported in dependency order with a parity scenario. | High | Open |
+| FR-009 | Interactive session parity | As a user, I want a scripted end-to-end session to reproduce COBOL screens and output. | Medium | Open |
+| FR-010 | Release artifact | As an operator, I want a single `acas` binary and installer docs. | Medium | Open |
+| FR-011 | Doctrine graduation | As another team, I want the rust pack graduated and go/java packs proven on a slice. | Medium | Open |
 
-- **NFR-1** `cargo test --workspace` and `cargo clippy --deny warnings` green at every
-  commit on the feature branch.
-- **NFR-2** Batch parity runs complete in seconds; the full parity suite under 10 minutes.
-- **NFR-3** Binary size under 50 MB release; no network at runtime.
-- **NFR-4** GPL-2.0-only licensing preserved; dependency licenses compatible.
+### Non-Functional Requirements
 
-## Key Entities
+| ID | Title | Requirement | Category | Priority | Status |
+|----|-------|-------------|----------|----------|--------|
+| NFR-001 | Suite runtime | Full parity suite completes in under 10 minutes; each scenario under 60 s. | Performance | High | Open |
+| NFR-002 | Lint/test gate | `cargo test --workspace` green and `clippy --deny warnings` clean on every commit. | Reliability | High | Open |
+| NFR-003 | Binary size | Release binary under 50 MB, statically linkable, no runtime network. | Performance | Medium | Open |
+| NFR-004 | Determinism | Identical inputs produce identical artifact hashes across runs. | Reliability | High | Open |
 
-`Invoice`/`InvoiceRow` (headers + lines), `SystemFile` (1024-byte system record),
-`OpenItem2` staging record, analysis `ValueRow`/`AnalysisRow`, ledger records. Each carries
-a disposition ledger entry before it is typed.
+### Constraints
 
-## Success Criteria (mission-level)
+| ID | Title | Constraint | Category | Priority | Status |
+|----|-------|------------|----------|----------|--------|
+| C-001 | Target language | Rust only; no FFI to live COBOL in shipped builds. | Technical | High | Open |
+| C-002 | License | GPL-2.0-only preserved; compatible dependencies only. | Regulatory | High | Open |
+| C-003 | Vendored corpus | `cobol-original/` stays byte-exact; deviations only via numbered `PATCHES.md` entries. | Technical | High | Open |
+| C-004 | Evidence rule | No struct encodes a byte layout without an `F-Bnnn` note. | Technical | High | Open |
 
-Byte-parity across all batch programs, screen parity on a scripted session, packs
-graduated, single release binary, and `PATCHES.md` the only vendored-tree deviation.
+### Key Entities
+
+- **InvoiceRow / InvoiceHeader / InvoiceLine**: the 134-byte dual-variant invoice record.
+- **SystemFile**: the 1024-byte system parameter record (rrn 1 of `system.dat`).
+- **OpenItem2**: staged posting record handed from extract to the GL poster.
+- **ValueRow / AnalysisRow**: analysis counters and code table.
+- **Disposition ledger**: per-field carry/rename/retire/defer/absorb record.
+
+## Success Criteria
+
+### Measurable Outcomes
+
+- **SC-001**: 100% of batch programs have a parity scenario whose artifact hashes match the COBOL golden master.
+- **SC-002**: A scripted setup→invoice→post→report session matches the COBOL transcript line-for-line.
+- **SC-003**: Full parity suite runs in under 10 minutes on the build host.
+- **SC-004**: Zero vendored-tree deviations outside `PATCHES.md`.
+- **SC-005**: All six ledger domains (common, GL, sales, purchase, stock, IRS) build and pass.
