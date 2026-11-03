@@ -244,7 +244,10 @@ def _run_and_record(run_dir: Path, label: str, timeout: float,
         raise ValueError(f"scenario '{label}' supplied no keystroke schedule")
     result = _drive_pty_env(cmdline, SRC_BUILD, keystrokes, timeout, env)
     (run_dir / "screen.transcript.bin").write_bytes(result)
-    files_after = snapshot_tree(SRC_BUILD)
+    # File capture: SRC_BUILD is read-only for us; the *outputs* that matter
+    # live in the harness env (ACAS_LEDGERS etc.) — snapshot those instead.
+    env_data = home / "ACAS"
+    files_after = snapshot_tree(env_data) if env_data.exists() else {}
     manifest = {
         "scenario": label,
         "observed_bytes": len(result),
@@ -254,7 +257,71 @@ def _run_and_record(run_dir: Path, label: str, timeout: float,
         "file_hashes": files_after,
     }
     (run_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    # Also copy produced ledgers into the run dir for diff stability.
+    if env_data.exists():
+        for p in sorted(env_data.rglob("*")):
+            if p.is_file():
+                rel = p.relative_to(env_data)
+                dest = run_dir / "ledger-out" / rel
+                dest.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(p, dest)
     return manifest
+
+
+@scenario("sl055-clean")
+def scenario_sl055_clean(run_dir: Path) -> dict:
+    """SL055 invoice-post-extract with clean fixture data.
+
+    Pre-seeds:
+      - system.dat from the 23:09 golden master (setup already persisted)
+      - invoice.dat + value.dat + analysis.dat + openitm2.dat from
+        fixtures/generated/clean/
+
+    Then drives the menu path: ACAS → B (sales) → G (Sales Transactions Post).
+    sl055 opens files, posts extract, hands to sl060 automatically.
+
+    Captures: transcript; ledger-out/{system,invoice,value,analysis,openitm2}.dat
+    hashes.
+    """
+    fixture_root = Path(__file__).parent.parent / "fixtures" / "generated" / "clean"
+    if not fixture_root.exists():
+        raise SystemExit(f"generate fixtures first: python3 fixtures/fdinv2_builder.py fixtures/generated clean")
+    env_home = Path("/tmp/acas-harness-env")
+    ledgers = env_home / "ACAS"
+    ledgers.mkdir(parents=True, exist_ok=True)
+
+    # 1) Seed system.dat from the earliest golden run that had SYS002 persist
+    #    a valid record (we trust that state; it saved us from re-running setup).
+    #    CRITICAL: cyclea byte (offset 12) must be non-zero or ACAS.cbl routes
+    #    back into SYS002 forever. Golden master has cyclea=0 (XL150 only
+    #    advances it); we override to 1 to start cycle 1.
+    gold_system = Path("/home/lynn/projects/charter-cobol-migrations/reference-ports/rust-acas/harness/runs/20261102-090851-setup-menu-2/ledger-out/system.dat")
+    if gold_system.exists():
+        data = bytearray(gold_system.read_bytes())
+        data[12] = 1   # cyclea = 1; F-B003 note: verify against real first-run
+        (ledgers / "system.dat").write_bytes(bytes(data))
+    else:
+        print("WARN: golden system.dat not found; SYS002 will re-prompt", file=sys.stderr)
+
+    # 2) Fixture invoice/value/analysis/openitm2 state
+    for name in ("invoice.dat", "value.dat", "analysis.dat", "openitm2.dat"):
+        shutil.copy2(fixture_root / name, ledgers / name)
+
+    # 3) Keystrokes: no setup needed (system.dat present) → jumps straight to menu.
+    #    ACAS menu: B = Sales.   Sales menu: G = Sales Transactions Post.
+    #    After sl055 runs: confirm prompts may appear; +Y answers.
+    ks = [
+        (2.0, b"B\r"),
+        (5.0, b"G\r"),
+        (10.0, b"Y\r"),   # generic "need invoices printed?" etc.
+        (12.0, b"\r"),    # space continuation if any
+        (14.0, b"Y\r"),   # process confirm
+        (16.0, b"Y\r"),
+        (18.0, b"\r"),    # return-from-blank
+        (20.0, b"X\r"),   # exit sales
+        (22.0, b"X\r"),   # exit ACAS
+    ]
+    return _run_and_record(run_dir, "sl055-clean", timeout=30.0, keystrokes=ks)
 
 
 def _drive_pty_env(cmd: list[str], cwd: Path, keystrokes: list[tuple[float, bytes]],

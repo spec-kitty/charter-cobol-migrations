@@ -1,0 +1,14 @@
+{
+  "scenario": "sl055-clean",
+  "observed_bytes": 19263,
+  "text_heads": "m\u001b[40m+\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\r\u001b[5d\u001b[32m\u001b[40m+\u001b[9b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[4;36H\u001b[32m\u001b[40mS-L  Data 2\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\r\u001b[7d\u001b[32m\u001b[40mSelect what report types, company details will be printed to\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\r\u001b[8d\u001b[32m\u001b[40m    Invoices   - [\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40mN\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\r\u001b[9d\u001b[32m\u001b[40m    Statements - [\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40mN\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\r\u001b[10d\u001b[32m\u001b[40m  Late Letters - [\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40mN\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\r\u001b[11d\u001b[32m\u001b[40mDelivery Notes - [\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40mN\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[7;61H\u001b[8;19H\u001b[C\u001b[C\u001b[9d\b\b\u001b[C\u001b[C\u001b[10d\b\b\u001b[C\u001b[C\u001b[11d\b\b\u001b[C\u001b[C\u001b[8d\b\b",
+  "hash_screen": "060c3e13d6fd028b765dee6164b9ab4c5a0a1ec0f017de9b46a928827d0003f4",
+  "sy009_abort": false,
+  "file_hashes": {
+    "analysis.dat": "d54e5bf061ff800488428174651552bd1760ee8d9ade9c69ea18a190e87a451b",
+    "invoice.dat": "746c1e3a28dc407e0afda0caf91a46e2c656664f719d7746630438f2bc59aac6",
+    "openitm2.dat": "db082ad6ef47867d8e94af4eca3c9817307aedc97dc76e1277b75e89d75d970d",
+    "system.dat": "d97111a84ecb6af73fd5e78aefd6ee23198e79cabf61d837a94e838ec653b6ba",
+    "value.dat": "d22c586c80136a000a9162f9df4fb09da67113f1163fb7f8298c4df03d2cd9a8"
+  }
+}
