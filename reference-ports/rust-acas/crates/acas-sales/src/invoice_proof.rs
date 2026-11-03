@@ -20,9 +20,9 @@
 //!   (`ih-status` `z`/`Z`) is skipped too (Part 2).
 //! - `at end` is status 10; every read after the first EOF answers 46, which
 //!   the program does not test. A header whose declared line count runs off
-//!   the end therefore spins on the stale record area and the report never
-//!   reaches its totals (Part 3) — the caller reproduces this by handing the
-//!   records it would read.
+//!   the end therefore spins on the stale record area and never reaches the
+//!   totals (Part 3): [`ProofReport::hung`] says so and the spool stops where
+//!   the analysis stopped.
 //! - An over-declared line count consumes the *next* record as an analysis
 //!   line, header or not (Part 4).
 //! - A failed keyed sales read prints `!! Customer Unknown` and raises
@@ -440,7 +440,7 @@ impl<'a> Sheet<'a> {
         self.first_time = true;
         // `perform analysis-print` and `perform extra-analysis`
         self.analysis(header, records, cursor);
-        self.extra(header, extra, carriage, discount, deduct_amt, c_vat, e_vat);
+        self.extra(extra, carriage, discount, deduct_amt, c_vat, e_vat);
     }
 
     /// `analysis-print` — up to `ih-lines` rows, stopping early at a comment
@@ -498,7 +498,6 @@ impl<'a> Sheet<'a> {
     #[allow(clippy::too_many_arguments)]
     fn extra(
         &mut self,
-        _header: &InvoiceHeader,
         extra: Money,
         carriage: Money,
         discount: Money,
