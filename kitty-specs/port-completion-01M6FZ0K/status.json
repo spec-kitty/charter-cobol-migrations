@@ -27,6 +27,9 @@
       "last_event_id": "01M6G0QC8RV9TVQ1NHQ2ER3X7G",
       "last_transition_at": "2026-11-03T06:14:43.224538+00:00",
       "model": "__resolved_model_absent__",
+      "notes": [
+        "Setup wall cleared: F-B004, golden system.dat, idempotent scenarios"
+      ],
       "provider": "__resolved_provider_absent__",
       "role": "implementer",
       "shell_pid": 1256812,
