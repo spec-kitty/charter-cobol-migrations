@@ -1,0 +1,24 @@
+{
+  "scenario": "menu-boot",
+  "observed_bytes": 6356,
+  "text_heads": "0H\u001b[36m\u001b[40mCobol data files used \u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[24;41H\u001b[36m\u001b[40mDuplicate file processing NOT used\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[11;54H\u001b[32m\u001b[40m*\u001b[25b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[12;54H\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[79G\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[13;54H\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m   User Data Complete   \u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[14;54H\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[79G\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[15;54H\u001b[32m\u001b[40m* OK to file (Y/N) - [\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m \u001b[32m\u001b[40m] *\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[16;54H\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m\u001b[24X\u001b[79G\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[17;54H\u001b[32m\u001b[40m*\u001b[25b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[15;76H\u001b[33m\u001b[40mY\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b",
+  "hash_screen": "e0e9a9668a90e6f80644120c74be463f08eb777e0fcd88bbaee6319b18af50d4",
+  "sy009_abort": false,
+  "file_hashes": {
+    "VALUE.DUMP": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "analysis.dat": "b6549cf56bfd97b9df700ea8e8969b39d0f0eb42463836c18cbac98d5c1683ae",
+    "analysis.flat": "a93584ccc4517e9864979c91ef7de78c93d736bbeda82d2d500d1daeb321a9e4",
+    "batch.dat": "c3ec9753470112d68da78b31395d5544f9900f95c74864143fca59dec6f81fae",
+    "invoice.dat": "3b39d947c516b0f2b29869a75885fd39d869ac135164c1dedd1071b6a031b934",
+    "invoice.flat": "0dd90721c6e9b48f96730201ae899bd24c57913ceac0b6285a16c1c5cbac477d",
+    "openitm2.dat": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "openitm3.dat": "64d0b253cf275f8b990bdec0b8aef96d86bd3c7427fd4538fa0ec353805f9969",
+    "posting.dat": "f5e08837bfe9bd6205c6661ed2e32ed07376983d6fa3ffbc29efd0690bd453dc",
+    "sales.flat": "7f97847c6459439dc0b0bf8691fb90e21810a7832a6af8f507444478c76ecadb",
+    "salesled.dat": "bd825395a5e647fcbe13589944d9096480f00c7a0587be71be831c856458ecc1",
+    "system.dat": "0dfdf7be97d687469843ebeaefec8ce6824520478e50203f4e3581b78174f4c6",
+    "value.dat": "458f9586b76e00633b351658c6da637ce2fccad9f73e00a0f9b0a479a72f3429",
+    "value.dump": "3b85a95b7377c2cf372cd9042a2710a7c5aad7edfae39bd18f48d3b885ae0e35",
+    "value.flat": "abf52321863c57b14a92e1429a2db1f54bf4bdfb03043816822d6ec6eeaa9d3a"
+  }
+}
