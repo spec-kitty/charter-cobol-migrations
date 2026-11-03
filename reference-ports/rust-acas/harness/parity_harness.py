@@ -359,18 +359,12 @@ def scenario_sl055_clean(run_dir: Path) -> dict:
     ledgers = env_home / "ACAS"
     ledgers.mkdir(parents=True, exist_ok=True)
 
-    # 1) Seed system.dat from the earliest golden run that had SYS002 persist
-    #    a valid record (we trust that state; it saved us from re-running setup).
-    #    CRITICAL: cyclea byte (offset 12) must be non-zero or ACAS.cbl routes
-    #    back into SYS002 forever. Golden master has cyclea=0 (XL150 only
-    #    advances it); we override to 1 to start cycle 1.
-    gold_system = Path("/home/lynn/projects/charter-cobol-migrations/reference-ports/rust-acas/harness/runs/20261102-090851-setup-menu-2/ledger-out/system.dat")
+    # 1) Seed system.dat from the golden setup fixture (F-B004).
+    gold_system = Path(__file__).parent.parent / "fixtures" / "generated" / "setup" / "system.dat"
     if gold_system.exists():
-        data = bytearray(gold_system.read_bytes())
-        data[12] = 1   # cyclea = 1; F-B003 note: verify against real first-run
-        (ledgers / "system.dat").write_bytes(bytes(data))
+        shutil.copy2(gold_system, ledgers / "system.dat")
     else:
-        print("WARN: golden system.dat not found; SYS002 will re-prompt", file=sys.stderr)
+        print("WARN: golden system.dat not found; run setup-clean first", file=sys.stderr)
 
     # 2) Fixture invoice/value/analysis/openitm2 state
     for name in ("invoice.dat", "value.dat", "analysis.dat", "openitm2.dat"):
