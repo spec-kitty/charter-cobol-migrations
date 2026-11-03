@@ -11,5 +11,7 @@
   "purpose_tldr": "port completion",
   "slug": "port-completion-01M6FZ0K",
   "target_branch": "feature/port-completion",
-  "topology": "coord"
+  "topology": "coord",
+  "vcs": "git",
+  "vcs_locked_at": "2026-11-03T06:00:30.522511+00:00"
 }
