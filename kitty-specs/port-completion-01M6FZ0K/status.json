@@ -1,12 +1,12 @@
 {
-  "event_count": 16,
-  "last_event_id": "01M6G018X4HS594XD11AP4GQ23",
-  "materialized_at": "2026-11-03T06:02:38.879100+00:00",
+  "event_count": 21,
+  "last_event_id": "01M6G2KFAGMXB65D3Y9EP874MJ",
+  "materialized_at": "2026-11-03T06:47:32.427411+00:00",
   "mission_number": "",
   "mission_slug": "port-completion-01M6FZ0K",
   "mission_type": "software-dev",
   "summary": {
-    "approved": 0,
+    "approved": 1,
     "blocked": 0,
     "canceled": 0,
     "claimed": 0,
@@ -14,30 +14,52 @@
     "for_review": 0,
     "in_progress": 1,
     "in_review": 0,
-    "planned": 13
+    "planned": 12
   },
   "work_packages": {
     "WP01": {
+      "actor": "user",
+      "agent": "codex",
+      "agent_profile": "__resolved_profile_absent__",
+      "agent_profile_version": "__resolved_profile_version_absent__",
+      "force_count": 0,
+      "lane": "approved",
+      "last_event_id": "01M6G0TR4S0S6K4JHSMP6WTA54",
+      "last_transition_at": "2026-11-03T06:16:33.689295+00:00",
+      "model": "__resolved_model_absent__",
+      "notes": [
+        "Setup wall cleared: F-B004, golden system.dat, idempotent scenarios",
+        "Review approved: F-B004 gate map, idempotent setup, +12 patch corrected"
+      ],
+      "provider": "__resolved_provider_absent__",
+      "review_result": {
+        "reference": "review-cycle://port-completion-01M6FZ0K/WP01-setup-exit-wall/review-cycle-1.md",
+        "reviewer": "user",
+        "verdict": "approved"
+      },
+      "role": "reviewer",
+      "shell_pid": 1256812,
+      "shell_pid_created_at": "1793685756.1",
+      "subtasks": {
+        "T001": "done",
+        "T002": "done",
+        "T003": "done"
+      }
+    },
+    "WP02": {
       "actor": "codex",
       "agent": "codex",
       "agent_profile": "__resolved_profile_absent__",
       "agent_profile_version": "__resolved_profile_version_absent__",
       "force_count": 0,
       "lane": "in_progress",
-      "last_event_id": "01M6G018X4HS594XD11AP4GQ23",
-      "last_transition_at": "2026-11-03T06:02:38.879100+00:00",
+      "last_event_id": "01M6G2KFAGMXB65D3Y9EP874MJ",
+      "last_transition_at": "2026-11-03T06:47:32.427411+00:00",
       "model": "__resolved_model_absent__",
       "provider": "__resolved_provider_absent__",
       "role": "implementer",
-      "shell_pid": 1256812,
-      "shell_pid_created_at": "1793685756.1"
-    },
-    "WP02": {
-      "actor": "finalize-tasks",
-      "force_count": 0,
-      "lane": "planned",
-      "last_event_id": "01M6FZSE9Q8GNF8FFZ5VGBC62S",
-      "last_transition_at": "2026-11-03T05:58:22.263185+00:00"
+      "shell_pid": 1995080,
+      "shell_pid_created_at": "1793688449.7"
     },
     "WP03": {
       "actor": "finalize-tasks",
