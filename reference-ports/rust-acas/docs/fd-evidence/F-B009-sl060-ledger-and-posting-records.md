@@ -162,7 +162,18 @@ any open items of the same customer with a higher invoice number.
 
 ## Part 6 — system accounts
 
-`post-dr` is `s-debtors` (offset 231 of `wssystem.cob`'s 1024-byte system
-record), `post-cr` is `sl-sales-ac` (235) and `posting-record.vat-ac` is
-`vat-ac` (160). `mapserup`'s `sl-setup` zeroes all three, so on a stock
-install they post as `000000` unless a human has set the nominal codes.
+`s-debtors` / `sl-sales-ac` / `vat-ac` live in the 1024-byte system record
+(`wssystem.cob`), measured the same way (probe `/tmp/wpprobe/s3.cbl`, LEN=1024):
+
+| field | offset | PIC |
+|---|---|---|
+| vat-ac | 353 | binary-long |
+| sl-sales-ac | 359 | binary-long |
+| s-debtors | 618 | binary-long |
+
+`Vat-Ac` and `SL-Sales-Ac` each appear **twice** in the copybook (second
+copies at 412 and 622). `sl060` says `vat-ac of system-record` and
+`s-debtors` bare; GnuCOBOL binds an ambiguous name to its first declaration,
+so the 353 / 359 / 618 copies are the ones posting reads. Nobody has set them
+on this corpus — `mapserup`'s `sl-setup` zeroes all three — so every posting
+record in the current fixtures carries `dr`/`cr`/`vat-ac` of `000000`.
