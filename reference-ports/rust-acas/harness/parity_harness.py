@@ -439,9 +439,10 @@ def _load_plugins() -> None:
     Deferred to call time: the plugins import `parity_harness` back, which is
     only safe once this module has finished executing.
     """
-    from scenarios import sl055_extract
+    from scenarios import sl055_extract, sl060_chain
 
     SCENARIOS.update(sl055_extract.SCENARIOS)
+    SCENARIOS.update(sl060_chain.SCENARIOS)
 
 
 def main() -> None:

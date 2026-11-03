@@ -81,3 +81,28 @@ Artifacts therefore stay comparable in both styles:
 
 The departure is only about *when* the caller is told, so no artifact hash
 needs a carve-out.
+
+### DP-005 — carried `file-status` and `current-quarter` become kernel inputs (2026-11-03, WP05)
+
+`sl060` reads two things it never sets: `current-quarter` (a screen global, so
+0 on every chained run — F-B010 Part 1) and `file-status (18)`, set by `sl055`
+and inherited through the run unit (F-B010 Part 3). A standalone Rust call has
+no run unit to inherit from.
+
+Both are now explicit `PostContext` fields. `quarter` defaults to 0, which
+reproduces the chained behaviour exactly; `post()` primes `file-status (18)` to
+1 at entry, which reproduces the chained report (no page-2 heading, C/F line
+allowed). A caller that runs `sl060` without `sl055` still gets the chained
+report shape rather than COBOL's unchained one — the only observable
+difference would be a page-2 heading block, and nothing compares that today.
+
+**Parity status:** no artifact carve-out. All five goldens hash-match with the
+defaults.
+
+### DP-006 — `unapplied_c_notes` keeps COBOL's sign (2026-11-03, WP05)
+
+`work-b` is a `s9(7)v99 comp-3` that accumulates the *negated* note balances
+added by `ba000-Cr-Swop`, so it ends negative. The print edit is unsigned so
+the artifact cannot tell; `PostOutcome::unapplied_c_notes` is signed for the
+same reason `work-b` is — a caller adding it to a ledger counter (as
+`aa050-End-Loop-End` does with `sl-cn-unappl-this-month`) needs the sign.

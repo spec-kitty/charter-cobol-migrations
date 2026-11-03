@@ -113,7 +113,7 @@ impl InvoiceType {
 /// Customer key, `x(7)` in the FD. Bytes 0..6 are the customer number
 /// (`ih-nos`), byte 6 is the modulus check digit (`ih-check`, PIC 9).
 /// Raw: ACAS compares customer codes positionally and never validates ASCII.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, serde::Serialize, serde::Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, serde::Serialize, serde::Deserialize)]
 pub struct CustomerKey(pub [u8; 7]);
 
 impl CustomerKey {

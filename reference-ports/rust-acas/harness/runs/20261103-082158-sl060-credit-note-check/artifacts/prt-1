@@ -1,0 +1,20 @@
+SL060 (3.01.14)                                       Invoice Posting Report                                                Page   1
+Harness Test Co                                                                                                           03/11/2026
+
+ Number     Date    <------------Customer------------>   Type    Old Balance  New Balance   Dedn     Net         Vat       Gross    
+                                                                                                                                    
+    1001 02/11/2026 CUST010  CUST010 Trading Co         Receipt        0.00        0.00            1008.00      200.00     1208.00  
+    1002 02/11/2026 CUST010  CUST010 Trading Co         CR. Note       0.00      513.00CR           428.00CR     85.00CR    513.00CR
+
+
+           Total  Posted Receipts              1008.00       200.00      1208.00                                                    
+
+           Total  Posted Invoices                 0.00         0.00         0.00                                                    
+
+           Total  Posted Credit Notes           428.00CR      85.00CR     513.00CR                                                  
+
+           Total  Amount Late Deductions          0.00                                                                              
+CUST010         1002           513.00                     155564      Cr. Note                                                      
+
+
+                        Un-Applied Credits C/F               513.00                                                                 
