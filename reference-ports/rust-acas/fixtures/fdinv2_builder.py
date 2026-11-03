@@ -79,7 +79,12 @@ def invoice_header(rec: bytearray, nos: int, let: bytes, customer: bytes,
                    carr_cents: int, disc_cents: int,
                    status_main: bytes = b" ", lflag: bytes = b"L",
                    update: bytes = b" ") -> None:
-    """ih-* variant. Field offsets per fdinv2.cob, verified frame."""
+    """ih-* variant. Field offsets measured off GnuCOBOL writes — F-B006.
+
+    `status_main` is `ih-status`; `update` is `ih-update`, which sits past the
+    134-byte record and therefore never lands in the file (kept in the
+    signature so callers can still say what they mean).
+    """
     field_put_num(rec, 0, nos, 8)
     rec[8] = let[0]
     rec[9] = 0                                   # ih-test = 0 → header
