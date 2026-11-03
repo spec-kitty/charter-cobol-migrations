@@ -132,3 +132,20 @@ fixture writes, which is only reachable little-endian. `SalesRow::from_bytes`
 read them big-endian (0x2020 either way for a blank record, which is why the
 sl060 goldens never noticed). Fixed in place. No artifact carve-out — the sl170
 goldens are byte-identical and neither field is posted.
+
+### DP-009 — the harness mints the delivery table (2026-11-03, WP07)
+
+`sl010`'s report reads `delivery-file`, so the parity scenario needs one. The
+fixtures are flat frames and ACAS opens the file `INDEXED` (F-B007), so
+`fixtures/cobol_loader/mkidx.cbl` now also creates an empty `delivery.dat` and a
+new `loaddel` streams `delivery.flat` into it, exactly as `loadsal` does for the
+sales ledger. Additive: `mkidx` just creates one more empty table, and no other
+scenario's artifacts change. No artifact carve-out.
+
+### DP-010 — the scenario seeds `sales-ledger` instead of answering `slcreate` (2026-11-03, WP07)
+
+`sl010`'s `init01` runs `slcreate` unless `s-l-exists`, and answering `Y` there
+opens the sales and delivery files `output` — which truncates the tables the
+scenario just loaded. The scenario therefore sets `sales-ledger = 'Y'` (byte 560
+of the system record, F-B011) in its copy of the seed. The prompt path stays
+unported; the report function never depends on it. No artifact carve-out.
