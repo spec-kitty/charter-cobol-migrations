@@ -114,6 +114,10 @@ impl Record {
     pub fn as_bytes(&self) -> &[u8; PRINT_RECORD] {
         &self.bytes
     }
+
+    pub fn as_bytes_mut(&mut self) -> &mut [u8; PRINT_RECORD] {
+        &mut self.bytes
+    }
 }
 
 /// `pic z(7)9.99cr` — the twelve-digit edited money field ACAS prints.

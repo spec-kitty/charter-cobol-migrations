@@ -1,0 +1,65 @@
+SL010 (3.01.20)                                          Customer Listing                                                   Page   1
+Harness Test Co                         Report On : All                                                                   03/11/2026
+
+Customer  Status    <---------------Name & Address-------------->     ----Telephone---- -----Fax-----     Late       Credit     Disc
+ Number   ------                                                                                        Chg  Let   Limit/Days    %  
+                                                                                                                                    
+CUSTS10   Active    Acorn Trading Co                                  01234 567890      01234 567891     Y    Y   500000   7   10.00
+                    14 Ash Row                                      Ashwick,Ashtown                                                 
+   Delivery Address Acorn Warehouse                                                                                                 
+                    Unit 4,Ashwick Ind Est,Ashwick                                                                                  
+                    Notes: Deliver after 9am\Ring the bell twice                                                                    
+                                                                                                                                    
+CUSTS20   Active    Birchwood Supplies                                                                            100000  30   82.24
+                    9 Birch Lane                                    Birchton                                                        
+                                                                                                                                    
+CUSTS30   Dormant   Cedar Engineering Ltd                                                                                      82.24
+                    2 Cedar Way                                     Cedarton                                                        
+                                                                                                                                    
+CUSTS40   Active    Dunmore &amp; Sons                                                                            250000  60   82.24
+                    5 Dunmore Rd                                    Dunville                                                        
+   Delivery Address Record Not Found                                                                                                
+                    Deliver after 9am\Ring the bell twice                                                                           
+                                                                                                                                    
+CUSTS50   Active    Elmfield Partners                                 01999 111222x417                             75000  30   82.24
+                    3 Elm Court                                     Elmsted                                                         
+                    Notes: Record Not Found                                                                                         
+                                                                                                                                    
+CUSTS60   Active    Customer 06 Ltd                                                                                       30   82.24
+                    6 Test Street                                   Testville                                                       
+                                                                                                                                    
+CUSTS70   Active    Customer 07 Ltd                                                                                       30   82.24
+                    7 Test Street                                   Testville                                                       
+                                                                                                                                    
+CUSTS80   Active    Customer 08 Ltd                                                                                       30   82.24
+                    8 Test Street                                   Testville                                                       
+                                                                                                                                    
+CUSTS90   Active    Customer 09 Ltd                                                                                       30   82.24
+                    9 Test Street                                   Testville                                                       
+                                                                                                                                    
+CUSTSA0   Active    Customer 10 Ltd                                                                                       30   82.24
+                    10 Test Street                                  Testville                                                       
+                                                                                                                                    
+CUSTSB0   Active    Customer 11 Ltd                                                                                       30   82.24
+                    11 Test Street                                  Testville                                                       
+                                                                                                                                    SL010 (3.01.20)                                          Customer Listing                                                   Page   2
+Harness Test Co                         Report On : All                                                                   03/11/2026
+                                                                                                                                    
+Customer  Status    <---------------Name & Address-------------->     ----Telephone---- -----Fax-----     Late       Credit     Disc
+ Number   ------                                                                                        Chg  Let   Limit/Days    %  
+                                                                                                                                    
+CUSTSC0   Active    Customer 12 Ltd                                                                                       30   82.24
+                    12 Test Street                                  Testville                                                       
+                                                                                                                                    
+CUSTSD0   Active    Customer 13 Ltd                                                                                       30   82.24
+                    13 Test Street                                  Testville                                                       
+                                                                                                                                    
+CUSTSE0   Active    Customer 14 Ltd                                                                                       30   82.24
+                    14 Test Street                                  Testville                                                       
+                                                                                                                                    
+CUSTSF0   Active    Customer 15 Ltd                                                                                       30   82.24
+                    15 Test Street                                  Testville                                                       
+                                                                                                                                    
+CUSTSG0   Active    Customer 16 Ltd                                                                                       30   82.24
+                    16 Test Street                                  Testville                                                       
+                                                                                                                                    

@@ -22,6 +22,9 @@
            select invoice-file assign "invoice.dat"
                organization indexed access dynamic status fs-reply
                record key invoice-key.
+           select delivery-file assign "delivery.dat"
+               organization indexed access dynamic status fs-reply
+               record key deliv-key.
        data division.
        file section.
        fd value-file.
@@ -40,6 +43,12 @@
                    09 pa-first  pic x.
                    09 pa-second pic x.
            05 filler pic x(33).
+       fd delivery-file.
+       01 delivery-record.
+           05 deliv-key.
+               07 deliv-key-type   pic x.
+               07 deliv-sales-key  pic x(7).
+           05 filler pic x(126).
        fd invoice-file.
        01 invoice-record.
            05 invoice-key.
@@ -56,4 +65,6 @@
            close analysis-file
            open output invoice-file
            close invoice-file
+           open output delivery-file
+           close delivery-file
            stop run.
