@@ -9,8 +9,8 @@ planning_base_branch: feature/port-completion
 merge_target_branch: feature/port-completion
 branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
-- T001
-- T002
+- WP06-T001
+- WP06-T002
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-common/src/system.rs
@@ -40,13 +40,13 @@ F-B002 records the offsets verified so far. rrn 1 is the live record; 2-4 are de
 
 ## Subtasks
 
-### T001: Dispositions
+### WP06-T001: Dispositions
 
 - **Purpose**: Disposition all 1024 bytes (many are filler-space).
 - **Files**: `docs/disposition-wssystem.md`
 - **Validation**: Complete field ledger.
 
-### T002: Struct + round-trip
+### WP06-T002: Struct + round-trip
 
 - **Purpose**: Type the fields with golden round-trip.
 - **Files**: `system.rs`

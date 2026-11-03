@@ -36,7 +36,7 @@ Implement relative-file read/write to the F-B002 layout and an indexed-ISAM read
 
 Complete every fdinv2 field as a dispositioned, serde-pinned type with byte-exact round-trip, including the comp-3 money fields and all status bytes.
 
-**Subtasks**: T001: Money fields; T002: Status bytes + flags; T003: Full-record round-trip
+**Subtasks**: WP03-T001: Money fields; WP03-T002: Status bytes + flags; WP03-T003: Full-record round-trip
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.
 
@@ -48,7 +48,7 @@ Complete every fdinv2 field as a dispositioned, serde-pinned type with byte-exac
 
 Implement the ten documented sl055 extract rules so clean, credit-note and pending fixtures produce identical openitm2 and value artifacts on both sides.
 
-**Subtasks**: T001: Line analysis path; T002: Header extract + specials; T003: Pending preflight + departure note
+**Subtasks**: WP04-T001: Line analysis path; WP04-T002: Header extract + specials; WP04-T003: Pending preflight + departure note
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.
 
@@ -60,7 +60,7 @@ Implement the ten documented sl055 extract rules so clean, credit-note and pendi
 
 Port the sl060 posting half: staged open items to sales ledger and general ledger, byte-identical on both sides.
 
-**Subtasks**: T001: fdoi2 dispositions; T002: Posting logic; T003: Chain parity
+**Subtasks**: WP05-T001: fdoi2 dispositions; WP05-T002: Posting logic; WP05-T003: Chain parity
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.
 
@@ -72,7 +72,7 @@ Port the sl060 posting half: staged open items to sales ledger and general ledge
 
 Full wssystem disposition plus a byte-exact SystemFile type so config reads/writes in later ledgers are safe.
 
-**Subtasks**: T001: Dispositions; T002: Struct + round-trip
+**Subtasks**: WP06-T001: Dispositions; WP06-T002: Struct + round-trip
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.
 
@@ -84,7 +84,7 @@ Full wssystem disposition plus a byte-exact SystemFile type so config reads/writ
 
 Port the remaining sales programs (sl010..sl960) in dependency order, each with a parity scenario.
 
-**Subtasks**: T001: Map the dependency order; T002: Port in order; T003: Sales suite run
+**Subtasks**: WP07-T001: Map the dependency order; WP07-T002: Port in order; WP07-T003: Sales suite run
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.
 
@@ -96,7 +96,7 @@ Port the remaining sales programs (sl010..sl960) in dependency order, each with 
 
 Port the general/nominal ledger end to end with parity scenarios.
 
-**Subtasks**: T001: Accept posted entries; T002: Port GL programs; T003: GL suite
+**Subtasks**: WP08-T001: Accept posted entries; WP08-T002: Port GL programs; WP08-T003: GL suite
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.
 
@@ -108,7 +108,7 @@ Port the general/nominal ledger end to end with parity scenarios.
 
 Port the purchase ledger (AP) with parity scenarios mirroring sales.
 
-**Subtasks**: T001: Port pl* programs; T002: Purchase suite
+**Subtasks**: WP09-T001: Port pl* programs; WP09-T002: Purchase suite
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.
 
@@ -120,7 +120,7 @@ Port the purchase ledger (AP) with parity scenarios mirroring sales.
 
 Port stock control with parity scenarios.
 
-**Subtasks**: T001: Port st* programs; T002: Stock suite
+**Subtasks**: WP10-T001: Port st* programs; WP10-T002: Stock suite
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.
 
@@ -132,7 +132,7 @@ Port stock control with parity scenarios.
 
 Port the incomplete-records system with parity scenarios.
 
-**Subtasks**: T001: Port irs* programs; T002: IRS suite
+**Subtasks**: WP11-T001: Port irs* programs; WP11-T002: IRS suite
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.
 
@@ -144,7 +144,7 @@ Port the incomplete-records system with parity scenarios.
 
 Port the interactive screens and prove a scripted setup→invoice→post→report session against the COBOL transcript.
 
-**Subtasks**: T001: Screen rendering; T002: Session parity
+**Subtasks**: WP12-T001: Screen rendering; WP12-T002: Session parity
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.
 
@@ -156,7 +156,7 @@ Port the interactive screens and prove a scripted setup→invoice→post→repor
 
 Single release binary, install docs, size and clippy gates.
 
-**Subtasks**: T001: Release profile; T002: Install docs
+**Subtasks**: WP13-T001: Release profile; WP13-T002: Install docs
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.
 
@@ -168,6 +168,6 @@ Single release binary, install docs, size and clippy gates.
 
 Graduate the rust pack with tactic pages and evidence index; build go and java reference slices on the same fixtures.
 
-**Subtasks**: T001: Rust pack graduation; T002: Go slice; T003: Java slice
+**Subtasks**: WP14-T001: Rust pack graduation; WP14-T002: Go slice; WP14-T003: Java slice
 
 **Done when**: parity gate green (or departure documented + logged), tests and clippy clean, STATUS.log updated.

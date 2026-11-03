@@ -9,9 +9,9 @@ planning_base_branch: feature/port-completion
 merge_target_branch: feature/port-completion
 branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
-- T001
-- T002
-- T003
+- WP14-T001
+- WP14-T002
+- WP14-T003
 history: []
 agent_profile: ''
 authoritative_surface: charter-packs/**
@@ -42,19 +42,19 @@ Drafts in go/ and java/ name their graduation conditions. Packs graduate on evid
 
 ## Subtasks
 
-### T001: Rust pack graduation
+### WP14-T001: Rust pack graduation
 
 - **Purpose**: Full tactic pages + worked-example index + GRADUATED marker.
 - **Files**: `charter-packs/rust/`
 - **Validation**: Every directive has a graduated example.
 
-### T002: Go slice
+### WP14-T002: Go slice
 
 - **Purpose**: fdinv2+sl055 reference slice passing fixtures.
 - **Files**: `reference-ports/go-acas/`
 - **Validation**: Slice parity green.
 
-### T003: Java slice
+### WP14-T003: Java slice
 
 - **Purpose**: Same for Java with the BigDecimal study (F-Java001).
 - **Files**: `reference-ports/java-acas/`

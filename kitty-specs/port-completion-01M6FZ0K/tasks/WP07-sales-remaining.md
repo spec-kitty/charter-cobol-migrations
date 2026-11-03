@@ -9,9 +9,9 @@ planning_base_branch: feature/port-completion
 merge_target_branch: feature/port-completion
 branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
-- T001
-- T002
-- T003
+- WP07-T001
+- WP07-T002
+- WP07-T003
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-sales/src/**
@@ -40,19 +40,19 @@ Slice 1 established the pattern: characterize, disposition, port, parity. Order 
 
 ## Subtasks
 
-### T001: Map the dependency order
+### WP07-T001: Map the dependency order
 
 - **Purpose**: Record which programs consume which files; sequence them.
 - **Files**: `STATUS.log`
 - **Validation**: Ordered list committed.
 
-### T002: Port in order
+### WP07-T002: Port in order
 
 - **Purpose**: One program per iteration, parity-gated.
 - **Files**: `crates/acas-sales/src/`
 - **Validation**: Each program's scenario green.
 
-### T003: Sales suite run
+### WP07-T003: Sales suite run
 
 - **Purpose**: Full sales parity suite.
 - **Files**: `harness/`

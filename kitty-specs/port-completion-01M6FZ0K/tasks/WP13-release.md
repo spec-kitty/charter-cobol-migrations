@@ -13,8 +13,8 @@ planning_base_branch: feature/port-completion
 merge_target_branch: feature/port-completion
 branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
-- T001
-- T002
+- WP13-T001
+- WP13-T002
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/README.md
@@ -44,13 +44,13 @@ NFR-003 bounds size; C-001 forbids FFI in shipped builds.
 
 ## Subtasks
 
-### T001: Release profile
+### WP13-T001: Release profile
 
 - **Purpose**: Binary + size gate.
 - **Files**: `Cargo.toml`
 - **Validation**: Release build under 50 MB.
 
-### T002: Install docs
+### WP13-T002: Install docs
 
 - **Purpose**: Install and first-run documentation.
 - **Files**: `docs/install.md`

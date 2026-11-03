@@ -9,9 +9,9 @@ planning_base_branch: feature/port-completion
 merge_target_branch: feature/port-completion
 branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
-- T001
-- T002
-- T003
+- WP05-T001
+- WP05-T002
+- WP05-T003
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-sales/src/post.rs
@@ -41,19 +41,19 @@ sl060 consumes the openitm2 staging file that WP04's parity run produces. Ledger
 
 ## Subtasks
 
-### T001: fdoi2 dispositions
+### WP05-T001: fdoi2 dispositions
 
 - **Purpose**: Disposition the staging record fully.
 - **Files**: `docs/disposition-fdoi2.md`
 - **Validation**: Every field carrying a disposition.
 
-### T002: Posting logic
+### WP05-T002: Posting logic
 
 - **Purpose**: Implement open-item and GL writes.
 - **Files**: `post.rs`
 - **Validation**: both ledger files hash-match COBOL.
 
-### T003: Chain parity
+### WP05-T003: Chain parity
 
 - **Purpose**: Harness scenario running sl055+sl060 chained, comparing both.
 - **Files**: `harness/scenarios/`

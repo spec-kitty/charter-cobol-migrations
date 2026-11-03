@@ -11,8 +11,8 @@ planning_base_branch: feature/port-completion
 merge_target_branch: feature/port-completion
 branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
-- T001
-- T002
+- WP12-T001
+- WP12-T002
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-ui/src/**
@@ -42,13 +42,13 @@ Compare stripped text and field order, never raw escape bytes.
 
 ## Subtasks
 
-### T001: Screen rendering
+### WP12-T001: Screen rendering
 
 - **Purpose**: Render each screen's static text and field order.
 - **Files**: `acas-ui/src/`
 - **Validation**: Stripped-text equality per screen.
 
-### T002: Session parity
+### WP12-T002: Session parity
 
 - **Purpose**: Full scripted session parity run.
 - **Files**: `harness/scenarios/session*.py`
