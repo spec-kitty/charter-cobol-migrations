@@ -56,6 +56,9 @@
       "last_event_id": "01M6G3GBT55YBEZAAADC14B20A",
       "last_transition_at": "2026-11-03T07:03:19.109345+00:00",
       "model": "__resolved_model_absent__",
+      "notes": [
+        "Relative read/write to F-B002 (byte-identical round trip on golden system.dat); indexed reader for both F-B005 shapes; fixture sizes corrected to FD facts; invoice artifact hash unchanged vs baseline run."
+      ],
       "provider": "__resolved_provider_absent__",
       "role": "implementer",
       "shell_pid": 1995080,
