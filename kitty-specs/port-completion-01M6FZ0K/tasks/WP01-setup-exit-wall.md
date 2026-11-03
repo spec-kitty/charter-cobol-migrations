@@ -6,13 +6,16 @@ requirement_refs:
 - C-004
 - FR-001
 - NFR-001
+planning_base_branch: feature/port-completion
+merge_target_branch: feature/port-completion
+branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
 - T001
 - T002
 - T003
 history: []
 agent_profile: ''
-authoritative_surface: reference-ports/rust-acas/harness/, docs/fd-evidence/
+authoritative_surface: reference-ports/rust-acas/harness/parity_harness.py
 create_intent: []
 execution_mode: code_change
 owned_files:

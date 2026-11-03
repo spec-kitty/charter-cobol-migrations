@@ -5,13 +5,16 @@ dependencies:
 - WP02
 requirement_refs:
 - FR-006
+planning_base_branch: feature/port-completion
+merge_target_branch: feature/port-completion
+branch_strategy: Planning artifacts for this mission were generated on feature/port-completion. During /spec-kitty.implement this WP may branch from a dependency-specific base, but completed changes must merge back into feature/port-completion unless the human explicitly redirects the landing branch.
 subtasks:
 - T001
 - T002
 - T003
 history: []
 agent_profile: ''
-authoritative_surface: reference-ports/rust-acas/crates/acas-sales/src/invoice.rs, docs/disposition-fdinv2.md
+authoritative_surface: reference-ports/rust-acas/crates/acas-sales/src/invoice.rs
 create_intent: []
 execution_mode: code_change
 owned_files:
