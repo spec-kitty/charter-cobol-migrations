@@ -1,5 +1,10 @@
 # Legacy → Rust Migration Charter Pack
 
+> **Family status:** this pack is the Rust specialization of
+> `charter-packs/common-core` in the same repo. Sibling packs: `go/`, `java/`
+> (both draft — they graduate by the same discipline this one earned: a real
+> reference port with fixtures).
+
 A Spec Kitty doctrine pack for the task category **"port a working legacy-language system to Rust."**
 Developed against ACAS (Applewood Computers Accounting System), designed to generalize to any
 COBOL/CICS/Fortran/Pascal → Rust migration where feature-parity matters and idiom-parity does not (only behavior-parity does).
