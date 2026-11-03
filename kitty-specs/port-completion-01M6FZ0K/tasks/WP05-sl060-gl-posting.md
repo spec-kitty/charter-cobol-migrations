@@ -9,15 +9,17 @@ subtasks:
 - T001
 - T002
 - T003
-agent: "codex"
+history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-sales/src/post.rs
+create_intent: []
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/crates/acas-sales/src/post.rs
 - reference-ports/rust-acas/docs/disposition-fdoi2.md
 role: ''
 tags: []
+tracker_refs: []
 ---
 
 # Work Package Prompt: WP05 - sl060 GL posting parity

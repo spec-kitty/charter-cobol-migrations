@@ -4,15 +4,17 @@ title: ISAM foundation + fixtures
 dependencies:
 - WP01
 requirement_refs:
+- C-003
 - FR-002
 - NFR-004
 subtasks:
 - T001
 - T002
 - T003
-agent: "codex"
+history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-common/src/isam.rs, fixtures/
+create_intent: []
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/crates/acas-common/src/isam*.rs
@@ -20,6 +22,7 @@ owned_files:
 - reference-ports/rust-acas/docs/fd-evidence/F-B005*
 role: ''
 tags: []
+tracker_refs: []
 ---
 
 # Work Package Prompt: WP02 - ISAM foundation + fixtures

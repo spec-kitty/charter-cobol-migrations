@@ -9,9 +9,10 @@ subtasks:
 - T001
 - T002
 - T003
-agent: "codex"
+history: []
 agent_profile: ''
 authoritative_surface: charter-packs/, reference-ports/go-acas/, reference-ports/java-acas/
+create_intent: []
 execution_mode: code_change
 owned_files:
 - charter-packs/**
@@ -19,6 +20,7 @@ owned_files:
 - reference-ports/java-acas/**
 role: ''
 tags: []
+tracker_refs: []
 ---
 
 # Work Package Prompt: WP14 - Doctrine graduation + go/java slices

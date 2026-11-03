@@ -8,15 +8,17 @@ requirement_refs:
 subtasks:
 - T001
 - T002
-agent: "codex"
+history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-irs/src/
+create_intent: []
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/crates/acas-irs/src/**
 - reference-ports/rust-acas/harness/scenarios/irs*.py
 role: ''
 tags: []
+tracker_refs: []
 ---
 
 # Work Package Prompt: WP11 - IRS subsystem

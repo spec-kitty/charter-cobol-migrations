@@ -9,15 +9,17 @@ subtasks:
 - T001
 - T002
 - T003
-agent: "codex"
+history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-sales/src/
+create_intent: []
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/crates/acas-sales/src/**
 - reference-ports/rust-acas/harness/scenarios/sl*.py
 role: ''
 tags: []
+tracker_refs: []
 ---
 
 # Work Package Prompt: WP07 - Remaining sales programs

@@ -3,15 +3,17 @@ work_package_id: WP01
 title: Setup-exit wall
 dependencies: []
 requirement_refs:
-- FR-001
 - C-004
+- FR-001
+- NFR-001
 subtasks:
 - T001
 - T002
 - T003
-agent: "codex"
+history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/harness/, docs/fd-evidence/
+create_intent: []
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/harness/parity_harness.py
@@ -19,6 +21,7 @@ owned_files:
 - reference-ports/rust-acas/docs/fd-evidence/**
 role: ''
 tags: []
+tracker_refs: []
 ---
 
 # Work Package Prompt: WP01 - Setup-exit wall

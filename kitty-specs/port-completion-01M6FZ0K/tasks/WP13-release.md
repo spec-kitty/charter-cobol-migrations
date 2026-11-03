@@ -4,14 +4,18 @@ title: Release artifact + docs
 dependencies:
 - WP12
 requirement_refs:
+- C-001
+- C-002
 - FR-010
+- NFR-002
 - NFR-003
 subtasks:
 - T001
 - T002
-agent: "codex"
+history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/ (build + docs)
+create_intent: []
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/README.md
@@ -19,6 +23,7 @@ owned_files:
 - reference-ports/rust-acas/Cargo.toml
 role: ''
 tags: []
+tracker_refs: []
 ---
 
 # Work Package Prompt: WP13 - Release artifact + docs

@@ -9,15 +9,17 @@ subtasks:
 - T001
 - T002
 - T003
-agent: "codex"
+history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-sales/src/invoice.rs, docs/disposition-fdinv2.md
+create_intent: []
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/crates/acas-sales/src/invoice.rs
 - reference-ports/rust-acas/docs/disposition-fdinv2.md
 role: ''
 tags: []
+tracker_refs: []
 ---
 
 # Work Package Prompt: WP03 - fdinv2 full field surface

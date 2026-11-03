@@ -10,15 +10,17 @@ requirement_refs:
 subtasks:
 - T001
 - T002
-agent: "codex"
+history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-ui/src/
+create_intent: []
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/crates/acas-ui/src/**
 - reference-ports/rust-acas/harness/scenarios/session*.py
 role: ''
 tags: []
+tracker_refs: []
 ---
 
 # Work Package Prompt: WP12 - Screen layer + session parity
