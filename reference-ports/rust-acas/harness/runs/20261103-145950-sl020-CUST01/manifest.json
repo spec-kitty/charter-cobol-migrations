@@ -1,0 +1,5 @@
+{
+  "scenario": "sl020-CUST01",
+  "report_bytes": 0,
+  "text_tail": "20;23H\u001b[32m\u001b[40m250.00\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[21;22H\u001b[32m\u001b[40m1500.00\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[22;17H\u001b[32m\u001b[40m00/00/0000\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[23;17H\u001b[32m\u001b[40m00/00/0000\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[20;71H\u001b[33m\u001b[40mK\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\u001b[33m\u001b[40mP\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\b\u001b[33m\u001b[40mE\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\b\u001b[33m\u001b[40m9\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u0007\u001b[33m\u001b[40mX\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\b"
+}

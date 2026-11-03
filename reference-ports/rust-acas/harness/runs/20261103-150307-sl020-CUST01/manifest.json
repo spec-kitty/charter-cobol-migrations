@@ -1,0 +1,5 @@
+{
+  "scenario": "sl020-CUST01",
+  "report_bytes": 1218,
+  "text_tail": ";49m\u001b[37m\u001b[40m\u001b[13;4H\u001b[32m\u001b[40m(D)  Stock Control\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[14;4H\u001b[32m\u001b[40m(E)  Order Entry\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[15;4H\u001b[32m\u001b[40m(F)  Payroll\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[16;4H\u001b[32m\u001b[40m(G)  Epos\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[14;44H\u001b[32m\u001b[40m(X)  Exit To system\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[16;44H\u001b[32m\u001b[40m(Z)  System Setup\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[6;44H\u001b[33m\u001b[40m \b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\b"
+}

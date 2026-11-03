@@ -114,6 +114,10 @@ impl Record {
     pub fn as_bytes(&self) -> &[u8; PRINT_RECORD] {
         &self.bytes
     }
+
+    pub fn as_bytes_mut(&mut self) -> &mut [u8; PRINT_RECORD] {
+        &mut self.bytes
+    }
 }
 
 /// `pic z(7)9.99cr` — the twelve-digit edited money field ACAS prints.
@@ -261,6 +265,93 @@ pub fn edit_suppressed(value: u32, width: usize) -> String {
     rendered
 }
 
+/// A COBOL edited picture applied to a signed hundredths value.
+///
+/// `mask` is the picture character for character (`"zz,zzz,zz9.99"`,
+/// `"z(6),zzz"` written out), read right to left:
+///
+/// - `9` takes a digit and always prints it,
+/// - `z` takes a digit and blanks a leading zero,
+/// - `,` is an insertion character, replaced by a space when everything to its
+///   left is blank,
+/// - `.` always prints.
+///
+/// The picture carries no sign, so the absolute value is rendered; digits
+/// beyond the mask fall off the left; the value is in the picture's own units
+/// (hundredths), so the mask carries the decimal point. Measured against GnuCOBOL 3.1.2 in
+/// `docs/fd-evidence/F-B015-sl020-ledger-enquiry.md` Part 3.
+pub fn edit_masked(value: i64, mask: &str) -> String {
+    let digits: Vec<char> = value.unsigned_abs().to_string().chars().collect();
+    let (int_mask, frac_mask) = match mask.split_once('.') {
+        Some((int_part, frac_part)) => (int_part, Some(frac_part)),
+        None => (mask, None),
+    };
+    let frac_len = frac_mask.map(|part| part.chars().count()).unwrap_or(0);
+    let split = digits.len().saturating_sub(frac_len);
+    let (int_digits, frac_digits) = digits.split_at(split);
+
+    // Integer digits right-align into the integer digit positions; an overflow
+    // digit falls off the left (F-B015 Part 3).
+    // An overflow digit falls off the left before suppression is decided, so
+    // the "leading zero" origin moves with it.
+    let positions = int_mask.chars().filter(|slot| matches!(slot, '9' | 'z')).count();
+    let int_digits = &int_digits[int_digits.len().saturating_sub(positions)..];
+    let mut source = int_digits.len();
+    // A `z` blanks a zero with no non-zero digit to its left.
+    let leading = int_digits
+        .iter()
+        .position(|digit| *digit != '0')
+        .unwrap_or(int_digits.len());
+    let int_part: Vec<char> = int_mask
+        .chars()
+        .rev()
+        .map(|slot| match slot {
+            '9' | 'z' => {
+                let (ch, suppress) = if source == 0 {
+                    ('0', slot == 'z')
+                } else {
+                    source -= 1;
+                    let ch = int_digits[source];
+                    (ch, slot == 'z' && ch == '0' && source < leading)
+                };
+                if suppress { ' ' } else { ch }
+            }
+            other => other,
+        })
+        .collect::<Vec<char>>()
+        .into_iter()
+        .rev()
+        .collect();
+
+    // An insertion comma whose whole left side is blank is itself a blank.
+    let mut printed_left = false;
+    let mut rendered = int_part;
+    for slot in &mut rendered {
+        match *slot {
+            ' ' => {}
+            ',' if !printed_left => *slot = ' ',
+            _ => printed_left = true,
+        }
+    }
+
+    if let Some(frac_mask) = frac_mask {
+        rendered.push('.');
+        let pad = frac_mask.chars().count().saturating_sub(frac_digits.len());
+        rendered.extend(std::iter::repeat_n('0', pad));
+        rendered.extend(frac_digits.iter().take(frac_mask.chars().count()));
+    }
+    rendered.into_iter().collect()
+}
+
+/// The same edit with `blank when zero`: a zero value prints all spaces.
+pub fn edit_masked_blank_when_zero(value: i64, mask: &str) -> String {
+    if value == 0 {
+        " ".repeat(mask.chars().count())
+    } else {
+        edit_masked(value, mask)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -315,6 +406,34 @@ mod tests {
         record.put(131, b"abcdef");
         assert_eq!(record.as_bytes().len(), PRINT_RECORD);
         assert_eq!(&record.as_bytes()[130..], b"ab");
+    }
+
+    /// F-B015 Part 3 — every row of the measured table, in order.
+    #[test]
+    fn the_grouped_money_picture_matches_gnucobol_byte_for_byte() {
+        assert_eq!(edit_masked(0, "zz,zzz,zz9.99"), "         0.00");
+        assert_eq!(edit_masked(500, "zz,zzz,zz9.99"), "         5.00");
+        assert_eq!(edit_masked(10000, "zz,zzz,zz9.99"), "       100.00");
+        assert_eq!(edit_masked(123456, "zz,zzz,zz9.99"), "     1,234.56");
+        assert_eq!(edit_masked(123_456_700, "zz,zzz,zz9.99"), " 1,234,567.00");
+        assert_eq!(edit_masked(-10000, "zz,zzz,zz9.99"), "       100.00");
+        // A ninth integer digit is dropped from the left.
+        assert_eq!(edit_masked(10_000_000_000, "zz,zzz,zz9.99"), "         0.00");
+    }
+
+    #[test]
+    fn a_leading_comma_is_a_blank_but_a_between_digits_comma_is_not() {
+        assert_eq!(edit_masked(500, "zz,zzz,zz9.99"), "         5.00");
+        assert_eq!(edit_masked(123456, "zz,zzz,zz9.99"), "     1,234.56");
+    }
+
+    #[test]
+    fn blank_when_zero_blanks_the_mandatory_digit_too() {
+        assert_eq!(edit_masked_blank_when_zero(0, "zzzzzzz9"), "        ");
+        assert_eq!(edit_masked_blank_when_zero(1234, "zzzzzzz9"), "    1234");
+        assert_eq!(edit_masked_blank_when_zero(12345678, "zzzzzzz9"), "12345678");
+        assert_eq!(edit_masked(0, "zz9"), "  0");
+        assert_eq!(edit_masked(42, "zz9"), " 42");
     }
 
     #[test]
