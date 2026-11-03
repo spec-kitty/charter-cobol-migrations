@@ -1,0 +1,8 @@
+id,source,type,used_for,verified_by
+SRC-001,reference-ports/rust-acas/cobol-original/ (ACAS v3.01.07),vendored corpus,behaviour of record,sha via git + PATCHES.md
+SRC-002,docs/fd-evidence/F-B001-date-epoch.md,evidence note,date encoding,harness system.dat bytes
+SRC-003,docs/fd-evidence/F-B002-relative-file-framing.md,evidence note,file framing,hexdump of golden master
+SRC-004,docs/fd-evidence/F-B003-indexed-isam.md,evidence note,indexed format limits,cobc probe file
+SRC-005,docs/disposition-fdinv2.md,disposition ledger,field decisions,hand parse + round-trip tests
+SRC-006,harness/runs/*/ (golden masters),captured runs,transcripts and artifact hashes,harness manifests
+SRC-007,ACAS-Manuals/ (odt),original documentation,domain context,manual text

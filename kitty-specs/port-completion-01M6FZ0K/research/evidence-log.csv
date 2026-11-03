@@ -1,0 +1,9 @@
+id,claim,evidence,files,confidence
+EV-001,Relative ISAM framing is 1024-byte records with no markers and a 32-byte space trailer,"F-B002 hexdump decode of system.dat golden master","reference-ports/rust-acas/docs/fd-evidence/F-B002-relative-file-framing.md","high"
+EV-002,Dates are COBOL integer-of-date days since 1600-12-31 (2026-11-02 = 155534),"F-B001 decoded from offset 27 of system.dat record 1; maps04.cbl comment","reference-ports/rust-acas/docs/fd-evidence/F-B001-date-epoch.md","high"
+EV-003,ACAS re-enters setup whenever scycle is zero; cyclea is display-only in SYS002,"ACAS.cbl:236; wssystem.cob:46-47; sys002.cbl:455","cobol-original/ACAS.cbl; cobol-original/copybooks/wssystem.cob; cobol-original/common/sys002.cbl","high"
+EV-004,cyclea advances only via xl150 quarterly/weekly reset code,"xl150.cbl:1034-1065","cobol-original/common/xl150.cbl","high"
+EV-005,Invoice record is 134 bytes with header/line dual variant on item-nos,"fdinv2.cob listing + fixture round-trip test","cobol-original/sales/fdinv2.cob; crates/acas-sales/src/invoice.rs","high"
+EV-006,Invoice/value/analysis files are ORGANIZATION INDEXED and GnuCOBOL writes paged BDB-style files,"F-B003; 2-record probe produced 4 KiB header block","reference-ports/rust-acas/docs/fd-evidence/F-B003-indexed-isam.md","medium"
+EV-007,sl055 keeps pending invoices' work and warns SL122 only at end of run,"sl055.cbl da020/da040","cobol-original/sales/sl055.cbl","high"
+EV-008,sl060 is chained immediately after sl055 by the sales menu (load07),"sales.cbl load07","cobol-original/sales/sales.cbl","high"
