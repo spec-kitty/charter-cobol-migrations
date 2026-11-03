@@ -1,0 +1,29 @@
+SL070 (3.01.11)                  Product Analysis Codes                 Page   1                                                    
+
+Harness Test Co                                                       03/11/2026                                                    
+
+Lgr Code    Gl.Nos.      <-----Description------>   Print      -Type-                                                               
+                                                                                                                                    
+ P   a                   Default Group                         Group                                                                
+     a1                  Default Purchases                     Detail                                                               
+                                                                                                                                    
+ P   v                   VAT Control                           Group                                                                
+     vi                  VAT Input Invoices/CN's               Detail                                                               
+     vj                  VAT Input Receipts                    Detail                                                               
+                                                                                                                                    
+ P   z                   Computer Control                      Group                                                                
+     za                  Purchase Carriage Charge    P&P       Detail                                                               
+     zb                  Purchase Late Charges       LCG       Detail                                                               
+                                                                                                                                    
+ S   a                   Default Group                         Group                                                                
+     a1                  Default Sales                         Detail                                                               
+                                                                                                                                    
+ S   v                   VAT Control                           Group                                                                
+     vo                  VAT Output Invoices/CN's              Detail                                                               
+     vp                  VAT Output Receipts                   Detail                                                               
+                                                                                                                                    
+ S   z                   Computer Control                      Group                                                                
+     zc                  Sales Carriage Charges      P&P       Detail                                                               
+     zd                  Sales Late Charges          LCG       Detail                                                               
+
+Warning: One or more P.A. codes contain a zero value for General Ledger numbers                                                     

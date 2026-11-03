@@ -1,0 +1,18 @@
+SL070 (3.01.11)                  Product Analysis Codes                 Page   1                                                    
+
+Harness Test Co                                                       03/11/2026                                                    
+
+    Code    Gl.Nos.      <-----Description------>   Print      -Type-                                                               
+                                                                                                                                    
+     a                   Default Group                         Group                                                                
+     a1                  Default Sales                         Detail                                                               
+                                                                                                                                    
+     v                   VAT Control                           Group                                                                
+     vo                  VAT Output Invoices/CN's              Detail                                                               
+     vp                  VAT Output Receipts                   Detail                                                               
+                                                                                                                                    
+     z                   Computer Control                      Group                                                                
+     zc                  Sales Carriage Charges      P&P       Detail                                                               
+     zd                  Sales Late Charges          LCG       Detail                                                               
+
+Warning: One or more P.A. codes contain a zero value for General Ledger numbers                                                     
