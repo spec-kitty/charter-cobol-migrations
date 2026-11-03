@@ -1,7 +1,7 @@
 {
-  "event_count": 10,
-  "last_event_id": "01M6FZSQ81CPD5DM47Q5CGZWA1",
-  "materialized_at": "2026-11-03T05:58:31.425827+00:00",
+  "event_count": 11,
+  "last_event_id": "01M6FZSRC2S9B7N24KVD2WRX7A",
+  "materialized_at": "2026-11-03T05:58:32.578893+00:00",
   "mission_number": "",
   "mission_slug": "port-completion-01M6FZ0K",
   "mission_type": "",
@@ -14,7 +14,7 @@
     "for_review": 0,
     "in_progress": 0,
     "in_review": 0,
-    "planned": 10
+    "planned": 11
   },
   "work_packages": {
     "WP01": {
@@ -86,6 +86,13 @@
       "lane": "planned",
       "last_event_id": "01M6FZSQ81CPD5DM47Q5CGZWA1",
       "last_transition_at": "2026-11-03T05:58:31.425827+00:00"
+    },
+    "WP11": {
+      "actor": "finalize-tasks",
+      "force_count": 0,
+      "lane": "planned",
+      "last_event_id": "01M6FZSRC2S9B7N24KVD2WRX7A",
+      "last_transition_at": "2026-11-03T05:58:32.578893+00:00"
     }
   }
 }
