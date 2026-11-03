@@ -1,0 +1,10 @@
+{
+  "scenario": "setup-clean",
+  "observed_bytes": 31015,
+  "text_heads": "at \u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m00:11:14\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m \u001b[32m\u001b[40mon \u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m03/11/26  \u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\r\u001b[6d\u001b[32m\u001b[40mSelect one of the following by letter  :- [ ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[10;4H\u001b[32m\u001b[40m(A)  General Ledger\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[11;4H\u001b[32m\u001b[40m(B)  Sales Ledger\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[12;4H\u001b[32m\u001b[40m(C)  Purchase Ledger\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[13;4H\u001b[32m\u001b[40m(D)  Stock Control\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[14;4H\u001b[32m\u001b[40m(E)  Order Entry\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[15;4H\u001b[32m\u001b[40m(F)  Payroll\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[16;4H\u001b[32m\u001b[40m(G)  Epos\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[14;44H\u001b[32m\u001b[40m(X)  Exit To system\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[16;44H\u001b[32m\u001b[40m(Z)  System Setup\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[6;44H\u001b[33m\u001b[40m \b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\b",
+  "hash_screen": "f88dceafb895f0d18134f5e2dd020d8d67e5788876dd6ff029e6c6526b036122",
+  "sy009_abort": false,
+  "file_hashes": {
+    "system.dat": "b2cfa4e5dabc4198be6577e6a19444faeb178b4a045eb80de57b9fa234c05d78"
+  }
+}

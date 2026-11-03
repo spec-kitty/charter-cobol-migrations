@@ -268,6 +268,75 @@ def _run_and_record(run_dir: Path, label: str, timeout: float,
     return manifest
 
 
+@scenario("menu-boot")
+def scenario_menu_boot(run_dir: Path) -> dict:
+    """Boot with an existing valid system.dat; expect the menu, no SYS002."""
+    env_home = Path("/tmp/acas-harness-env")
+    ledgers = env_home / "ACAS"
+    ledgers.mkdir(parents=True, exist_ok=True)
+    if not (ledgers / "system.dat").exists():
+        raise SystemExit("needs a persisted system.dat; run setup-clean first")
+    return _run_and_record(run_dir, "menu-boot", timeout=8.0,
+                           keystrokes=[(2.5, b"X\r")])
+
+
+@scenario("setup-clean")
+def scenario_setup_clean(run_dir: Path) -> dict:
+    """Drive ACAS through SYS002 to a clean finish, persisting the system record.
+
+    Gate map derived from source (F-B004):
+      user-data + verify            (2 accepts)
+      ops-data + cups sub-screen + verify (3)
+      gl-data + verify              (2)
+      sl-data + verify              (2)
+      sl-data-2 + verify            (2)
+      pl-data + verify              (2)
+      stock-data + verify           (2)
+      print prompt, answer N        (1)
+    Every `accept <screen> with update` completes on ENTER and keeps defaults;
+    each verify prompt is pre-filled "Y" and also completes on ENTER. Screen 3
+    (RDBMS) is skipped because File-System-Used defaults to 0.
+    """
+    env_home = Path("/tmp/acas-harness-env")
+    ledgers = env_home / "ACAS"
+    ledgers.mkdir(parents=True, exist_ok=True)
+    # Fresh: no system.dat, so ACAS routes into setup.
+    (ledgers / "system.dat").unlink(missing_ok=True)
+
+    t = 1.5
+    ks: list[tuple[float, bytes]] = []
+
+    def enter(times: int) -> None:
+        nonlocal t
+        for _ in range(times):
+            ks.append((round(t, 2), b"\r"))
+            t += 0.5
+
+    # mapser level-1 setup (ACAS.cbl mapser section): company name, verify,
+    # six ledger Y/N toggles (pre-filled Y), confirm.
+    ks.append((round(t, 2), b"Harness Test Co\r")); t += 0.9
+    enter(1)   # verify company name (pre-filled Y)
+    enter(6)   # GL / Purchase / Sales / Invoicing / Stock / O/E toggles (pre-filled Y)
+    ks.append((round(t, 2), b"Y\r")); t += 0.9   # confirm level list
+
+    # SYS002 (gates per F-B004)
+    # Screen 1 needs Current Cycle (field 16) = 01, else scycle stays 0 and
+    # ACAS re-enters setup forever. Tab past 16 preceding input fields.
+    ks.append((round(t, 2), b"\t" * 15)); t += 0.6
+    ks.append((round(t, 2), b"01\r")); t += 0.6   # sets Current Cycle, accepts screen
+    enter(1)   # verify screen 1
+    enter(3)   # ops-data + cups-2 + verify
+    enter(2)   # gl-data + verify
+    enter(2)   # sl-data + verify
+    enter(2)   # sl-data-2 + verify
+    enter(2)   # pl-data + verify
+    enter(2)   # stock-data + verify
+    ks.append((round(t, 2), b"N\r"))   # decline printed copy
+    t += 1.0
+    ks.append((round(t, 2), b"\r"))    # any trailing note
+    return _run_and_record(run_dir, "setup-clean", timeout=t + 12.0, keystrokes=ks)
+
+
 @scenario("sl055-clean")
 def scenario_sl055_clean(run_dir: Path) -> dict:
     """SL055 invoice-post-extract with clean fixture data.

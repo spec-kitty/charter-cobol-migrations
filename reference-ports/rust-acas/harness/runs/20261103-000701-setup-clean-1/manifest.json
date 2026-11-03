@@ -1,0 +1,10 @@
+{
+  "scenario": "setup-clean",
+  "observed_bytes": 2541,
+  "text_heads": "19;35H\u001b[33m\u001b[40m \b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\u001b[20d\b\u001b[33m\u001b[40m \b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\u001b[21d\b\u001b[33m\u001b[40m \b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\u001b[19;75H\u001b[33m\u001b[40m \b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\u001b[20d\b\u001b[33m\u001b[40m \b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\u001b[21d\b\u001b[33m\u001b[40m \b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\u001b[23;26H\u001b[32m\u001b[40m ] \u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\r\u001b[24d\u001b[32m\u001b[40m\u001b[J\u001b[24;61H\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[23;26H\u001b[33m\u001b[40m \b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[33m\u001b[40mN\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\u001b[19;35H\u001b[32m\u001b[40m ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[20d\b\b\u001b[32m\u001b[40m ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[21d\b\b\u001b[32m\u001b[40m ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[19;75H\u001b[32m\u001b[40m ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[20d\b\b\u001b[32m\u001b[40m ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[21d\b\b\u001b[32m\u001b[40m ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[19;35H\u001b[33m\u001b[40mN\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\u001b[20d\b\u001b[33m\u001b[40mN\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m",
+  "hash_screen": "825ab12668750843295e93a5041248036a7ea72e4316058f578f26ee4accc29e",
+  "sy009_abort": false,
+  "file_hashes": {
+    "system.dat": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}
