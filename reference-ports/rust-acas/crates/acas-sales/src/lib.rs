@@ -4,4 +4,4 @@ pub mod invoice;
 pub mod posting;
 
 pub use invoice::*;
-pub use posting::{ExtractRun, ExtractError, Invoice, OpenItem2Header, SpecialsTotals};
+pub use posting::{AnalysisRow, ExtractError, ExtractRun, OpenItem2, SpecialsTotals, ValueRow};

@@ -1,0 +1,10 @@
+{
+  "scenario": "sl055-pending",
+  "text_tail": "39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m",
+  "sl122_shown": true,
+  "openitm2": "45abe65a6e16e7655b45349326606583395644648afd58965bd61e9d980d5b56",
+  "value": "2f6e75721a1ddc429f8d3890ce16ef3956cc3dfe802ed26f76d71d5753ac2107",
+  "analysis": "af6cde8950ee3f4ba85d7734a45e8a46154d48626b834fb36c9c27d9fb4dce23",
+  "value_rows": "18",
+  "openitm2_rows": "1"
+}

@@ -427,7 +427,25 @@ def _drive_pty_env(cmd: list[str], cwd: Path, keystrokes: list[tuple[float, byte
     return bytes(transcript)
 
 
+# Scenario plugins own their own files under harness/scenarios/ and register
+# themselves through the decorator above; import them last so `parity_harness`
+# is fully defined first (they import it back).
+sys.path.insert(0, str(HARNESS_ROOT))
+
+
+def _load_plugins() -> None:
+    """Import scenario plugins and fold their registrations into SCENARIOS.
+
+    Deferred to call time: the plugins import `parity_harness` back, which is
+    only safe once this module has finished executing.
+    """
+    from scenarios import sl055_extract
+
+    SCENARIOS.update(sl055_extract.SCENARIOS)
+
+
 def main() -> None:
+    _load_plugins()
     p = argparse.ArgumentParser()
     sub = p.add_subparsers(dest="cmd", required=True)
     r = sub.add_parser("run")

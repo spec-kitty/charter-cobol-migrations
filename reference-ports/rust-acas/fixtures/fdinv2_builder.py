@@ -2,18 +2,26 @@
 """fdinv2 invoice fixture builder.
 
 Authors synthetic-but-realistic invoice files for the parity harness.
-Writes the GnuCOBOL relative-file framing verified in F-B002:
-  N fixed records of 134 bytes each + 32-byte space trailer.
+Writes bare 134-byte records, no trailer and no page header: both sides take
+these as the *rows* of the indexed tables (the COBOL loader streams them in,
+F-B007), so framing lives with the transport, not the fixture.
 
 Fixture scenarios (each produces a separately named output dir):
   clean        — 2 invoices (each with 2 lines), statuses ready-to-post
   pending      — as clean, but invoice 2 header has ih-status='P' & line
                  not "L" printed → triggers SL122 path
   credit_note  — one credit-note (ih-type=3) + its lines
-  mixed        — 5 rows exercising every sl055 skip-rule branch
+  mixed        — rows exercising every sl055 skip-rule branch
 
 This is the *input contract*; `sl055` under COBOL and `acas_sales::posting`
 under Rust both consume these bytes, and the harness compares outputs.
+
+Flat frames are only the *transport*. ACAS opens invoice/value/analysis as
+INDEXED, and a flat frame is not openable through an indexed FD (open returns
+status 35 and the whole run silently does nothing — F-B007). The same bytes are
+also written as `<table>.flat`, which `fixtures/cobol_loader/` streams into
+real BDB files before the COBOL side runs. The analysis/value tables start
+empty; sl070 seeds the ACAS default rows on the first run.
 """
 from __future__ import annotations
 
@@ -22,7 +30,6 @@ import sys
 from pathlib import Path
 
 RECORD = 134
-TRAILER = 32
 
 
 class FileKind:
@@ -92,7 +99,9 @@ def invoice_header(rec: bytearray, nos: int, let: bytes, customer: bytes,
     field_put_num(rec, 16, 0, 1)                 # ih-check (modulus check-digit)
     put_binary_long(rec, 17, EPOCH_DAYS)
     field_put(rec, 21, b"ORDER0010", 10)
-    rec[31] = kind                               # ih-type
+    # ih-type is PIC 9 — a *digit character* on disk, like il-type. Writing the
+    # raw value makes every `if ih-type = n` comparison in sl055 false.
+    rec[31] = str(kind).encode()[0]               # ih-type
     field_put(rec, 32, b"REF-000001", 10)
     field_put(rec, 42, b"Fixture invoice", 32)
     put_comp3(rec, 74, net_cents + vat_cents)    # ih-p-c (price&carriage)
@@ -140,13 +149,31 @@ def invoice_line(rec: bytearray, nos: int, let: bytes, line_no: int,
     field_put(rec, 79, b" ", 55)                 # trailing filler + unwritten frame
 
 
-def build_file(rows: list[bytearray], record_size: int = RECORD) -> bytes:
-    out = bytearray()
-    for r in rows:
-        assert len(r) == record_size, f"record {len(r)}B != expected {record_size}B"
-        out.extend(r)
-    out.extend(b" " * TRAILER)
-    return bytes(out)
+def write_tables(root: Path, analysis: list[bytearray] | None = None,
+                 value: list[bytearray] | None = None) -> None:
+    """Write the three side tables.
+
+    `analysis.flat`/`value.flat` are the loader inputs (F-B007); the `.dat`
+    twins keep the Rust-side tests pointed at a stable name. Empty means an
+    empty stream — the loader produces an empty indexed file from it.
+    """
+    for name, size, rows in [
+        ("analysis", FileKind.ANALYSIS, analysis or []),
+        ("value",    FileKind.VALUE, value or []),
+        ("openitm2", FileKind.OPEN_ITEM2, []),
+    ]:
+        if name == "openitm2":
+            blob = b""            # sequential: no trailer, COBOL appends
+        else:
+            blob = b"".join(bytes(r) for r in rows)
+        (root / f"{name}.flat").write_bytes(blob)
+        (root / f"{name}.dat").write_bytes(blob)
+
+
+def write_invoice(root: Path, rows: list[bytearray]) -> None:
+    blob = b"".join(bytes(r) for r in rows)
+    (root / "invoice.dat").write_bytes(blob)
+    (root / "invoice.flat").write_bytes(blob)
 
 
 def scenario_clean(root: Path) -> None:
@@ -162,20 +189,8 @@ def scenario_clean(root: Path) -> None:
             l = bytearray(RECORD)
             invoice_line(l, inv_no, b" ", ln, b"WIDGET-A", b"01", net // 2, vat // 2, inv_type=b"1")
             rows.append(l)
-    (root / "invoice.dat").write_bytes(build_file(rows))
-
-    # Empty-but-allocated analysis/value/oi2 so COBOL can open+extend them
-    # (1 pre-filled record of spaces = COBOL "empty" row; row size from FD).
-    # Sizes are FD facts, re-measured off a GnuCOBOL write (F-B005):
-    # fdanal.cob 36 B, fdval.cob 66 B, fdoi2.cob 114 B. The older 73/37/100
-    # guesses drifted from the FD and mis-framed every record after the first.
-    for name, rec_size in [
-        ("analysis.dat", FileKind.ANALYSIS),
-        ("value.dat",    FileKind.VALUE),
-        ("openitm2.dat", FileKind.OPEN_ITEM2),
-    ]:
-        row0 = bytearray(b" " * rec_size)
-        (root / name).write_bytes(build_file([row0], record_size=rec_size))
+    write_invoice(root, rows)
+    write_tables(root)
 
 
 def scenario_pending(root: Path) -> None:
@@ -195,23 +210,99 @@ def scenario_pending(root: Path) -> None:
     l2 = bytearray(RECORD)
     invoice_line(l2, 1002, b" ", 1, b"WIDGET-B", b"01", 50_000, 10_000)
     rows.append(l2)
-    (root / "invoice.dat").write_bytes(build_file(rows))
-    for name, rec_size in [
-        ("analysis.dat", FileKind.ANALYSIS),
-        ("value.dat", FileKind.VALUE),
-        ("openitm2.dat", FileKind.OPEN_ITEM2),
-    ]:
-        row0 = bytearray(b" " * rec_size)
-        (root / name).write_bytes(build_file([row0], record_size=rec_size))
+    write_invoice(root, rows)
+    write_tables(root)
+
+
+def scenario_credit_note(root: Path) -> None:
+    """One invoice, then a credit note for a third of it.
+
+    type 3 must negate the line value, the specials legs, the oi2 money
+    figures and the deduct fields — and still carry `cr` through unchanged.
+    """
+    rows = []
+    h = bytearray(RECORD)
+    invoice_header(h, 1001, b" ", b"CUST01", 1, 100_000, 20_000, 500, 300, lflag=b"L")
+    rows.append(h)
+    for ln in (1, 2):
+        l = bytearray(RECORD)
+        invoice_line(l, 1001, b" ", ln, b"WIDGET-A", b"01", 50_000, 10_000)
+        rows.append(l)
+    h3 = bytearray(RECORD)
+    invoice_header(h3, 1002, b" ", b"CUST01", 3, 30_000, 6_000, 200, 100, lflag=b"L")
+    h3[121] = 4                                   # ih-deduct-days
+    put_comp4(h3, 122, 12_500)                    # ih-deduct-amt 125.00
+    put_comp4(h3, 126, 2_500)                     # ih-deduct-vat  25.00
+    rows.append(h3)
+    l3 = bytearray(RECORD)
+    invoice_line(l3, 1002, b" ", 1, b"WIDGET-A", b"01", 10_000, 2_000, inv_type=b"3")
+    rows.append(l3)
+    write_invoice(root, rows)
+    write_tables(root)
+
+
+def scenario_mixed(root: Path) -> None:
+    """One row set that trips every skip rule in da010/da020/dd000."""
+    rows = []
+    # 1001 — posts: two lines, one already analysied, one comment line
+    h = bytearray(RECORD)
+    invoice_header(h, 1001, b" ", b"CUST01", 1, 100_000, 20_000, 0, 0, lflag=b"L")
+    rows.append(h)
+    l = bytearray(RECORD); invoice_line(l, 1001, b" ", 1, b"WIDGET-A", b"01", 50_000, 10_000)
+    rows.append(l)
+    l = bytearray(RECORD); invoice_line(l, 1001, b" ", 2, b"WIDGET-A", b"01", 50_000, 10_000, update=b"z")
+    rows.append(l)
+    # 1002 — proforma: skipped whole (ih-type 4)
+    h = bytearray(RECORD)
+    invoice_header(h, 1002, b" ", b"CUST02", 4, 40_000, 8_000, 0, 0, lflag=b"L")
+    rows.append(h)
+    # 1003 — applied but not analysed: no oi2 record, but the totals still count
+    h = bytearray(RECORD)
+    invoice_header(h, 1003, b" ", b"CUST03", 1, 60_000, 12_000, 0, 0,
+                   status_main=b"z", lflag=b"L")
+    rows.append(h)
+    # 1004 — pending & unprinted: skip + SL122 flag
+    h = bytearray(RECORD)
+    invoice_header(h, 1004, b" ", b"CUST04", 1, 80_000, 16_000, 0, 0, status_main=b"P")
+    rows.append(h)
+    l = bytearray(RECORD); invoice_line(l, 1004, b" ", 1, b"WIDGET-B", b"02", 80_000, 16_000)
+    rows.append(l)
+    # 1005 — prints but il-status-L cleared: also skipped & flagged
+    h = bytearray(RECORD)
+    invoice_header(h, 1005, b" ", b"CUST05", 1, 20_000, 4_000, 0, 0, lflag=b" ")
+    rows.append(h)
+    write_invoice(root, rows)
+    write_tables(root)
+
+
+def scenario_comment_lines(root: Path) -> None:
+    """A line whose product starts `/` is a comment: counters untouched."""
+    rows = []
+    h = bytearray(RECORD)
+    invoice_header(h, 1001, b" ", b"CUST01", 1, 10_000, 2_000, 0, 0, lflag=b"L")
+    rows.append(h)
+    l = bytearray(RECORD)
+    invoice_line(l, 1001, b" ", 1, b"/NOTE", b"01", 9_999, 1_999)
+    l[10] = ord("/")
+    rows.append(l)
+    write_invoice(root, rows)
+    write_tables(root)
 
 
 def main() -> None:
     out_dir = Path(sys.argv[1] if len(sys.argv) > 1 else "fixtures")
-    scenarios = sys.argv[2:] if len(sys.argv) > 2 else ["clean", "pending"]
+    scenarios = sys.argv[2:] if len(sys.argv) > 2 else [
+        "clean", "pending", "credit_note", "mixed", "comment_lines"]
     for s in scenarios:
         d = out_dir / s
         d.mkdir(parents=True, exist_ok=True)
-        {"clean": scenario_clean, "pending": scenario_pending}[s](d)
+        {
+            "clean": scenario_clean,
+            "pending": scenario_pending,
+            "credit_note": scenario_credit_note,
+            "mixed": scenario_mixed,
+            "comment_lines": scenario_comment_lines,
+        }[s](d)
         print(f"  fixture {s}: {len(list(d.glob('*')))} files → {d}")
 
 

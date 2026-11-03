@@ -61,3 +61,23 @@ both shapes, so no reader change is needed.
 write). The old sizes mis-framed every record after the first; fixture sizes
 are now pinned by
 `crates/acas-common/src/tests/isam_golden.rs::checked_in_fixtures_are_self_consistent`.
+
+### DP-003 — `sl055` pending invoices: preflight instead of post-run warning (2026-11-03, WP04)
+
+COBOL completes the whole extract and only then, at `da040-Close-Files`, sets
+`file-status(18)` and displays SL122 for the unprinted/pending invoices it
+skipped. Its caller learns the condition *after* the files have been rewritten.
+
+`acas_sales::posting::extract` computes the identical work and returns the
+unprinted count; `preflight(&rows)` reports the same condition before any file
+state is committed, so the Rust caller can refuse the run without a rollback.
+Artifacts therefore stay comparable in both styles:
+
+- the pending fixture's `openitm2` delta is identical to COBOL's (the posted
+  invoice is staged, the pending one is not);
+- the pending `value.flat` is identical, including the F-B008
+  first-invoice-only totals bug;
+- `extract` returns 1 and `preflight` returns `Some(1)`.
+
+The departure is only about *when* the caller is told, so no artifact hash
+needs a carve-out.

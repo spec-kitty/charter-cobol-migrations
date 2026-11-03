@@ -3,8 +3,9 @@
 //!
 //! The paged fixtures in `fixtures/generated/indexed/` were written by
 //! GnuCOBOL itself (`fixtures/isam_probe/regenerate.sh`); the relative golden
-//! is the WP01 `setup` capture; the flat fixture is what the harness feeds
-//! ACAS. Any drift in the decoder shows up as a failing assertion here.
+//! is the WP01 `setup` capture; the flat fixture is the transport the loader
+//! streams into a BDB table for ACAS (F-B007) — flat files therefore carry no
+//! trailer. Any drift in the decoder shows up as a failing assertion here.
 
 use std::path::PathBuf;
 
@@ -100,7 +101,9 @@ fn indexed_reads_flat_fixture_in_key_order() {
     )
     .unwrap();
     assert_eq!(file.layout(), IndexedLayout::Flat);
-    assert_eq!(file.trailer(), &[b' '; 32]);
+    // F-B007: a flat fixture is exactly N whole records — the 32 B trailer
+    // belongs to the *relative* framing, not to the indexed transport.
+    assert!(file.trailer().is_empty());
     assert_eq!(file.len(), 6);
 
     let keys: Vec<&[u8]> = file.iter().map(|(k, _)| k).collect();
@@ -193,33 +196,45 @@ fn paged_value_fixture_matches_the_probe_shape() {
 fn checked_in_fixtures_are_self_consistent() {
     // Guards the harness inputs: a size drift here silently mis-frames every
     // record after the first (the old 73/37/100 guesses did exactly that).
-    for (name, size) in [
-        ("clean/value.dat", 66 + 32),
-        ("clean/analysis.dat", 36 + 32),
-        ("clean/openitm2.dat", 114 + 32),
-        ("pending/value.dat", 66 + 32),
-        ("pending/analysis.dat", 36 + 32),
-        ("pending/openitm2.dat", 114 + 32),
-    ] {
-        let bytes = std::fs::read(fixture(name)).unwrap();
-        assert_eq!(bytes.len(), size, "{name}");
-        assert_eq!(&bytes[size - 32..], &[b' '; 32], "{name} trailer");
+    // F-B007: these are the loader transport for the indexed tables and hold
+    // bare records, so "consistent" means an exact multiple of the FD record
+    // size. Only the invoice stream is required to carry rows — sl070 seeds
+    // the analysis/value tables on the first run.
+    for name in ["clean", "pending", "credit_note", "mixed", "comment_lines"] {
+        for (suffix, size) in [
+            ("invoice.dat", FileKind::Invoice.record_size()),
+            ("analysis.dat", FileKind::Analysis.record_size()),
+            ("value.dat", FileKind::Value.record_size()),
+            ("openitm2.dat", FileKind::OpenItem2.record_size()),
+        ] {
+            let bytes = std::fs::read(fixture(&format!("{name}/{suffix}"))).unwrap();
+            assert_eq!(
+                bytes.len() % size,
+                0,
+                "{name}/{suffix}: {} B is not a whole number of {size} B records",
+                bytes.len()
+            );
+        }
+        let invoices = std::fs::read(fixture(&format!("{name}/invoice.dat"))).unwrap();
+        assert!(!invoices.is_empty(), "{name}: no invoice rows");
     }
 
     // The indexed fixtures must decode through the real reader, not just be
     // the right length.
+    // (`x.dat` and `x.flat` carry the same bytes: `.flat` feeds the COBOL
+    // loader, `.dat` keeps the Rust-side name stable.)
     let value = IndexedFile::open(
         fixture("clean/value.dat"),
         FileKind::Value.record_size(),
         FileKind::Value.key_len(),
+    );
+    let clean = IndexedFile::open(
+        fixture("clean/invoice.dat"),
+        FileKind::Invoice.record_size(),
+        FileKind::Invoice.key_len(),
     )
     .unwrap();
-    assert_eq!(value.len(), 0, "one all-space pad row, skipped as a non-row");
-    let analysis = IndexedFile::open(
-        fixture("clean/analysis.dat"),
-        FileKind::Analysis.record_size(),
-        FileKind::Analysis.key_len(),
-    )
-    .unwrap();
-    assert_eq!(analysis.len(), 0);
+    assert_eq!(clean.len(), 6);
+    // The value table starts empty, so an empty file has no shape to detect.
+    assert!(matches!(value, Err(IsamError::Malformed(_))));
 }

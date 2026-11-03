@@ -1,0 +1,10 @@
+{
+  "scenario": "sl055-mixed",
+  "text_tail": "39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[58G\b\b\b\u001b[32m\u001b[40m   ]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b\b\b\b\u001b[33m\u001b[40m   \b\b\b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m",
+  "sl122_shown": true,
+  "openitm2": "1d63a1020dfb16562570b5209addc19426e248388cb7903062d54ecaefac2025",
+  "value": "569d8e4a9dbde3d4517622639b7d5e378fa17e50a48e86c196f49e9353fec296",
+  "analysis": "af6cde8950ee3f4ba85d7734a45e8a46154d48626b834fb36c9c27d9fb4dce23",
+  "value_rows": "18",
+  "openitm2_rows": "2"
+}
