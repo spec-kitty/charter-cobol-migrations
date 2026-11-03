@@ -5,7 +5,6 @@ dependencies: []
 requirement_refs:
 - FR-001
 - C-004
-planner_estimates: {}
 subtasks:
 - T001
 - T002

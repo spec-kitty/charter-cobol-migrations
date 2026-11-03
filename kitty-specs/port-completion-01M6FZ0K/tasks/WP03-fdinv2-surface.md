@@ -5,7 +5,6 @@ dependencies:
 - WP02
 requirement_refs:
 - FR-006
-planner_estimates: {}
 subtasks:
 - T001
 - T002

@@ -7,7 +7,6 @@ dependencies:
 - WP10
 requirement_refs:
 - FR-009
-planner_estimates: {}
 subtasks:
 - T001
 - T002
