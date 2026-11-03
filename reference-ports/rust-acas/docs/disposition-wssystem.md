@@ -55,9 +55,9 @@ F-B011 and has no COBOL name.
 
 | Offset | Len | Field | Rust | Notes |
 |---:|---:|---|---|---|
-| 8 | 1 | `System-Record-Version-Prime` | `system_record_version_prime` | typed accessor |
-| 9 | 1 | `System-Record-Version-Secondary` | `system_record_version_secondary` | typed accessor |
-| 10 | 10 | `Vat-Rates` | `vat_rates` | typed accessor |
+| 8 | 1 | `System-Record-Version-Prime` | `version_prime` | typed accessor |
+| 9 | 1 | `System-Record-Version-Secondary` | `version_secondary` | typed accessor |
+| 10 | 10 | `Vat-Rates` | `vat_rates` | group / redefined — see leaves |
 | 10 | 2 | `Vat-Rate-1` | `vat_rate_1` | typed accessor |
 | 12 | 2 | `Vat-Rate-2` | `vat_rate_2` | typed accessor |
 | 14 | 2 | `Vat-Rate-3` | `vat_rate_3` | typed accessor |
@@ -70,7 +70,7 @@ F-B011 and has no COBOL name.
 | 27 | 4 | `Run-Date` | `run_date` | typed accessor |
 | 31 | 4 | `Start-Date` | `start_date` | typed accessor |
 | 35 | 4 | `End-Date` | `end_date` | typed accessor |
-| 39 | 32 | `Suser` | `suser` | typed accessor |
+| 39 | 32 | `Suser` | `suser` | group / redefined — see leaves |
 | 39 | 32 | `Usera` | `usera` | typed accessor |
 | 71 | 32 | `User-Code` | `user_code` | typed accessor |
 | 103 | 24 | `Address-1` | `address_1` | typed accessor |
@@ -80,7 +80,7 @@ F-B011 and has no COBOL name.
 | 199 | 12 | `Post-Code` | `post_code` | typed accessor |
 | 211 | 24 | `Country` | `country` | typed accessor |
 | 235 | 48 | `Print-Spool-Name` | `print_spool_name` | typed accessor |
-| 283 | 32 | `File-Statuses` | `file_statuses` | typed accessor |
+| 283 | 32 | `File-Statuses` | `file_statuses` | group / redefined — see leaves |
 | 315 | 1 | `Pass-Value` | `pass_value` | typed accessor |
 | 316 | 6 | `Level` | `level` | typed accessor |
 | 316 | 1 | `Level-1` | `level_1` | typed accessor |
@@ -93,10 +93,10 @@ F-B011 and has no COBOL name.
 | 326 | 1 | `Host` | `host` | typed accessor |
 | 327 | 1 | `Op-System` | `op_system` | typed accessor |
 | 328 | 1 | `Current-Quarter` | `current_quarter` | typed accessor |
-| 329 | 2 | `RDBMS-Flat-Statuses` | `rdbms_flat_statuses` | typed accessor |
+| 329 | 2 | `RDBMS-Flat-Statuses` | `rdbms_flat_statuses` | group / redefined — see leaves |
 | 329 | 1 | `File-System-Used` | `file_system_used` | typed accessor |
 | 330 | 1 | `File-Duplicates-In-Use` | `file_duplicates_in_use` | typed accessor |
-| 331 | 4 | `Maps-Ser` | `maps_ser` | typed accessor |
+| 331 | 4 | `Maps-Ser` | `maps_ser` | group / redefined — see leaves |
 | 331 | 2 | `Maps-Ser-xx` | `maps_ser_xx` | typed accessor |
 | 333 | 2 | `Maps-Ser-nn` | `maps_ser_nn` | typed accessor |
 | 335 | 1 | `Date-Form` | `date_form` | typed accessor |
@@ -133,7 +133,7 @@ F-B011 and has no COBOL name.
 | 414 | 2 | `Next-Batch` | `next_batch` | typed accessor |
 | 416 | 4 | `Extra-Charge-Ac` | `extra_charge_ac` | typed accessor |
 | 420 | 4 | `Vat-Ac` | `vat_ac` | typed accessor |
-| 424 | 48 | `Print-Spool-Name2` | `print_spool_name2` | typed accessor |
+| 424 | 48 | `Print-Spool-Name2` | `print_spool_name_2` | typed accessor |
 
 ### `Purchase-Ledger-Block` @ +472 — P/B ledger block (88 B)
 
@@ -153,7 +153,7 @@ F-B011 and has no COBOL name.
 | 499 | 1 | `P-Flag-I` | `p_flag_i` | typed accessor |
 | 500 | 1 | `P-Flag-P` | `p_flag_p` | typed accessor |
 | 501 | 1 | `PL-Stock-Link` | `pl_stock_link` | typed accessor |
-| 502 | 48 | `Print-Spool-Name3` | `print_spool_name3` | typed accessor |
+| 502 | 48 | `Print-Spool-Name3` | `print_spool_name_3` | typed accessor |
 | 550 | 10 | *filler* | `as_bytes()` passthrough | filler — preserved verbatim |
 
 ### `Sales-Ledger-Block` @ +560 — S/L block — invoicing switches, ageing, credit control, company headings (128 B)
@@ -231,20 +231,20 @@ F-B011 and has no COBOL name.
 
 | Offset | Len | Field | Rust | Notes |
 |---:|---:|---|---|---|
-| 776 | 128 | `filler-Dummy` | `filler_dummy` | typed accessor |
+| 776 | 128 | `filler-Dummy` | `as_bytes()` passthrough | typed accessor |
 
 ### `IRS-Data-Block` @ +904 — IRS block — client, file names, VAT rates 2, sequencing (128 B)
 
 | Offset | Len | Field | Rust | Notes |
 |---:|---:|---|---|---|
-| 904 | 128 | `filler-dummy4` | `filler_dummy4` | typed accessor |
+| 904 | 128 | `filler-dummy4` | `filler_dummy4` | group / redefined — see leaves |
 
 ### `IRS-Data-Block` @ +904 — IRS block — client, file names, VAT rates 2, sequencing (128 B)
 
 | Offset | Len | Field | Rust | Notes |
 |---:|---:|---|---|---|
 | 904 | 24 | `Client` | `client` | typed accessor |
-| 928 | 48 | `System-Files` | `system_files` | typed accessor |
+| 928 | 48 | `System-Files` | `system_files` | group / redefined — see leaves |
 | 928 | 9 | `fn-1` | `fn_1` | typed accessor |
 | 937 | 10 | `fn-2` | `fn_2` | typed accessor |
 | 947 | 8 | `fn-3` | `fn_3` | typed accessor |
@@ -252,13 +252,14 @@ F-B011 and has no COBOL name.
 | 963 | 12 | `fn-5` | `fn_5` | typed accessor |
 | 975 | 1 | `System-Ops` | `system_ops` | typed accessor |
 | 976 | 5 | `Next-Post` | `next_post` | typed accessor |
-| 981 | 12 | `Vat-Rates2` | `vat_rates2` | typed accessor |
-| 981 | 4 | `vat1` | `vat1` | typed accessor |
-| 985 | 4 | `vat2` | `vat2` | typed accessor |
-| 989 | 4 | `vat3` | `vat3` | typed accessor |
+| 981 | 12 | `Vat-Rates2` | `vat_rates2` | group / redefined — see leaves |
+| 981 | 4 | `vat1` | `vat_2_1` | typed accessor |
+| 985 | 4 | `vat2` | `vat_2_2` | typed accessor |
+| 989 | 4 | `vat3` | `vat_2_3` | typed accessor |
 | 993 | 1 | `IRS-Pass-Value` | `irs_pass_value` | typed accessor |
 | 994 | 1 | `save-sequ` | `save_sequ` | typed accessor |
 | 995 | 18 | `system-work-group` | `system_work_group` | typed accessor |
 | 1013 | 1 | `PL-App-Created` | `pl_app_created` | typed accessor |
-| 1014 | 5 | `PL-Approp-AC` | `pl_approp_ac` | typed accessor |
-| 1019 | 1 | `1st-Time-Flag` | `1st_time_flag` | typed accessor |
+| 1014 | 5 | `PL-Approp-AC` | `pl_appropriation_ac` | typed accessor |
+| 1019 | 1 | `1st-Time-Flag` | `first_time_flag` | typed accessor |
+| 1020 | 4 | *filler* | `as_bytes()` passthrough | tail of the 12-byte IRS filler; the copybook overruns the 1024-byte record by 8 (F-B011) |
