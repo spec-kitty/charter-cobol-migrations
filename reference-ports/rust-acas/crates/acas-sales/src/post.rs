@@ -1152,6 +1152,8 @@ fn cr_swop(
 ) -> Money {
     let work_1 = rows[index].legs() + rows[index].paid;
     // `if work-1 = zero` — SL131 display and an `accept`; UI only, no artifact.
+    // The heading guard only trips if sl055 did not set `file-status (18)`
+    // first, which the chained path always has (F-B010 Part 3).
     if !report.headed {
         report.new_heading(ctx);
     }
@@ -1163,10 +1165,11 @@ fn cr_swop(
         report.new_heading(ctx);
     }
 
-    let carried = -work_1;
-    rows[index].paid += carried;
-    // `work-b` takes the *unnnegated* balance (negative for a note); the print
-    // edit shows the magnitude either way.
+    // `multiply -1 by work-1  add work-1 to oi-paid`: the balance is negated
+    // into `paid`, which is what closes the note. The caller's `work-b` takes
+    // the balance *before* that negation, i.e. still negative; the print edit
+    // is unsigned so only the magnitude shows.
+    rows[index].paid -= work_1;
     work_1
 }
 
@@ -1513,6 +1516,9 @@ mod tests {
         assert_eq!(leftover.paid, 12_000);
         assert_eq!(leftover.status, b'1');
         assert_eq!(out.unapplied_c_notes, -36_000, "C/F carries the remainder");
+        let note_row = OpenItem2::from_bytes(&out.otm3[1]).expect("note row");
+        assert_eq!(note_row.status, b'1', "phase 2 closes the note");
+        assert_eq!(note_row.paid, 48_000, "the balance is negated into `paid`");
         assert!(String::from_utf8_lossy(&out.report).contains("Un-Applied Credits C/F"));
     }
 
