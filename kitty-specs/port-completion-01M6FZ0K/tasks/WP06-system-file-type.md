@@ -14,7 +14,9 @@ subtasks:
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-common/src/system.rs
-create_intent: []
+create_intent:
+- reference-ports/rust-acas/crates/acas-common/src/system.rs
+- reference-ports/rust-acas/docs/disposition-wssystem.md
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/crates/acas-common/src/system.rs

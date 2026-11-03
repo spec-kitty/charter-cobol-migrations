@@ -17,7 +17,8 @@ subtasks:
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-common/src/isam*.rs
-create_intent: []
+create_intent:
+- reference-ports/rust-acas/docs/fd-evidence/F-B005*
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/crates/acas-common/src/isam*.rs

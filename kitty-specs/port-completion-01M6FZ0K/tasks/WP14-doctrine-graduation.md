@@ -15,7 +15,9 @@ subtasks:
 history: []
 agent_profile: ''
 authoritative_surface: charter-packs/**
-create_intent: []
+create_intent:
+- reference-ports/go-acas/**
+- reference-ports/java-acas/**
 execution_mode: code_change
 owned_files:
 - charter-packs/**

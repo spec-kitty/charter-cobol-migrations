@@ -17,7 +17,8 @@ subtasks:
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-sales/src/posting.rs
-create_intent: []
+create_intent:
+- reference-ports/rust-acas/harness/scenarios/sl055*.py
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/crates/acas-sales/src/posting.rs

@@ -15,7 +15,9 @@ subtasks:
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-sales/src/post.rs
-create_intent: []
+create_intent:
+- reference-ports/rust-acas/crates/acas-sales/src/post.rs
+- reference-ports/rust-acas/docs/disposition-fdoi2.md
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/crates/acas-sales/src/post.rs

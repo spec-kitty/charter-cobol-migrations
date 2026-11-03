@@ -14,7 +14,8 @@ subtasks:
 history: []
 agent_profile: ''
 authoritative_surface: reference-ports/rust-acas/crates/acas-purchase/src/**
-create_intent: []
+create_intent:
+- reference-ports/rust-acas/harness/scenarios/pl*.py
 execution_mode: code_change
 owned_files:
 - reference-ports/rust-acas/crates/acas-purchase/src/**
