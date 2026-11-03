@@ -120,3 +120,25 @@ Each WP is independently reviewable and gated by evidence, not prose.
   *before* writing the port code for it.
 - Keep `PATCHES.md` current; vendored tree is byte-exact except listed patches.
 - Evidence before types: no struct may encode a byte layout without an `F-Bnnn` note.
+
+## Operator note — runtime wedge (from WP03, 2026-11-03)
+
+If `spec-kitty next` returns `action: review` with `wp_id: null` and a
+`/tmp/…composed-review…md` stub while `planned_wps` is still non-zero, the run
+has advanced past `implement` prematurely (planned WPs don't block that
+transition; planned WPs *do* block leaving `review`, so it never resolves).
+Fix in the run state, don't fight the DAG:
+
+```bash
+python3 - <<'PY'
+import json, pathlib
+p = next(pathlib.Path(".kittify/runtime/runs").glob("*/state.json"))
+s = json.loads(p.read_text())
+s["completed_steps"] = [x for x in s["completed_steps"] if x != "implement"]
+s["issued_step_id"] = "implement"
+p.write_text(json.dumps(s, indent=2, sort_keys=True) + "\n")
+PY
+```
+
+Expect this again whenever the last WP of a lane is approved while other WPs
+are still `planned`.
