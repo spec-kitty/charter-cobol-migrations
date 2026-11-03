@@ -123,3 +123,12 @@ delta so the two stay reconcilable. Consequence: the copybook's trailing
 12-byte IRS filler overruns the 1024-byte record by 8, of which `+1020..1024`
 is what survives; nothing typed is lost. No parity carve-out — the whole
 golden record round-trips byte-identically, and ACAS rewrote it unchanged.
+
+### DP-008 — `sales-late-min` / `sales-late-max` read little-endian (2026-11-03, WP07)
+
+Both are `binary-short` in `fdsl.cob` and every other binary field in the record
+is little-endian; the sl170 golden prints `8224.00` for both from the bytes the
+fixture writes, which is only reachable little-endian. `SalesRow::from_bytes`
+read them big-endian (0x2020 either way for a blank record, which is why the
+sl060 goldens never noticed). Fixed in place. No artifact carve-out — the sl170
+goldens are byte-identical and neither field is posted.

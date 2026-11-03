@@ -1,0 +1,16 @@
+SL170 (3.01.07)                                          Sales Ledger Dump                                                  Page   1
+
+
+Harness Test Co                         Report On : Matched Dormant                                                       03/11/2026
+
+Sales-Key     CUSTD20                                                 Sales-Credit          30.00   Sales-Current            0.00   
+Sales-Name    Birchwood Supplies                                      Sales-Discount        82.24   Sales-Last         2020202.02   
+Sales-Addr1   1 Example Street                                        Sales-Late-Min      8224.00   Turnover-Q1        2020202.02   
+Sales-Addr2   Somewhere                                               Sales-Late-Max      8224.00   Turnover-Q2        2020202.02   
+Sales-Phone   01234 567890                                            Sales-Limit            0.00   Turnover-Q3        2020202.02   
+Delivery-Tag                                                          Sales-Activety         0.00   Turnover-Q4        2020202.02   
+Notes Tag     0                                                                                     Turnover-Q4        2020202.02   
+Sales-Status  Dead                                                    Sales-Last-Inv                                                
+Sales-Late    No                                                      Sales-Last-Pay                                                
+Sales-Dunning No                                                      Sales-Average          0.00                                   
+                                        <-------------------------------------------------->                                        

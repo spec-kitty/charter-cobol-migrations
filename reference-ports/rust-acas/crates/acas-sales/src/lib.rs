@@ -1,9 +1,12 @@
 //! acas-sales: sales-ledger (AR) + invoicing port of ACAS sales/.
 
+pub mod file_dump;
 pub mod invoice;
 pub mod post;
 pub mod posting;
+pub mod report;
 
+pub use file_dump::{DumpContext, DumpReport, NumFilter, Selection};
 pub use invoice::*;
-pub use post::{GlAccounts, PostContext, PostOutcome, SalesRow};
+pub use post::{GlAccounts, PostContext, PostOutcome, SalesRow, SALES_RECORD_BYTES};
 pub use posting::{AnalysisRow, ExtractError, ExtractRun, OpenItem2, SpecialsTotals, ValueRow};
