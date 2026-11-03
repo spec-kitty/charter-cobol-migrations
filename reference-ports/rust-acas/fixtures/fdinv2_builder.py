@@ -65,6 +65,11 @@ def put_binary_short(b: bytearray, pos: int, n: int) -> None:
     b[pos:pos+2] = struct.pack("<h", n)
 
 
+def put_comp4(b: bytearray, pos: int, n: int) -> None:
+    """`999v99 comp` — 4-byte big-endian binary (F-B006). Value is hundredths."""
+    b[pos:pos+4] = struct.pack(">I", n)
+
+
 def put_binary_char(b: bytearray, pos: int, n: int) -> None:
     b[pos] = n & 0xFF
 
@@ -99,15 +104,15 @@ def invoice_header(rec: bytearray, nos: int, let: bytes, customer: bytes,
     rec[117] = 0x20                              # ih-status-C cleared
     rec[118] = 0x20                              # ih-status-A applied
     rec[119] = 0x20                              # ih-status-I lines-deleted
-    put_binary_char(rec, 120, 2)                 # ih-lines
-    put_binary_char(rec, 121, 0)                 # ih-deduct-days
-    put_binary_short(rec, 122, 0)                # ih-deduct-amt (999v99 comp = 2B)
-    put_binary_short(rec, 124, 0)                # ih-deduct-vat
-    put_binary_char(rec, 126, 30)                # ih-days — credit days
-    put_binary_long(rec, 127, EPOCH_DAYS + 30)   # ih-cr = credit-by date
-    rec[131] = 0x20                              # ih-day-book-flag
-    rec[132] = update[0]                         # ih-update — blank = unworked
-    rec[133] = 0x20                              # trailing filler
+    put_binary_char(rec, 120, 2)                     # ih-lines
+    put_binary_char(rec, 121, 0)                     # ih-deduct-days
+    put_comp4(rec, 122, 0)                           # ih-deduct-amt (999v99 comp, 4B BE)
+    put_comp4(rec, 126, 0)                           # ih-deduct-vat
+    put_binary_char(rec, 130, 30)                    # ih-days — credit days
+    rec[131:134] = struct.pack("<i", EPOCH_DAYS + 30)[:3]  # ih-cr: low 3 B only …
+    # … but the header overlay is 137 B against a 134-B record (F-B006): the
+    # cr high byte, ih-day-book-flag (135) and ih-update (136) are truncated by
+    # every ACAS write, so 131..133 is all that ever reaches this file.
 
 
 def invoice_line(rec: bytearray, nos: int, let: bytes, line_no: int,
@@ -127,7 +132,7 @@ def invoice_line(rec: bytearray, nos: int, let: bytes, line_no: int,
     put_comp3(rec, 72, vat_cents)                # il-vat
     rec[77] = 0x31                                 # il-vat-code "1"
     rec[78] = update[0]                          # il-update
-    # rest filler — already zeroed by init
+    field_put(rec, 79, b" ", 55)                 # trailing filler + unwritten frame
 
 
 def build_file(rows: list[bytearray], record_size: int = RECORD) -> bytes:
