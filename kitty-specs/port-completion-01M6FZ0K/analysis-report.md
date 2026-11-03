@@ -4,6 +4,37 @@ artifact_type: spec-kitty.analysis-report
 command: /spec-kitty.analyze
 mission_slug: port-completion-01M6FZ0K
 mission_id: 01M6FZ0K98D24Z5Q07M9GCM7J7
+generated_at: '2026-11-03T06:00:20.527324+00:00'
+analyzer_agent: unknown
+input_artifacts:
+  spec.md:
+    path: kitty-specs/port-completion-01M6FZ0K/spec.md
+    sha256: bcf3e55e6ade2eb07b8d5cf9dc154c9b7422e85b60aace4712d3e767bef5ff71
+  plan.md:
+    path: kitty-specs/port-completion-01M6FZ0K/plan.md
+    sha256: e71d196679063c4c90031521f6e3b09207c66abc6a462c5709f2ea84b068c7fe
+  tasks.md:
+    path: kitty-specs/port-completion-01M6FZ0K/tasks.md
+    sha256: 1e8c0b8a4444bf7c0a585f7c97daddddb75d79125ba6620f395eb8539860ac61
+  charter:
+    path: .kittify/charter/charter.yaml
+    sha256: 1ea2d4325775b5e301b3ee10d68cf30b577cd4ec0f9bbf3b5622b0c499cfb68c
+verdict: unknown
+issue_counts:
+  medium:
+  low:
+  high:
+  critical:
+  info:
+findings: []
+---
+
+---
+schema_version: 1
+artifact_type: spec-kitty.analysis-report
+command: /spec-kitty.analyze
+mission_slug: port-completion-01M6FZ0K
+mission_id: 01M6FZ0K98D24Z5Q07M9GCM7J7
 generated_at: '2026-11-03T06:00:00+00:00'
 analyzer_agent: codex
 input_artifacts:
