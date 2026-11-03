@@ -111,22 +111,17 @@ impl DataFile {
         let (kind, path) = FileKind::from_path(path)
             .ok_or_else(|| IsamError::Malformed("unknown ACAS data file name".into()))?;
         if kind.is_indexed() {
-            Ok(DataFile::Indexed(IndexedFile::open(
+            return Ok(DataFile::Indexed(IndexedFile::open(
                 path,
                 kind.record_size(),
                 kind.key_len(),
-            )?))
-        } else if kind == FileKind::System {
-            Ok(DataFile::Relative(RelativeFile::open(
-                path,
-                kind.record_size(),
-            )?))
-        } else {
-            // Sequential fixed-record file: the relative framing applies.
-            Ok(DataFile::Relative(RelativeFile::open(
-                path,
-                kind.record_size(),
-            )?))
+            )?));
         }
+        // Sequential fixed-record files (`system.dat`, `openitm2.dat`) use the
+        // relative framing: fixed stride, no markers (F-B002).
+        Ok(DataFile::Relative(RelativeFile::open(
+            path,
+            kind.record_size(),
+        )?))
     }
 }
