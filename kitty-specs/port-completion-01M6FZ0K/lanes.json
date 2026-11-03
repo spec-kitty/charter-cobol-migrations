@@ -1,0 +1,245 @@
+{
+  "version": 1,
+  "mission_slug": "port-completion-01M6FZ0K",
+  "mission_id": "01M6FZ0K98D24Z5Q07M9GCM7J7",
+  "mission_branch": "kitty/mission-port-completion-01M6FZ0K",
+  "target_branch": "feature/port-completion",
+  "lanes": [
+    {
+      "lane_id": "lane-a",
+      "wp_ids": [
+        "WP01",
+        "WP02"
+      ],
+      "write_scope": [
+        "reference-ports/rust-acas/crates/acas-common/src/isam*.rs",
+        "reference-ports/rust-acas/docs/fd-evidence/**",
+        "reference-ports/rust-acas/docs/fd-evidence/F-B005*",
+        "reference-ports/rust-acas/fixtures/**",
+        "reference-ports/rust-acas/harness/parity_harness.py",
+        "reference-ports/rust-acas/harness/runs/**"
+      ],
+      "predicted_surfaces": [
+        "app-shell",
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [],
+      "parallel_group": 0
+    },
+    {
+      "lane_id": "lane-b",
+      "wp_ids": [
+        "WP03",
+        "WP04",
+        "WP05",
+        "WP07"
+      ],
+      "write_scope": [
+        "reference-ports/rust-acas/crates/acas-sales/src/**",
+        "reference-ports/rust-acas/crates/acas-sales/src/invoice.rs",
+        "reference-ports/rust-acas/crates/acas-sales/src/post.rs",
+        "reference-ports/rust-acas/crates/acas-sales/src/posting.rs",
+        "reference-ports/rust-acas/docs/disposition-fdinv2.md",
+        "reference-ports/rust-acas/docs/disposition-fdoi2.md",
+        "reference-ports/rust-acas/harness/scenarios/sl*.py",
+        "reference-ports/rust-acas/harness/scenarios/sl055*.py"
+      ],
+      "predicted_surfaces": [
+        "app-shell",
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [
+        "lane-a"
+      ],
+      "parallel_group": 1
+    },
+    {
+      "lane_id": "lane-c",
+      "wp_ids": [
+        "WP06"
+      ],
+      "write_scope": [
+        "reference-ports/rust-acas/crates/acas-common/src/system.rs",
+        "reference-ports/rust-acas/docs/disposition-wssystem.md"
+      ],
+      "predicted_surfaces": [
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [
+        "lane-a"
+      ],
+      "parallel_group": 1
+    },
+    {
+      "lane_id": "lane-d",
+      "wp_ids": [
+        "WP08"
+      ],
+      "write_scope": [
+        "reference-ports/rust-acas/crates/acas-gl/src/**",
+        "reference-ports/rust-acas/harness/scenarios/gl*.py"
+      ],
+      "predicted_surfaces": [
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [
+        "lane-c"
+      ],
+      "parallel_group": 2
+    },
+    {
+      "lane_id": "lane-j",
+      "wp_ids": [
+        "WP14"
+      ],
+      "write_scope": [
+        "charter-packs/**",
+        "reference-ports/go-acas/**",
+        "reference-ports/java-acas/**"
+      ],
+      "predicted_surfaces": [
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [
+        "lane-b"
+      ],
+      "parallel_group": 2
+    },
+    {
+      "lane_id": "lane-e",
+      "wp_ids": [
+        "WP09"
+      ],
+      "write_scope": [
+        "reference-ports/rust-acas/crates/acas-purchase/src/**",
+        "reference-ports/rust-acas/harness/scenarios/pl*.py"
+      ],
+      "predicted_surfaces": [
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [
+        "lane-d"
+      ],
+      "parallel_group": 3
+    },
+    {
+      "lane_id": "lane-f",
+      "wp_ids": [
+        "WP10"
+      ],
+      "write_scope": [
+        "reference-ports/rust-acas/crates/acas-stock/src/**",
+        "reference-ports/rust-acas/harness/scenarios/st*.py"
+      ],
+      "predicted_surfaces": [
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [
+        "lane-d"
+      ],
+      "parallel_group": 3
+    },
+    {
+      "lane_id": "lane-g",
+      "wp_ids": [
+        "WP11"
+      ],
+      "write_scope": [
+        "reference-ports/rust-acas/crates/acas-irs/src/**",
+        "reference-ports/rust-acas/harness/scenarios/irs*.py"
+      ],
+      "predicted_surfaces": [
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [
+        "lane-d"
+      ],
+      "parallel_group": 3
+    },
+    {
+      "lane_id": "lane-h",
+      "wp_ids": [
+        "WP12"
+      ],
+      "write_scope": [
+        "reference-ports/rust-acas/crates/acas-ui/src/**",
+        "reference-ports/rust-acas/harness/scenarios/session*.py"
+      ],
+      "predicted_surfaces": [
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [
+        "lane-b",
+        "lane-e",
+        "lane-f"
+      ],
+      "parallel_group": 4
+    },
+    {
+      "lane_id": "lane-i",
+      "wp_ids": [
+        "WP13"
+      ],
+      "write_scope": [
+        "reference-ports/rust-acas/Cargo.toml",
+        "reference-ports/rust-acas/README.md",
+        "reference-ports/rust-acas/docs/install.md"
+      ],
+      "predicted_surfaces": [
+        "api",
+        "artifact-rendering",
+        "workspace"
+      ],
+      "depends_on_lanes": [
+        "lane-h"
+      ],
+      "parallel_group": 5
+    }
+  ],
+  "computed_at": "2026-11-03T05:58:36.608727+00:00",
+  "computed_from": "dependency_graph+ownership",
+  "planning_artifact_wps": [],
+  "planning_commit_sha": "9bb03839100ed3338033c6d90170a3749f722dc1",
+  "collapse_report": {
+    "events": [
+      {
+        "wp_a": "WP01",
+        "wp_b": "WP02",
+        "rule": "write_scope_overlap",
+        "evidence": "overlapping globs: 'reference-ports/rust-acas/docs/fd-evidence/**' vs 'reference-ports/rust-acas/docs/fd-evidence/F-B005*'; WP02 depends on WP01"
+      },
+      {
+        "wp_a": "WP03",
+        "wp_b": "WP07",
+        "rule": "write_scope_overlap",
+        "evidence": "overlapping globs: 'reference-ports/rust-acas/crates/acas-sales/src/invoice.rs' vs 'reference-ports/rust-acas/crates/acas-sales/src/**'"
+      },
+      {
+        "wp_a": "WP04",
+        "wp_b": "WP07",
+        "rule": "write_scope_overlap",
+        "evidence": "overlapping globs: 'reference-ports/rust-acas/crates/acas-sales/src/posting.rs' vs 'reference-ports/rust-acas/crates/acas-sales/src/**', 'reference-ports/rust-acas/harness/scenarios/sl055*.py' vs 'reference-ports/rust-acas/harness/scenarios/sl*.py'"
+      },
+      {
+        "wp_a": "WP05",
+        "wp_b": "WP07",
+        "rule": "write_scope_overlap",
+        "evidence": "overlapping globs: 'reference-ports/rust-acas/crates/acas-sales/src/post.rs' vs 'reference-ports/rust-acas/crates/acas-sales/src/**'; WP07 depends on WP05"
+      }
+    ],
+    "total_merges": 4,
+    "independent_wps_collapsed": 0,
+    "by_rule": {
+      "write_scope_overlap": 4
+    }
+  }
+}
