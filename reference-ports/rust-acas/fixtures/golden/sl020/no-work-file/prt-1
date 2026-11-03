@@ -1,0 +1,18 @@
+
+SL020 (3.01.08)               Sales Ledger Enquiry                    03/11/2026
+Customer: Alpha Analytical Ltd          ****************************************
+Address : 1 Mill Lane                   * A/C Nos CUST011 *Balance      1500.00*
+          Bristol                       * YTD         1000*Unapplied     250.00*
+                                        * Credit      5000*Unposted        0.00*
+                                     Avo****************************************
+ Number      Date      Description            Invoiced         Paid      Balance
+           01/11/2026 Payment                     0.00       500.00         0.00
+      41   29/10/2026 Goods - Steel brack       235.00         0.00       235.00
+      42   29/09/2026 Goods - Fixing kits       364.25         0.00       364.25
+      43 Q 20/08/2026 Goods - Anchor bolt       105.75         0.00       105.75
+      44   06/07/2026 Goods - Steel plate       470.00         0.00       470.00
+      45   24/10/2026 CN.Re Inv -  155526       141.00        20.00       161.00
+
+Inv #  Total O/S           Current           30             60            90+   
+
+  6       1,336.00           396.00         364.25         105.75         470.00

@@ -1,0 +1,13 @@
+
+SL020 (3.01.08)               Sales Ledger Enquiry                    03/11/2026
+Customer: Beta Bolts                    ****************************************
+Address : 9 Forge Road                  * A/C Nos CUST022 *Balance       750.00*
+          Leeds                         * YTD            0*Unapplied       0.00*
+                                        * Credit      2000*Unposted      881.25*
+                                      Yo****************************************
+ Number      Date      Description            Invoiced         Paid      Balance
+      51   19/09/2026 Goods - Washers           881.25         0.00       881.25
+
+Inv #  Total O/S           Current           30             60            90+   
+
+  1         881.25             0.00         881.25           0.00           0.00
