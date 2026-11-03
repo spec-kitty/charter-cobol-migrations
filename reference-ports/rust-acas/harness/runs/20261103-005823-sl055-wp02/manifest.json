@@ -1,0 +1,14 @@
+{
+  "scenario": "sl055-clean",
+  "observed_bytes": 11498,
+  "text_heads": "ryption flag specified\nBDB0178 Encrypted database: no encryption flag specified\nBDB0178 Encrypted database: no encryption flag specified\nBDB0178 Encrypted database: no encryption flag specified\nBDB0178 Encrypted database: no encryption flag specified\nBDB0178 Encrypted database: no encryption flag specified\nBDB0178 Encrypted database: no encryption flag specified\nBDB0178 Encrypted database: no encryption flag specified\nBDB0178 Encrypted database: no encryption flag specified\nBDB0178 Encrypted database: no encryption flag specified\nBDB0210 /tmp/acas-harness-env/ACAS/invoice.dat: metadata page checksum error\nBDB0004 fop_read_meta: /tmp/acas-harness-env/ACAS/value.dat: unexpected file type or format\nBDB0004 fop_read_meta: /tmp/acas-harness-env/ACAS/analysis.dat: unexpected file type or format\n",
+  "hash_screen": "2357a078717db2ba3ad720d64ac048e057d77d88248674fa9e519b1bd0ff5777",
+  "sy009_abort": false,
+  "file_hashes": {
+    "analysis.dat": "4028d38bc0fab49dadbbed4107b6db6d5b420b0989ca4aa0af284ce4bdd9e29a",
+    "invoice.dat": "746c1e3a28dc407e0afda0caf91a46e2c656664f719d7746630438f2bc59aac6",
+    "openitm2.dat": "181b43c705d73e0a6b75475aa69681efc8b52f158b814cdbe0ae03e5c2b683a0",
+    "system.dat": "b2cfa4e5dabc4198be6577e6a19444faeb178b4a045eb80de57b9fa234c05d78",
+    "value.dat": "e5b96d74a625014bb6f46385b1f6993cef49cea406816c0e850f03b22a98d0ff"
+  }
+}

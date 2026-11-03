@@ -1,0 +1,10 @@
+{
+  "scenario": "setup-clean",
+  "observed_bytes": 36011,
+  "text_heads": "0H\u001b[36m\u001b[40mCobol data files used \u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[24;41H\u001b[36m\u001b[40mDuplicate file processing NOT used\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[11;54H\u001b[32m\u001b[40m*\u001b[25b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[12;54H\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[79G\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[13;54H\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m   User Data Complete   \u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[14;54H\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[79G\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[15;54H\u001b[32m\u001b[40m* OK to file (Y/N) - [\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m \u001b[32m\u001b[40m] *\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[16;54H\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m\u001b[24X\u001b[79G\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[32m\u001b[40m*\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[17;54H\u001b[32m\u001b[40m*\u001b[25b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[15;76H\u001b[33m\u001b[40mY\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\b",
+  "hash_screen": "2ce417c935684db57c807eb873a67c18fba8051ad99767078ac105b6a6a4ae47",
+  "sy009_abort": false,
+  "file_hashes": {
+    "system.dat": "8ad58aa6833a38da089e1ffa41e36d62b2b0338e430bec098ccd2bbd301d5f46"
+  }
+}

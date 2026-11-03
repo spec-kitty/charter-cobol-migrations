@@ -143,9 +143,10 @@ impl InvoiceRow {
         if b.len() != ACAS_INVOICE_RECORD_BYTES {
             return Err(InvoiceError::WrongLength(b.len()));
         }
-        let invoice_nos = u32::from_str_radix(
-            std::str::from_utf8(&b[0..8]).map_err(|_| InvoiceError::WrongLength(0))?, 10
-        ).map_err(|_| InvoiceError::WrongLength(0))?;
+        let invoice_nos: u32 = std::str::from_utf8(&b[0..8])
+            .map_err(|_| InvoiceError::WrongLength(0))?
+            .parse()
+            .map_err(|_| InvoiceError::WrongLength(0))?;
         let invoice_let = InvoiceLetter(b[8]);
         let item_nos = b[9];
         let customer = {
@@ -192,10 +193,11 @@ impl InvoiceRow {
         out[9] = item.to_cobol();
         out[10..17].copy_from_slice(&cust.0);
         out[17..21].copy_from_slice(&date.0.to_le_bytes());
-        out[31] = match match self {
+        out[31] = match self {
             InvoiceRow::Header(h) => h.invoice_type,
             InvoiceRow::Line(_) => InvoiceType::Other(0),
-        } { t => t.to_cobol() };
+        }
+        .to_cobol();
         // bytes 21..30 = filler (kept as zeroes = "spaces" in binary world;
         // exact value comes from fixture capture)
         out[129..134].copy_from_slice(&f13);

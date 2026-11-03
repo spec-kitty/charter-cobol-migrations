@@ -51,3 +51,12 @@ openitm2 staging stream (sequential, fixed-record, trivial).
    "OK to file" prompt auto-completes only when a specific subset of prior
    fields was left at defaults. Documenting the accepted shape is slice-1's
    next notebook entry.
+
+## Correction 2026-11-03 (F-B005)
+
+The block-0/page structure below is **accurate**; what was missing is that it
+is what GnuCOBOL writes when *it* creates the file. The 2026-11-02 fixture
+files are flat (no header, records from offset 0, 32 B trailer) because our
+builder authored them and ACAS merely opened `i-o` and rewrote in place.
+Anyone reading `invoice.dat` from a harness run is looking at the flat shape.
+Read both; write paged. Details, offsets and discriminator: F-B005.

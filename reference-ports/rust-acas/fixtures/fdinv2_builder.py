@@ -23,6 +23,14 @@ from pathlib import Path
 
 RECORD = 134
 TRAILER = 32
+
+
+class FileKind:
+    """FD record sizes (bytes), re-measured off GnuCOBOL writes — see F-B005."""
+
+    ANALYSIS = 36    # fdanal.cob "36 bytes"
+    VALUE = 66       # fdval.cob "record size 66 bytes"
+    OPEN_ITEM2 = 114 # fdoi2.cob "114 bytes"
 EPOCH_DAYS = 155534  # F-B001: 2026-11-02, per system.dat run-date
 
 
@@ -148,10 +156,13 @@ def scenario_clean(root: Path) -> None:
 
     # Empty-but-allocated analysis/value/oi2 so COBOL can open+extend them
     # (1 pre-filled record of spaces = COBOL "empty" row; row size from FD).
+    # Sizes are FD facts, re-measured off a GnuCOBOL write (F-B005):
+    # fdanal.cob 36 B, fdval.cob 66 B, fdoi2.cob 114 B. The older 73/37/100
+    # guesses drifted from the FD and mis-framed every record after the first.
     for name, rec_size in [
-        ("analysis.dat", 73),   # fdanal record frame
-        ("value.dat",    37),   # fdval record frame
-        ("openitm2.dat", 100),  # fdoi2 staging frame
+        ("analysis.dat", FileKind.ANALYSIS),
+        ("value.dat",    FileKind.VALUE),
+        ("openitm2.dat", FileKind.OPEN_ITEM2),
     ]:
         row0 = bytearray(b" " * rec_size)
         (root / name).write_bytes(build_file([row0], record_size=rec_size))
@@ -175,7 +186,11 @@ def scenario_pending(root: Path) -> None:
     invoice_line(l2, 1002, b" ", 1, b"WIDGET-B", b"01", 50_000, 10_000)
     rows.append(l2)
     (root / "invoice.dat").write_bytes(build_file(rows))
-    for name, rec_size in [("analysis.dat", 73), ("value.dat", 37), ("openitm2.dat", 100)]:
+    for name, rec_size in [
+        ("analysis.dat", FileKind.ANALYSIS),
+        ("value.dat", FileKind.VALUE),
+        ("openitm2.dat", FileKind.OPEN_ITEM2),
+    ]:
         row0 = bytearray(b" " * rec_size)
         (root / name).write_bytes(build_file([row0], record_size=rec_size))
 

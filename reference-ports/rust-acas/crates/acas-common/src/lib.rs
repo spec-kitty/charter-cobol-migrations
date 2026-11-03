@@ -113,3 +113,7 @@ pub use cobol_date::CobolDate;
 #[cfg(test)]
 #[path = "tests/fixtures.rs"]
 mod fixtures;
+
+#[cfg(test)]
+#[path = "tests/isam_golden.rs"]
+mod isam_golden;

@@ -22,14 +22,14 @@ Verified 2026-11-02 against harness-produced `system.dat` (4128 bytes, 4 records
 |---|---|---|---|
 | 0, 1 | System-Record-Version-Prime, -Secondary | binary-char ×2 | `00 04` = v4 (matches FD comment) |
 | 2..12 | Vat-Rates comp ×5 | comp (big-endian i16, 99v99) | zeros in fixture |
-| 12 | Cyclea / Scycle | binary-char | flag |
-| 13 | Period | binary-char | |
-| 14 | Page-Lines | binary-char unsigned | |
-| 15..19 | Next-Invoice | binary-long LE | 1 in fixture |
-| 19..23 | Run-Date | binary-long LE (F-B001) | 155534 = 2026-11-02 ✓ |
-| 23..27 | Start-Date | binary-long LE | 155534 (same-day on setup) |
-| 27..31 | End-Date | binary-long LE | 155534 |
-| 31..71 | Suser (40 B) area; User-Code overlaps first 32 B | x | "Harness Test Co" + trailing spaces |
+| 20 | Cyclea / Scycle | binary-char | flag — **corrected by F-B004** (was +12) |
+| 21 | Period | binary-char | |
+| 22 | Page-Lines | binary-char unsigned | |
+| 23..27 | Next-Invoice | binary-long LE | 1 in fixture |
+| 27..31 | Run-Date | binary-long LE (F-B001) | 155534 = 2026-11-02 ✓ |
+| 31..35 | Start-Date | binary-long LE | 155534 (same-day on setup) |
+| 35..39 | End-Date | binary-long LE | 155534 |
+| 39..79 | Suser (40 B) area; User-Code overlaps first 32 B | x | "Harness Test Co" + trailing spaces |
 | 71..167 | Address-1..4 + Post-Code + Country | x(24)×4 + x(12) + x(24) | spaces in fixture |
 | ... | Print-Spool-Name x(48) | x | spaces |
 | ... | File-Statuses | — | |
@@ -42,3 +42,7 @@ Verified 2026-11-02 against harness-produced `system.dat` (4128 bytes, 4 records
 offset 24–40 of file: 00 00 8e5f0200 8e5f0200 8e5f0200 48
                       +23 start  +27 end    +31 'H' of usera
 ```
+
+> Offsets above were corrected 2026-11-03 (F-B004): +20 is cyclea, +23 next-invoice,
+> +27/+31/+35 the three dates, +39 the user area. The vat-rates group is wider than the
+> first pass assumed.
