@@ -1,0 +1,7 @@
+# STATUS.log — port-completion mission
+
+Append-only. Newest at bottom. Convention: `YYYY-MM-DD HH:MM · AGENT|HUMAN · <what> · <why> · <consequence>`
+
+2026-11-02 23:59 · HUMAN · Mission approved by Lynn; "make any decisions you need"; completion-oriented mission for the whole port + pack graduation. · Basis for autonomous operation. · Grant in PERMISSION_GRANT.md.
+2026-11-02 23:59 · AGENT · Bootstrapped mission scaffold: spec-kitty init (codex surfaces), charter defaults, steering docs in docs/missions/port-completion/. · Standard bootstrap per skill. · Feature branch + specify follow.
+2026-11-02 23:59 · AGENT · Carried-forward state for the builder: harness reaches SYS002 but re-enters setup because scycle=0; fdinv2_builder.py exists and is byte-verified; F-B001 (date epoch) + F-B002 (relative framing) landed; indexed ISAM only observed (F-B003) not implemented. · Cold-start facts. · WP1 is the blocker; WP2 builds on F-B002.
