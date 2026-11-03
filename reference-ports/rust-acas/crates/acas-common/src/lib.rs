@@ -114,6 +114,7 @@ mod tests {
 }
 pub mod cobol_date;
 pub mod isam;
+pub mod system;
 
 pub use cobol_date::CobolDate;
 
@@ -124,3 +125,7 @@ mod fixtures;
 #[cfg(test)]
 #[path = "tests/isam_golden.rs"]
 mod isam_golden;
+
+#[cfg(test)]
+#[path = "tests/system_golden.rs"]
+mod system_golden;

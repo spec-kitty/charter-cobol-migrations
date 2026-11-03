@@ -106,3 +106,20 @@ added by `ba000-Cr-Swop`, so it ends negative. The print edit is unsigned so
 the artifact cannot tell; `PostOutcome::unapplied_c_notes` is signed for the
 same reason `work-b` is — a caller adding it to a ledger counter (as
 `aa050-End-Loop-End` does with `sl-cn-unappl-this-month`) needs the sign.
+### DP-007 — system-record offsets are runtime offsets, 8 ahead of the copybook (2026-11-03, WP06)
+
+The shipped binary lays `wssystem.cob` out 8 bytes later than the copybook
+text does: an 8-byte prefix (`00 04` + zeros) sits ahead of
+`System-Record-Version-Prime`, and every field after it shifts by the same 8.
+Measured both ways in F-B011 — a compile-time field table and a byte-ramp that
+the SYS002 screens echo back — and re-confirmed after rebuilding `ACAS` and
+`sys002` from the vendored sources, so the delta is the binary's layout rather
+than a stale build. Reading offsets from the copybook alone yields a record
+ACAS ignores (`cyclea` at +12 does not skip setup; at +20 it does).
+
+`acas-common/src/system.rs` therefore uses the runtime offsets, and
+`fixtures/sys_probe/regenerate.sh` derives them from the copybook plus the
+delta so the two stay reconcilable. Consequence: the copybook's trailing
+12-byte IRS filler overruns the 1024-byte record by 8, of which `+1020..1024`
+is what survives; nothing typed is lost. No parity carve-out — the whole
+golden record round-trips byte-identically, and ACAS rewrote it unchanged.
