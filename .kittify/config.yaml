@@ -1,0 +1,18 @@
+project:
+  uuid: 93293fc2-f34f-4b00-99d5-94663d1d964e
+  slug: charter-cobol-migrations
+  node_id: 752e6076aa27
+  build_id: a879727e-8bab-58f0-a04f-45e0dc23a999
+mission_type_activations:
+- software-dev
+- documentation
+- research
+- plan
+vcs:
+  type: git
+agents:
+  available:
+  - codex
+  auto_commit: true
+  lint_on_edit: false
+charter: .kittify/charter/charter.yaml
