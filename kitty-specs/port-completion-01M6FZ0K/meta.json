@@ -1,0 +1,15 @@
+{
+  "coordination_branch": "kitty/mission-port-completion-01M6FZ0K",
+  "created_at": "2026-11-03T05:44:48.852064+00:00",
+  "flattened": false,
+  "friendly_name": "port completion",
+  "mission_id": "01M6FZ0K98D24Z5Q07M9GCM7J7",
+  "mission_number": null,
+  "mission_slug": "port-completion-01M6FZ0K",
+  "mission_type": "software-dev",
+  "purpose_context": "This mission advances port completion on feature/port-completion so stakeholders can track the work from mission creation onward.",
+  "purpose_tldr": "port completion",
+  "slug": "port-completion-01M6FZ0K",
+  "target_branch": "feature/port-completion",
+  "topology": "coord"
+}
