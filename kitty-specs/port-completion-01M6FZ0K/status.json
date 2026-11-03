@@ -28,7 +28,8 @@
       "last_transition_at": "2026-11-03T06:16:33.689295+00:00",
       "model": "__resolved_model_absent__",
       "notes": [
-        "Setup wall cleared: F-B004, golden system.dat, idempotent scenarios"
+        "Setup wall cleared: F-B004, golden system.dat, idempotent scenarios",
+        "Review approved: F-B004 gate map, idempotent setup, +12 patch corrected"
       ],
       "provider": "__resolved_provider_absent__",
       "review_result": {
