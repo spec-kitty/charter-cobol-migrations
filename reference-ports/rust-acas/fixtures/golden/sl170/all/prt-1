@@ -1,0 +1,80 @@
+SL170 (3.01.07)                                          Sales Ledger Dump                                                  Page   1
+
+
+Harness Test Co                         Report On : All                                                                   03/11/2026
+
+Sales-Key     CUSTD10                                                 Sales-Credit           7.00   Sales-Current         1200.00   
+Sales-Name    Acorn Trading Co                                        Sales-Discount        10.00   Sales-Last              99.99CR 
+Sales-Addr1   1 Example Street                                        Sales-Late-Min         5.00   Turnover-Q1           1500.00   
+Sales-Addr2   Somewhere                                               Sales-Late-Max        30.00   Turnover-Q2           1750.00   
+Sales-Phone   01234 567890                                            Sales-Limit       500000.00   Turnover-Q3           1200.00   
+Delivery-Tag                                                          Sales-Activety         3.00   Turnover-Q4            900.00   
+Notes Tag     1                                                                                     Turnover-Q4            900.00   
+Sales-Status  Live                                                    Sales-Last-Inv     24/10/2026                                 
+Sales-Late    No                                                      Sales-Last-Pay     01/10/2026                                 
+Sales-Dunning No                                                      Sales-Average       2500.00                                   
+Sales-Email   acorn@example.test  Used by Invoicing.                                                                                
+                                        <-------------------------------------------------->                                        
+
+Sales-Key     CUSTD20                                                 Sales-Credit          30.00   Sales-Current            0.00   
+Sales-Name    Birchwood Supplies                                      Sales-Discount        82.24   Sales-Last         2020202.02   
+Sales-Addr1   1 Example Street                                        Sales-Late-Min      8224.00   Turnover-Q1        2020202.02   
+Sales-Addr2   Somewhere                                               Sales-Late-Max      8224.00   Turnover-Q2        2020202.02   
+Sales-Phone   01234 567890                                            Sales-Limit            0.00   Turnover-Q3        2020202.02   
+Delivery-Tag                                                          Sales-Activety         0.00   Turnover-Q4        2020202.02   
+Notes Tag     0                                                                                     Turnover-Q4        2020202.02   
+Sales-Status  Dead                                                    Sales-Last-Inv                                                
+Sales-Late    No                                                      Sales-Last-Pay                                                
+Sales-Dunning No                                                      Sales-Average          0.00                                   
+                                        <-------------------------------------------------->                                        
+
+Sales-Key     CUSTD30                                                 Sales-Credit          60.00   Sales-Current      9999999.99   
+Sales-Name    Cedar Engineering Ltd                                   Sales-Discount        82.24   Sales-Last          888888.88   
+Sales-Addr1   1 Example Street                                        Sales-Late-Min      8224.00   Turnover-Q1           9999.99   
+Sales-Addr2   Somewhere                                               Sales-Late-Max      8224.00   Turnover-Q2           8888.88   
+Sales-Phone   01234 567890                                            Sales-Limit      9999999.00   Turnover-Q3           7777.77   
+Delivery-Tag                                                          Sales-Activety        42.00   Turnover-Q4           6666.66   
+Notes Tag     0                                                                                     Turnover-Q4           6666.66   
+Sales-Status  Live                                                    Sales-Last-Inv     30/09/2025                                 
+Sales-Late    Yes                                                     Sales-Last-Pay     31/10/2025                                 
+Sales-Dunning Yes                                                     Sales-Average     999999.00                                   
+                                        <-------------------------------------------------->                                        
+
+Sales-Key     CUSTD40                                                 Sales-Credit            .00   Sales-Current         1234.56CR 
+Sales-Name    Dunmore & Sons                                          Sales-Discount        82.24   Sales-Last               0.00   
+Sales-Addr1   1 Example Street                                        Sales-Late-Min      8224.00   Turnover-Q1        2020202.02   
+Sales-Addr2   Somewhere                                               Sales-Late-Max      8224.00   Turnover-Q2        2020202.02   
+Sales-Phone   01234 567890                                            Sales-Limit            0.00   Turnover-Q3        2020202.02   
+Delivery-Tag                                                          Sales-Activety         1.00   Turnover-Q4        2020202.02   
+Notes Tag     0                                                                                     Turnover-Q4        2020202.02   
+Sales-Status  Live                                                    Sales-Last-Inv     01/11/2026                                 
+Sales-Late    No                                                      Sales-Last-Pay                                                
+Sales-Dunning No                                                      Sales-Average        100.00                                   SL170 (3.01.07)                                          Sales Ledger Dump                                                  Page   2
+                                                                                                                                    
+
+Harness Test Co                         Report On : All                                                                   03/11/2026
+
+Sales-Key     CUSTD50                                                 Sales-Credit          30.00   Sales-Current          500.00   
+Sales-Name    Elmfield Partners                                       Sales-Discount        82.24   Sales-Last             250.00   
+Sales-Addr1   1 Example Street                                        Sales-Late-Min      8224.00   Turnover-Q1        2020202.02   
+Sales-Addr2   Somewhere                                               Sales-Late-Max      8224.00   Turnover-Q2        2020202.02   
+Sales-Phone   01234 567890                                            Sales-Limit       250000.00   Turnover-Q3        2020202.02   
+Delivery-Tag                                                          Sales-Activety         7.00   Turnover-Q4        2020202.02   
+Notes Tag     0                                                                                     Turnover-Q4        2020202.02   
+Sales-Status  Live                                                    Sales-Last-Inv     30/10/2026                                 
+Sales-Late    No                                                      Sales-Last-Pay     20/10/2026                                 
+Sales-Dunning No                                                      Sales-Average      75000.00                                   
+Sales-Email   elmfield@example.test  Used by Invoicing, Statements, Dunning.                                                        
+                                        <-------------------------------------------------->                                        
+
+Sales-Key     CUSTD60                                                 Sales-Credit          30.00   Sales-Current            0.00   
+Sales-Name    Foxhill Motors                                          Sales-Discount        82.24   Sales-Last               0.00   
+Sales-Addr1   1 Example Street                                        Sales-Late-Min      8224.00   Turnover-Q1        2020202.02   
+Sales-Addr2   Somewhere                                               Sales-Late-Max      8224.00   Turnover-Q2        2020202.02   
+Sales-Phone   01234 567890                                            Sales-Limit            0.00   Turnover-Q3        2020202.02   
+Delivery-Tag                                                          Sales-Activety         2.00   Turnover-Q4        2020202.02   
+Notes Tag     0                                                                                     Turnover-Q4        2020202.02   
+Sales-Status  Live                                                    Sales-Last-Inv                                                
+Sales-Late    No                                                      Sales-Last-Pay                                                
+Sales-Dunning No                                                      Sales-Average        400.00                                   
+                                        <-------------------------------------------------->                                        
