@@ -1,0 +1,40 @@
+SL095 (3.01.07)                                 Payment And Journal Proof Report                                            Page   1
+Harness Test Co                                                                                                           03/11/2026
+
+
+  Batch  Tp  Pay Date  <-------------Customer------------->    Value    Approp.    Ded'n    <--------Payment Appropriation--------->
+                       A/C               Name                                               Invoice   Date      Approp.     Balance 
+
+     /001 J 24/09/2026 CUST042 Epsilon Enamels                  50.00      90.00                                                    
+
+     /002 P 20/10/2026 CUST042 Epsilon Enamels                 100.00      40.00                                                    
+                                                                                                918 23/10/2026    40.00     204.00  
+                                                                                                919 24/10/2026    25.00      13.25CR
+                                                                                                931 25/10/2026    25.00      19.13CR
+
+    1/001 P 25/10/2026 CUST043 !! Customer Unknown              25.00      25.00                                                    
+
+    2/001 P 29/10/2026 CUST041 Delta Dies Ltd                  500.00                                                               
+                                                                                                925 30/10/2026               90.75CR
+
+
+
+                              Payment Totals                                                                                        
+                              **************                                                                                        
+
+
+                       Payments             625.00                                                                                  
+                       Appropriations        65.00                                                                                  
+                       Unapplied Cash       560.00                                                                                  
+
+                       Deductions Taken       0.00                                                                                  
+
+                              Journal Totals                                                                                        
+                              **************                                                                                        
+
+
+                       Payments              50.00                                                                                  
+                       Appropriations        90.00                                                                                  
+                       Unapplied Cash        40.00                                                                                  
+
+                       Deductions Taken       0.00                                                                                  
