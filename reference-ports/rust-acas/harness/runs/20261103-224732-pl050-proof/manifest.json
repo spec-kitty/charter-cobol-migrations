@@ -1,0 +1,5 @@
+{
+  "scenario": "pl050-proof",
+  "report_bytes": 0,
+  "text_tail": "\u001b[40mEnter todays date as dd/mm/yyyy - [ \u001b[9b]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[8;47H\u001b[36m\u001b[40m03/11/2026\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[8;47H\u001b[36m\u001b[40mG\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[36m\u001b[40mX\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[36m\u001b[40mX\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[57G\u001b[60G\u001b[31m\u001b[40mPL005 Invalid Date\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[8;47H\u001b[32m\u001b[40m \u001b[9b]\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[8;47H\u001b[36m\u001b[40mGXX11/2026\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[8;47H"
+}

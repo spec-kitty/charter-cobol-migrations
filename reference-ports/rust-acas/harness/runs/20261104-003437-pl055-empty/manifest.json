@@ -1,0 +1,12 @@
+{
+  "scenario": "pl055-empty",
+  "text_tail": "\u001b[32m\u001b[40m(C)  Purchase Ledger\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[13;4H\u001b[32m\u001b[40m(D)  Stock Control\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[14;4H\u001b[32m\u001b[40m(E)  Order Entry\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[15;4H\u001b[32m\u001b[40m(F)  Payroll\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[16;4H\u001b[32m\u001b[40m(G)  Epos\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[14;44H\u001b[32m\u001b[40m(X)  Exit To system\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[16;44H\u001b[32m\u001b[40m(Z)  System Setup\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[6;44H\u001b[33m\u001b[40m \b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[33m\u001b[40mX\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[H\u001b[J \u001b[2d\bend of program, please press a key to exit \u001b[?1006;1000l\u001b[39;49m\r\u001b[24d\u001b[K\u001b[24;1H\u001b[?12l\u001b[?25h\u001b[?1049l\u001b[23;0;0t\r\u001b[?1l\u001b>",
+  "pl201_shown": true,
+  "pinvoice": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "openitm4": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "value": "30b3dd4270dfdee631b38600e8bb9977616fe7f526c8da4047554ef1e696e3a8",
+  "analysis": "06bc114782d999144b245c37e14294e5aa3fbdb501ec482a67a7f4302b59b3d1",
+  "prt-1": "",
+  "pinvoice_rows": "0",
+  "openitm4_rows": "0"
+}
