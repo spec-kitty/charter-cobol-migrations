@@ -1,0 +1,163 @@
+gl072 (3.00.04)                                   Transaction  Posting                                           Page  1            
+Cycle - 12          Batch -     1          General     ORDINARY BATCH                                         03/11/2026            
+
+Account   Br/P C    --Balance--   Trans  --Date--    ---Debit---    ---Credit--       -------------Legend------------               
+-------                           -----                                                                                             
+
+0000.10                15000.00           03/11/2026     15000.00                     brought forward                               
+0000.10                              1    01/04/26         600.00                     SALES DAY BOOK                                
+0000.10                              2    01/04/26                        250.00      CREDIT NOTE                                   
+                                                      ===========    ===========                                                    
+0000.10                15350.00           03/11/2026     15600.00         250.00      SALES DAY BOOK                                
+                                                      ===========    ===========                                                    
+                                                                                                                                    
+
+0000.20                 4200.00CR         03/11/2026                     4200.00      brought forward                               
+0000.20                              1    01/04/26                        500.00      SALES DAY BOOK                                
+0000.20                              3    01/04/26                        146.90      VAT ON THE OTHER SIDE                         
+0000.20                              4    01/04/26                         70.00      MISSING ACCOUNT                               
+                                                      ===========    ===========                                                    
+0000.20                 4916.90CR         03/11/2026                     4916.90      SALES LEDGER CONTROL                          
+                                                      ===========    ===========                                                    
+                                                                                                                                    
+
+0000.30                                   03/11/2026                                  brought forward                               
+0000.30                              1    01/04/26                        100.00      SALES DAY BOOK                                
+0000.30                              3    01/04/26          23.45                     VAT ON THE OTHER SIDE                         
+                                                      ===========    ===========                                                    
+0000.30                   76.55CR         03/11/2026        23.45         100.00      VAT ACCOUNT                                   
+                                                      ===========    ===========                                                    
+                                                                                                                                    
+
+0000.40                                   03/11/2026                                  brought forward                               
+0000.40                              2    01/04/26         250.00                     CREDIT NOTE                                   
+                                                      ===========    ===========                                                    
+0000.40                  250.00           03/11/2026       250.00                     CREDIT NOTES                                  
+                                                      ===========    ===========                                                    
+                                                                                                                                    
+
+0000.50                  750.00CR         03/11/2026                      750.00      brought forward                               
+0000.50                              3    01/04/26         123.45                     VAT ON THE OTHER SIDE                         
+                                                      ===========    ===========                                                    
+0000.50                  626.55CR         03/11/2026       123.45         750.00      CASH BOOK                                     
+                                                      ===========    ===========                                                    
+                                                                                                                                    
+
+0000.60                  626.55CR         03/11/2026                      626.55      brought forward                               
+0000.60                              4    01/04/26          70.00                     MISSING ACCOUNT                               
+                                                      ===========    ===========                                                    
+0000.60                  556.55CR         03/11/2026        70.00         626.55      CASH BOOK                                     
+                                                      ===========    ===========                                                    
+                                                                                                                                    gl072 (3.00.04)                                   Transaction  Posting                                           Page  2            
+Cycle - 12          Batch -     2          General     SECOND BATCH                                           03/11/2026            
+                                                                                                                                    
+Account   Br/P C    --Balance--   Trans  --Date--    ---Debit---    ---Credit--       -------------Legend------------               
+-------                           -----                                                                                             
+
+0000.30                   76.55CR         03/11/2026                       76.55      brought forward                               
+0000.30                              1    01/04/26                         10.00      SECOND BATCH ROW                              
+                                                      ===========    ===========                                                    
+0000.30                   86.55CR         03/11/2026                       86.55      VAT ACCOUNT                                   
+                                                      ===========    ===========                                                    
+                                                                                                                                    
+
+0000.70                 3333.30           03/11/2026      3333.30                     brought forward                               
+0000.70                              1    01/04/26          10.00                     SECOND BATCH ROW                              
+                                                      ===========    ===========                                                    
+0000.70                 3343.30           03/11/2026      3343.30                     PURCHASE CONTROL                              
+                                                      ===========    ===========                                                    
+                                                                                                                                    gl072 (3.00.04)                                   Transaction  Posting                                           Page  3            
+Cycle - 12          Batch -     3          General     THIRD BATCH                                            03/11/2026            
+                                                                                                                                    
+Account   Br/P C    --Balance--   Trans  --Date--    ---Debit---    ---Credit--       -------------Legend------------               
+-------                           -----                                                                                             
+
+0000.10                15350.00           03/11/2026     15350.00                     brought forward                               
+0000.10                              1    01/04/26          11.11                     THIRD BATCH ROW                               
+                                                      ===========    ===========                                                    
+0000.10                15361.11           03/11/2026     15361.11                     SALES DAY BOOK                                
+                                                      ===========    ===========                                                    
+                                                                                                                                    
+
+0000.20                 4916.90CR         03/11/2026                     4916.90      brought forward                               
+0000.20                              1    01/04/26                         11.11      THIRD BATCH ROW                               
+                                                      ===========    ===========                                                    
+0000.20                 4928.01CR         03/11/2026                     4928.01      SALES LEDGER CONTROL                          
+                                                      ===========    ===========                                                    
+                                                                                                                                    gl072 (3.00.04)                                   Transaction  Posting                                           Page  4            
+Cycle - 12          Batch -     6          General     OVERFLOW BATCH                                         03/11/2026            
+                                                                                                                                    
+Account   Br/P C    --Balance--   Trans  --Date--    ---Debit---    ---Credit--       -------------Legend------------               
+-------                           -----                                                                                             
+
+0000.80                  900.00           03/11/2026       900.00                     brought forward                               
+0000.80                              1    01/04/26           1.00                     OVERFLOW ROW 01                               
+0000.80                              2    01/04/26                          2.00      OVERFLOW ROW 02                               
+0000.80                              3    01/04/26           3.00                     OVERFLOW ROW 03                               
+0000.80                              4    01/04/26                          4.00      OVERFLOW ROW 04                               
+0000.80                              5    01/04/26           5.00                     OVERFLOW ROW 05                               
+0000.80                              6    01/04/26                          6.00      OVERFLOW ROW 06                               
+0000.80                              7    01/04/26           7.00                     OVERFLOW ROW 07                               
+0000.80                              8    01/04/26                          8.00      OVERFLOW ROW 08                               
+0000.80                              9    01/04/26           9.00                     OVERFLOW ROW 09                               
+0000.80                             10    01/04/26                         10.00      OVERFLOW ROW 10                               
+0000.80                             11    01/04/26          11.00                     OVERFLOW ROW 11                               
+0000.80                             12    01/04/26                         12.00      OVERFLOW ROW 12                               
+0000.80                             13    01/04/26          13.00                     OVERFLOW ROW 13                               
+0000.80                             14    01/04/26                         14.00      OVERFLOW ROW 14                               
+0000.80                             15    01/04/26          15.00                     OVERFLOW ROW 15                               
+0000.80                             16    01/04/26                         16.00      OVERFLOW ROW 16                               
+0000.80                             17    01/04/26          17.00                     OVERFLOW ROW 17                               
+0000.80                             18    01/04/26                         18.00      OVERFLOW ROW 18                               
+0000.80                             19    01/04/26          19.00                     OVERFLOW ROW 19                               
+0000.80                             20    01/04/26                         20.00      OVERFLOW ROW 20                               
+0000.80                             21    01/04/26          21.00                     OVERFLOW ROW 21                               
+0000.80                             22    01/04/26                         22.00      OVERFLOW ROW 22                               
+0000.80                             23    01/04/26          23.00                     OVERFLOW ROW 23                               
+0000.80                             24    01/04/26                         24.00      OVERFLOW ROW 24                               
+0000.80                             25    01/04/26          25.00                     OVERFLOW ROW 25                               
+                                                      ===========    ===========                                                    
+0000.80                  913.00           03/11/2026      1069.00         156.00      OVERFLOW DEBIT                                
+                                                      ===========    ===========                                                    
+                                                                                                                                    
+
+0000.90                  900.00CR         03/11/2026                      900.00      brought forward                               
+0000.90                              1    01/04/26                          1.00      OVERFLOW ROW 01                               
+0000.90                              2    01/04/26           2.00                     OVERFLOW ROW 02                               
+0000.90                              3    01/04/26                          3.00      OVERFLOW ROW 03                               
+0000.90                              4    01/04/26           4.00                     OVERFLOW ROW 04                               
+0000.90                              5    01/04/26                          5.00      OVERFLOW ROW 05                               
+0000.90                              6    01/04/26           6.00                     OVERFLOW ROW 06                               
+0000.90                              7    01/04/26                          7.00      OVERFLOW ROW 07                               
+0000.90                              8    01/04/26           8.00                     OVERFLOW ROW 08                               
+0000.90                              9    01/04/26                          9.00      OVERFLOW ROW 09                               
+0000.90                             10    01/04/26          10.00                     OVERFLOW ROW 10                               
+0000.90                             11    01/04/26                         11.00      OVERFLOW ROW 11                               
+                                                      ===========    ===========                                                    
+0000.90                  906.00CR         03/11/2026        30.00         936.00      OVERFLOW CREDIT                               
+                                                      ===========    ===========                                                    
+                                                                                                                                    gl072 (3.00.04)                                   Transaction  Posting                                           Page  5            
+Cycle - 12          Batch -     6          General     OVERFLOW BATCH                                         03/11/2026            
+                                                                                                                                    
+Account   Br/P C    --Balance--   Trans  --Date--    ---Debit---    ---Credit--       -------------Legend------------               
+-------                           -----                                                                                             
+
+0000.90                  906.00CR         03/11/2026                                  brought forward                               
+0000.90                             12    01/04/26          12.00                     OVERFLOW ROW 12                               
+0000.90                             13    01/04/26                         13.00      OVERFLOW ROW 13                               
+0000.90                             14    01/04/26          14.00                     OVERFLOW ROW 14                               
+0000.90                             15    01/04/26                         15.00      OVERFLOW ROW 15                               
+0000.90                             16    01/04/26          16.00                     OVERFLOW ROW 16                               
+0000.90                             17    01/04/26                         17.00      OVERFLOW ROW 17                               
+0000.90                             18    01/04/26          18.00                     OVERFLOW ROW 18                               
+0000.90                             19    01/04/26                         19.00      OVERFLOW ROW 19                               
+0000.90                             20    01/04/26          20.00                     OVERFLOW ROW 20                               
+0000.90                             21    01/04/26                         21.00      OVERFLOW ROW 21                               
+0000.90                             22    01/04/26          22.00                     OVERFLOW ROW 22                               
+0000.90                             23    01/04/26                         23.00      OVERFLOW ROW 23                               
+0000.90                             24    01/04/26          24.00                     OVERFLOW ROW 24                               
+0000.90                             25    01/04/26                         25.00      OVERFLOW ROW 25                               
+                                                      ===========    ===========                                                    
+0000.90                  913.00CR         03/11/2026       156.00        1069.00      OVERFLOW CREDIT                               
+                                                      ===========    ===========                                                    
+                                                                                                                                    

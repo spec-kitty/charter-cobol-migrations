@@ -13,6 +13,11 @@ dependencies = [
 [[package]]
 name = "acas-gl"
 version = "0.1.0"
+dependencies = [
+ "acas-common",
+ "acas-sales",
+ "thiserror",
+]
 
 [[package]]
 name = "acas-irs"
