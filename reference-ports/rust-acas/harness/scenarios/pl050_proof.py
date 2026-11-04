@@ -16,7 +16,7 @@ Screen-driving quirks this scenario encodes (measured; F-B050):
   already carries at `1` — no seeding needed;
 * menu `G` refuses with error 14 (`** No Invoices To Proof/Post **`) unless
   `p-flag-i` (byte 499) is `1` *and* `file-status (26)` (byte 308) is non-zero.
-  Nothing in the chain sets either, so the scenario seeds both (DP-025). `pl050`
+  Nothing in the chain sets either, so the scenario seeds both (DP-029). `pl050`
   itself has no such gate.
 """
 from __future__ import annotations
@@ -66,7 +66,7 @@ def _prepare(ledgers: Path, invoice: str) -> None:
         raise SystemExit("no seeded system.dat; run the setup-clean scenario first")
     system = bytearray(gold_system.read_bytes())
     system[317] = ord("1")      # `B-L` level-2 — the purchase menu's gate
-    system[499] = ord("1")      # `p-flag-i` — invoices waiting (DP-025)
+    system[499] = ord("1")      # `p-flag-i` — invoices waiting (DP-029)
     system[308] = ord("1")      # `file-status (26)` — the invoice file is ready
     (ledgers / "system.dat").write_bytes(bytes(system))
     (H_BUILD / "prt-1").unlink(missing_ok=True)
@@ -99,8 +99,8 @@ def _drive(run_dir: Path, label: str, invoice: str) -> dict:
             H.SRC_BUILD / "stock", H.SRC_BUILD / "incomplete_records_system",
         ]),
     })
-    keys = HEAD + [(46.0, b"X"), (50.0, b"X\r")]
-    transcript = H._drive_pty_env(["./ACAS"], H.SRC_BUILD, keys, 58.0, env)
+    keys = HEAD + [(75.0, b"X"), (80.0, b"X\r")]
+    transcript = H._drive_pty_env(["./ACAS"], H.SRC_BUILD, keys, 88.0, env)
     (run_dir / "screen.transcript.bin").write_bytes(transcript)
 
     report = H_BUILD / "prt-1"

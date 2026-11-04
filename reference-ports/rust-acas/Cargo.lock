@@ -27,6 +27,7 @@ name = "acas-purchase"
 version = "0.1.0"
 dependencies = [
  "acas-common",
+ "acas-sales",
  "serde",
  "thiserror",
 ]

@@ -8,10 +8,14 @@ one analysis row per line the header declares, and totals three groups.
 Three datasets:
 
 * `proof` — the branch set: one of each type the program distinguishes (receipt
-  1, invoice 2, credit note 3), a proforma (4 — *not* skipped here, unlike the
-  sales proof), an applied header, an unknown supplier, a comment line that cuts
-  its invoice's analysis short, the prompt-pay/carriage block, and a closing
-  header with no lines so the final read reports end of file from the main loop.
+  1, invoice 2, credit note 3), proformas (4 — *not* skipped here, unlike the
+  sales proof, and out of range for the three-entry totals table), an applied
+  header, an unknown supplier, a comment line that cuts its invoice's analysis
+  short, the prompt-pay/carriage block, and a closing header with no lines so
+  the final read reports end of file from the main loop.
+
+Frames are written in key order, not the order the cases are introduced: the
+table is INDEXED and an out-of-order append answers status 21 and vanishes.
 * `busy` — thirty receipts, enough for the mid-page break at
   `line-cnt > page-lines` and a second page.
 * `empty` — no invoice rows at all: the totals block on its own page.
@@ -24,6 +28,8 @@ are relative to the F-B001 epoch so the printed dates stay fixed.
 
 The file is INDEXED, so the flat frames here are only for the Rust side: the
 loaders (`loadpur`, `loadpinv`) stream them into BDB tables first (F-B007).
+This is its own builder rather than an extension of the sl050 one — the
+purchase records are re-cut and no sales loader writes them (DP-030).
 """
 from __future__ import annotations
 
@@ -79,7 +85,7 @@ def header(number: int, supplier: str, day: int, invoice_type: int, *,
     b[0:8] = f"{number:08d}".encode()
     b[8] = 0                              # ih-test
     b[9:16] = supplier.ljust(7).encode()[:7]
-    b[16:20] = struct.pack(">i", day)     # ih-date, binary-long
+    b[16:20] = struct.pack("<i", day)     # ih-date, binary-long (F-B001)
     b[20:30] = f"ORDER-{number:04d}".encode()[:10]
     b[30] = ord(str(invoice_type))
     b[31:41] = f"REF-{number:06d}".encode()[:10]
@@ -170,6 +176,11 @@ def build(target: Path) -> None:
         # final read reports end of file from the main loop (F-B016 Part 3).
         header(8, "SUP003", day - 14, 2, net=12_00, vat=2_52),
     ]
+    # The file is INDEXED and `loadpinv` appends: an out-of-order frame answers
+    # status 21 and is dropped without an error, so the frames must be in key
+    # order (invoice, then item) or the tail of the fixture simply disappears
+    # (DP-028). `41` therefore sorts *after* `8`, not in builder order.
+    rows.sort(key=lambda frame: (frame[0:8], frame[8]))
     (target / "pinvoice.flat").write_bytes(b"".join(rows))
 
     busy_rows = [
