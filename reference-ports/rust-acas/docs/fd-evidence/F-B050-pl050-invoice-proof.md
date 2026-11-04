@@ -35,9 +35,31 @@ two proformas and shows both consequences:
   simply absent.
 
 The out-of-range entry also writes over the working storage that follows the
-table (`ws-deduct-amt`, `line-cnt`). In the proof fixture the byte left in
-`line-cnt` stays under `page-lines`, so no page eject results; the trace read
-`19, 22, 25, 28, 30` at the row checks and `40` after the loop.
+table (`ws-deduct-amt`, `line-cnt`).
+
+Measured with a `show-ded` trace compiled into the program (hex dump of the six
+bytes at `ws-deduct-amt`, then `line-cnt`, then `a`), the proforma stores are:
+
+| case | field before | `line-cnt` before | field after | `line-cnt` after |
+|---|---|---|---|---|
+| proforma 4, no deduction | `00 00 0C 13 30 30` | 19 | `00 00 12 13 30 3C` | 19 |
+| proforma 41, 2.50 deduction | `00 25 0C 1E 30 30` | 30 | `00 25 12 24 55 3C` | 36 |
+
+`total-ded (4)` is the first field of entry four, so it lands exactly on
+`ws-deduct-amt`; the store is a six-byte packed amount, so it covers that field,
+`line-cnt`, and the two bytes after it — which `tail-fill` mirrors from
+`ih-invoice (1:2)`. The three-byte `ws-deduct-amt` keeps its sign nibble in the
+middle of the wider field, where it is read as a digit of twelve and re-encoded
+canonically: `00 00 0C` before a zero add comes back as `00 00 12`, and the
+byte at `line-cnt` is the sixth digit pair of the sum. The rest of the row's
+stores (`total-gds (4)` onward, and `total-cvat (4, 1..3)`) land inside the
+`invoice-header` working storage, which is re-read from disk every record, so
+they never reach a printed byte. A type past `4` is invisible for the same
+reason.
+
+In the proof fixture the resulting counters stay under `page-lines`, so no page
+eject results; the trace read `19, 22, 25, 28, 30` at the row checks and `40`
+after the loop, and the report matches the golden byte for byte.
 
 ## Part 2 — the line analysis reads a 12-byte product
 
@@ -51,6 +73,12 @@ shows the code column carrying `V1`, `V3`, `V2`.
 Read against the disk offsets instead, the analysis code is
 `record[21..23]` = `product[12]` and `pa[0]`. The `il-comment` test reads
 `il-product (1)` = disk byte 9, which is the same byte both ways.
+
+`go to main-exit` is a **section exit**, so it ends the current
+`perform analysis-print` iteration and no more: the next declared line is still
+read and printed. The proof fixture's invoice 7 declares two lines and its first
+is `/COMMENT`, so the comment costs that invoice one row and its second line
+still prints with the column labels untouched.
 
 ## Part 3 — `line-5` fits; there is no write-MOVE truncation
 
@@ -73,6 +101,11 @@ finished. `main-end` always calls `perform main12 in headings`, and
 `main12` writes page 1 with `before 1` and every later page with `after page`.
 `line-9` advances **5** lines, not the sales program's 2.
 
+`main-end` calls `perform main12 in headings`. A paragraph `perform` stops at the
+next paragraph header, so the closing page gets `main12` alone: no `cont-hds`
+column banner, and `line-cnt` keeps the value the last row left, because only
+`cont-hds` resets it to 5.
+
 ## Part 5 — the missing supplier is sticky and its literals are purchase-specific
 
 A failed keyed read on `purchase-file` sets `ws-error` to 1
@@ -89,9 +122,15 @@ loop's read, and every read after that answers 46. An analysis that runs off
 the end leaves the loop spinning, so the fixture ends with a header that
 declares no lines.
 
-## Part 7 — `l5-marker` is never moved
+## Part 7 — `l5-marker` is never moved, and the name is clipped by its field
 
-Four blank columns between the name and the type on every row.
+Four blank columns between the name and the type on every row. `l5-name` is
+`x(25)` while `purch-name` is thirty bytes, so the move stops at the field
+boundary: a name longer than twenty-five characters loses its tail and the
+four marker columns stay blank beneath it. (Writing all thirty would run into
+the marker and then the type column; nothing in the fixture is over seventeen
+characters, so the goldens cannot see the difference — pinned by
+`a_thirty_byte_supplier_name_is_clipped_by_l5_name`.)
 
 ## Part 8 — `total-cvat` is indexed by the line's code and only 1..3 print
 

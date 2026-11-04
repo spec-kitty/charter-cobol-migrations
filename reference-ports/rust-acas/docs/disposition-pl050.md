@@ -41,7 +41,7 @@ total. Type 2 flips only `ws-deduct-amt`.
 | off | len | field | disposition |
 |---|---|---|---|
 | 0 | 7 | `purch-key` | the key, exact seven bytes, high padded with spaces |
-| 9 | 30 | `purch-name` | `move` to `l5-name` (`x(25)` — a 30-byte name is clipped) |
+| 9 | 30 | `purch-name` | `move` to `l5-name` (`x(25)`) — the field clips at twenty-five bytes and the four marker columns stay blank under a longer name (F-B050 Part 7) |
 | everything else | — | — | not read |
 
 A failed key answers `Supplier Unknown` into `l5-name` and raises the sticky

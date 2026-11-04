@@ -7,8 +7,13 @@
 //! types would have been wrong in the offsets.
 
 pub mod extract;
+pub mod invoice_proof;
 pub mod purchase_invoice;
 
+pub use invoice_proof::{
+    run as invoice_proof, Proof, ProofContext, ProofReport, SupplierRow, PRINT_RECORD_BYTES,
+    PURCHASE_RECORD_BYTES,
+};
 pub use extract::{extract, AnalysisRow, ExtractRun, Money, SpecialsTotals, ValueCode, ValueRow};
 pub use purchase_invoice::{
     HeaderStatus, InvoiceError, InvoiceNumber, InvoiceRow, InvoiceType, LineTail, OpenItem4,
