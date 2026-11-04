@@ -1,0 +1,53 @@
+PL050 (3.01.04)                                  Unapplied Purchase Transaction Report                                      Page 952
+Harness Test Co                                                                                                           04/11/2026
+                                                                                                                                    
+ Number  ---Date--- <------------Supplier------------>    --Type--         Goods                 <---Net-->  <---Vat-->  <--Gross-> 
+                                                                                                                                    
+
+       1 01/11/2026 SUP001   Alpha Supplies Ltd           Receipt           500.00                  500.00      105.00      605.00  
+                                              Analysis    V1    Value       300.00    Vat Code 1                                    
+                                                          V3                200.00             3                                    
+
+       2 30/10/2026 SUP002   Beta Parts                   Invoice           120.00                  125.00       26.25      151.25  
+                                              Analysis    V1    Value       120.00    Vat Code 1                                    
+                                              Prompt Pay                      2.50CR                                                
+                                              Carriage                        5.00             1                                    
+
+       3 28/10/2026 SUP003   Gamma Metals                 Cr. Note           40.00CR                 42.00CR      8.82CR     50.82CR
+                                              Analysis          Value        40.00CR  Vat Code 0                                    
+                                              Prompt Pay                      1.00                                                  
+                                              Carriage                        2.00CR           1                                    
+
+       4 27/10/2026 SUP001   Alpha Supplies Ltd           Cr. Note           77.00                   77.00       16.17       93.17  
+                                              Analysis    V1    Value        77.00    Vat Code 1                                    
+
+       6 24/10/2026 ZZZZZZ   Supplier Unknown             Invoice            99.99                   99.99       21.00      120.99  
+                                              Analysis    V2    Value        10.00    Vat Code 2                                    
+
+       7 22/10/2026 SUP003   Gamma Metals                 Receipt            15.00                   15.00        3.15       18.15  
+                                              Analysis    V1    Value        15.00    Vat Code 1                                    
+
+       8 20/10/2026 SUP003   Gamma Metals                 Invoice            12.00                   12.00        2.52       14.52  
+
+      41 27/10/2026 SUP002   Beta Parts                   Cr. Note            5.00                    5.00        1.05        6.05  
+                                              Analysis    V2    Value         5.00    Vat Code 2                                    
+                                              Prompt Pay                      2.50                                                  PL050 (3.01.04)                                  Unapplied Purchase Transaction Report                                      Page 953
+Harness Test Co                                                                                                           04/11/2026
+                                                                                                                                    
+
+                                    Goods    Carriage         Net         Vat       Gross  Prompt Pay                               
+                                                                                                                                    
+       Total Receipts          2121727.12  2121212.12  2121727.12  2121320.27  2121835.27  2121212.12                               
+       Total Invoices          2121444.11  2121217.12  2121449.11  2121261.89  2121498.88  2121209.62                               
+       Total Credit Notes      2121172.12  2121210.12  2121170.12  2121203.30  2121161.30  2121213.12                               
+
+Warning: Record/s missing in Purchase File                                                                                          
+
+
+
+
+V.A.T. Reconciliation       Receipts       Invoices   Credit Notes                                                                  
+                                                                                                                                    
+Vat Code 1    0.00%    12121278.27    12121238.37    12121211.70                                                                    
+Vat Code 2    0.00%    12121212.12    12121214.22    12121212.12                                                                    
+Vat Code 3    0.00%    12121254.12    12121212.12    12121212.12                                                                    

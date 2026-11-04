@@ -6,5 +6,6 @@ license.workspace = true
 
 [dependencies]
 acas-common = { path = "../acas-common" }
+acas-sales = { path = "../acas-sales" }
 serde = { version = "1", features = ["derive"] }
 thiserror = "2"
