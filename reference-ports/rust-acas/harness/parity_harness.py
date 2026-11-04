@@ -441,7 +441,7 @@ def _load_plugins() -> None:
     """
     from scenarios import (
         sl010_report, sl020_enquiry, sl050_proof, sl055_extract, sl060_chain,
-        sl070_pa_report, sl170_file_dump,
+        sl070_pa_report, sl090_sort, sl170_file_dump,
     )
 
     SCENARIOS.update(sl055_extract.SCENARIOS)
@@ -451,6 +451,7 @@ def _load_plugins() -> None:
     SCENARIOS.update(sl010_report.SCENARIOS)
     SCENARIOS.update(sl020_enquiry.SCENARIOS)
     SCENARIOS.update(sl050_proof.SCENARIOS)
+    SCENARIOS.update(sl090_sort.SCENARIOS)
 
 
 def main() -> None:

@@ -1,0 +1,6 @@
+{
+  "scenario": "s-flag-p clear: the program refuses and writes nothing",
+  "sorted_bytes": -1,
+  "report_bytes": 0,
+  "text_tail": "\u001b[40mNo BackUp Script in Bin/Data\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[23;44H\u001b[32m\u001b[40m(Z)  System Setup\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[6;44H\u001b[33m\u001b[40m \b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[C\b\u001b[33m\u001b[40mJ\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\r\u001b[3d\u001b[J\u001b[HSL090 (3.01.02)\u001b[K\r\u001b[23d\u001b[31m\u001b[40mT-030 Error not in error.txt. Hit return to close \u001b[6b\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\u001b[24;79H9\b\u0007X\bX\u001b[23;4H\u001b[31m\u001b[40m15\u001b[23;57H\u001b(B\u001b[m\u001b[39;49m\u001b[37m\u001b[40m\r\u001b[24d\u001b[J\u001b[79G"
+}
