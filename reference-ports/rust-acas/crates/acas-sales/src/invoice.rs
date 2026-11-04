@@ -576,6 +576,23 @@ impl InvoiceLine {
         if item == 0 {
             return Err(InvoiceError::ItemNosMarker(item));
         }
+        Self::decode(b)
+    }
+
+    /// Decode the line overlay without requiring the `item-nos` marker.
+    ///
+    /// `sl050` copies every record it reads into `invoice-line (1)` — including
+    /// a record that is actually a header (`move invoice-record to
+    /// invoice-line (1)`) — so the analysis path must be able to read the
+    /// overlay off any 134-byte frame.
+    pub fn from_overlay(b: &[u8]) -> Result<Self, InvoiceError> {
+        if b.len() != ACAS_INVOICE_RECORD_BYTES {
+            return Err(InvoiceError::WrongLength(b.len()));
+        }
+        Self::decode(b)
+    }
+
+    fn decode(b: &[u8]) -> Result<Self, InvoiceError> {
         Ok(Self {
             invoice_nos: InvoiceNumber(parse_number(b, O_INVOICE)?),
             invoice_let: InvoiceLetter(b[O_LETTER]),

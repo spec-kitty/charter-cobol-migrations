@@ -440,7 +440,8 @@ def _load_plugins() -> None:
     only safe once this module has finished executing.
     """
     from scenarios import (
-        sl010_report, sl020_enquiry, sl055_extract, sl060_chain, sl070_pa_report, sl170_file_dump,
+        sl010_report, sl020_enquiry, sl050_proof, sl055_extract, sl060_chain,
+        sl070_pa_report, sl170_file_dump,
     )
 
     SCENARIOS.update(sl055_extract.SCENARIOS)
@@ -449,6 +450,7 @@ def _load_plugins() -> None:
     SCENARIOS.update(sl070_pa_report.SCENARIOS)
     SCENARIOS.update(sl010_report.SCENARIOS)
     SCENARIOS.update(sl020_enquiry.SCENARIOS)
+    SCENARIOS.update(sl050_proof.SCENARIOS)
 
 
 def main() -> None:
