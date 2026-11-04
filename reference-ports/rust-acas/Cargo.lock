@@ -25,6 +25,11 @@ version = "0.1.0"
 [[package]]
 name = "acas-purchase"
 version = "0.1.0"
+dependencies = [
+ "acas-common",
+ "serde",
+ "thiserror",
+]
 
 [[package]]
 name = "acas-sales"

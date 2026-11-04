@@ -1,0 +1,86 @@
+PL050 (3.01.04)                                  Unapplied Purchase Transaction Report                                      Page   1
+Harness Test Co                                                                                                           04/11/2026
+
+ Number  ---Date--- <------------Supplier------------>    --Type--         Goods                 <---Net-->  <---Vat-->  <--Gross-> 
+                                                                                                                                    
+
+     101            SUP001   Alpha Supplies Ltd           Receipt            10.00                   10.00        2.10       12.10  
+
+     102            SUP001   Alpha Supplies Ltd           Receipt            20.00                   20.00        4.20       24.20  
+
+     103            SUP001   Alpha Supplies Ltd           Receipt            30.00                   30.00        6.30       36.30  
+
+     104            SUP001   Alpha Supplies Ltd           Receipt            40.00                   40.00        8.40       48.40  
+
+     105            SUP001   Alpha Supplies Ltd           Receipt            50.00                   50.00       10.50       60.50  
+
+     106            SUP001   Alpha Supplies Ltd           Receipt            60.00                   60.00       12.60       72.60  
+
+     107            SUP001   Alpha Supplies Ltd           Receipt            70.00                   70.00       14.70       84.70  
+
+     108            SUP001   Alpha Supplies Ltd           Receipt            80.00                   80.00       16.80       96.80  
+
+     109            SUP001   Alpha Supplies Ltd           Receipt            90.00                   90.00       18.90      108.90  
+
+     110            SUP001   Alpha Supplies Ltd           Receipt           100.00                  100.00       21.00      121.00  
+
+     111            SUP001   Alpha Supplies Ltd           Receipt           110.00                  110.00       23.10      133.10  
+
+     112            SUP001   Alpha Supplies Ltd           Receipt           120.00                  120.00       25.20      145.20  
+
+     113            SUP001   Alpha Supplies Ltd           Receipt           130.00                  130.00       27.30      157.30  
+
+     114            SUP001   Alpha Supplies Ltd           Receipt           140.00                  140.00       29.40      169.40  
+
+     115            SUP001   Alpha Supplies Ltd           Receipt           150.00                  150.00       31.50      181.50  
+
+     116 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           160.00                  160.00       33.60      193.60  
+
+     117 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           170.00                  170.00       35.70      205.70  
+
+     118 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           180.00                  180.00       37.80      217.80  
+
+     119 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           190.00                  190.00       39.90      229.90  
+
+     120 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           200.00                  200.00       42.00      242.00  
+
+     121 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           210.00                  210.00       44.10      254.10  PL050 (3.01.04)                                  Unapplied Purchase Transaction Report                                      Page   2
+Harness Test Co                                                                                                           04/11/2026
+                                                                                                                                    
+ Number  ---Date--- <------------Supplier------------>    --Type--         Goods                 <---Net-->  <---Vat-->  <--Gross-> 
+                                                                                                                                    
+
+     122 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           220.00                  220.00       46.20      266.20  
+
+     123 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           230.00                  230.00       48.30      278.30  
+
+     124 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           240.00                  240.00       50.40      290.40  
+
+     125 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           250.00                  250.00       52.50      302.50  
+
+     126 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           260.00                  260.00       54.60      314.60  
+
+     127 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           270.00                  270.00       56.70      326.70  
+
+     128 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           280.00                  280.00       58.80      338.80  
+
+     129 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           290.00                  290.00       60.90      350.90  
+
+     130 00/00/0000 SUP001   Alpha Supplies Ltd           Receipt           300.00                  300.00       63.00      363.00  PL050 (3.01.04)                                  Unapplied Purchase Transaction Report                                      Page   3
+Harness Test Co                                                                                                           04/11/2026
+                                                                                                                                    
+
+                                    Goods    Carriage         Net         Vat       Gross  Prompt Pay                               
+                                                                                                                                    
+       Total Receipts             4650.00        0.00     4650.00      976.50     5626.50        0.00                               
+       Total Invoices                0.00        0.00        0.00        0.00        0.00        0.00                               
+       Total Credit Notes            0.00        0.00        0.00        0.00        0.00        0.00                               
+
+
+
+
+V.A.T. Reconciliation       Receipts       Invoices   Credit Notes                                                                  
+                                                                                                                                    
+Vat Code 1    0.00%           0.00           0.00           0.00                                                                    
+Vat Code 2    0.00%           0.00           0.00           0.00                                                                    
+Vat Code 3    0.00%           0.00           0.00           0.00                                                                    
