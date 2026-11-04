@@ -125,7 +125,8 @@ def _case(invoice: str, label: str):
         keep.mkdir()
         shutil.copy2(FIXTURES / "generated" / CASE / "purchase.flat", keep / "purchase.flat")
         shutil.copy2(FIXTURES / "generated" / CASE / invoice, keep / invoice)
-        shutil.copy2(SEED / "system.dat", keep / "system.dat")
+        # The ledger copy, not the seed: it carries this scenario's seeds.
+        shutil.copy2(_ledgers() / "system.dat", keep / "system.dat")
         return manifest
     return run
 
