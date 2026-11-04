@@ -5,3 +5,5 @@ edition.workspace = true
 license.workspace = true
 
 [dependencies]
+acas-common = { path = "../acas-common" }
+acas-sales = { path = "../acas-sales" }
