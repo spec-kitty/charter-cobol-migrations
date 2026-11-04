@@ -133,6 +133,46 @@ fn post_applies_every_leg_and_prints_the_report() {
     assert_eq!(flattened(&report.batches), golden(case, "batch.flat"), "batches");
 }
 
+/// T001: the records `sl060` actually leaves in `posting.dat` are accepted —
+/// expanded, posted, and not dropped by the decode.
+#[test]
+fn sl060_postings_are_applied_without_loss() {
+    let postings: Vec<[u8; POSTING_RECORD_BYTES]> =
+        std::fs::read(fixtures().join("golden").join("sl060").join("clean").join("posting.flat"))
+            .expect("sl060 golden")
+            .chunks(POSTING_RECORD_BYTES)
+            .map(|chunk| chunk.try_into().expect("whole posting record"))
+            .collect();
+
+    let mut legs = pre_process(&postings, 1);
+    sort_legs(&mut legs);
+    // Two postings, two legs each: both carry a VAT amount but a zero VAT
+    // account, so no VAT leg is built.
+    assert_eq!(legs.len(), 4, "legs {legs:?}");
+    // Both sl060 records carry a VAT amount on the CR side but a zero VAT
+    // account, so the debit leg takes the VAT and no VAT leg is built — the
+    // pair does not balance (100.00 + 200.00 of VAT simply goes missing).
+    assert_eq!(legs.iter().map(|leg| leg.amount).sum::<i64>(), 30_000);
+
+    let records: Vec<[u8; TRANS_RECORD_BYTES]> = legs.into_iter().map(|leg| leg.to_bytes()).collect();
+    let ledger: BTreeMap<[u8; 8], [u8; LEDGER_RECORD_BYTES]> = BTreeMap::new();
+    let mut batches: BTreeMap<[u8; 6], [u8; BATCH_RECORD_BYTES]> = BTreeMap::new();
+    let mut batch = [b' '; BATCH_RECORD_BYTES];
+    batch[0] = b'1';
+    batch[1..6].copy_from_slice(b"00001");
+    batch[8] = b'1';
+    batch[9] = b'0';
+    batch[52..76].copy_from_slice(&[b' '; 24]);
+    let key: [u8; 6] = batch[..6].try_into().unwrap();
+    batches.insert(key, batch);
+
+    let report = update(
+        &context(),
+        UpdateInput { legs: &records, ledger: &ledger, batches: &batches },
+    );
+    assert_eq!(report.rows, 4, "every sl060 leg posted");
+}
+
 #[test]
 fn empty_stream_prints_the_closing_block_and_writes_nothing() {
     let case = "empty";

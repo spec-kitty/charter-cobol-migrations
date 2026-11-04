@@ -529,13 +529,15 @@ impl Run<'_> {
             self.print.write_after(line_3.as_bytes(), 1);
             let blank = Record::spaces();
             self.print.write_after(blank.as_bytes(), 1);
+            self.lines += 3;
         } else {
             self.print.write_before(line_1.as_bytes(), 1);
             self.print.write_before(line_3.as_bytes(), 1);
+            self.lines += 2;
         }
         self.print.write_after(line_4.as_bytes(), 1);
         self.print.write_after(line_5.as_bytes(), 1);
-        self.lines += 4;
+        self.lines += 2;
         self.line_cnt = 5;
     }
 

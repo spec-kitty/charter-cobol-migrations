@@ -16,6 +16,11 @@ control path of the program on the page at once:
 
 Layouts are measured in `docs/fd-evidence/F-B072-gl-post-apply.md`: ledger 126
 bytes, batch 96, posting 98 with the amount overpunched (F-B009 Part 3).
+
+Accounts are written as an eight-digit number followed by the two-digit p.c.,
+and the account fields themselves are the six bytes `ledger-nos` has: an
+eight-digit literal assigned to a six-byte slice grows the record silently, so
+every account goes through `[:6]` (DP-022).
 """
 from __future__ import annotations
 
